@@ -97,9 +97,6 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 " Enable branch name on airline
 let g:airline#extensions#branch#enabled = 1
 
-" Paste toggle
-set pastetoggle=<F2>
-
 " Remaps
 nnoremap <Tab> %
 
