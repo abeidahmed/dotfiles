@@ -1,0 +1,27 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "markdown",
+    "html",
+    "json",
+    "scss",
+    "javascript",
+    "yaml",
+    "typescriptreact",
+    "graphql",
+    "javascriptreact",
+    "typescript"
+  ],
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "es5",
+  "prettier.printWidth": 80,
+  "html.filetypes": [
+    "html",
+    "handlebars",
+    "htmldjango",
+    "blade",
+    "erb",
+    "eruby"
+  ],
+  "diagnostic.displayByAle": true
+}
