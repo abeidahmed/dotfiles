@@ -25,9 +25,11 @@ set undodir=~/.vim/undodir
 set undofile
 set incsearch
 set signcolumn=yes
-set updatetime=300
+set updatetime=50
 set shortmess+=c " coc recommended
 set clipboard=unnamedplus,unnamed
+set mouse=a
+set cmdheight=2
 
 " Plugins
 call plug#begin('~/.vim/plugged')
