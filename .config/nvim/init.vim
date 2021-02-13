@@ -96,9 +96,6 @@ nnoremap <C-l> <C-W>l
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 
-" Enable branch name on airline
-let g:airline#extensions#branch#enabled = 1
-
 " Remaps
 nnoremap <Tab> %
 
@@ -106,4 +103,5 @@ source $HOME/.config/nvim/plug-config/ale.vim
 source $HOME/.config/nvim/plug-config/coc.vim
 source $HOME/.config/nvim/plug-config/fzf.vim
 source $HOME/.config/nvim/plug-config/vim-fugitive.vim
+source $HOME/.config/nvim/plug-config/airline.vim
 source $HOME/.config/nvim/color-scheme/color.vim
