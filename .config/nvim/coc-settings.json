@@ -23,5 +23,6 @@
     "erb",
     "eruby"
   ],
-  "diagnostic.displayByAle": true
+  "diagnostic.displayByAle": true,
+  "snippets.userSnippetsDirectory": "~/.config/nvim/snippets"
 }
