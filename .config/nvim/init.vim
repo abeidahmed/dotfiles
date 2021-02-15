@@ -61,6 +61,8 @@ Plug 'tpope/vim-fugitive'
 " FZF
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+" Tmux
+Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
 
