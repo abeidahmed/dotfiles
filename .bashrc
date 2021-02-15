@@ -128,6 +128,6 @@ export FZF_DEFAULT_COMMAND="fdfind --exclude={.git,.idea,.vscode,.sass-cache,nod
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
-
+# Set powerline fonts on tmux
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
