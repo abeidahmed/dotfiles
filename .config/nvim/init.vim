@@ -80,10 +80,6 @@ augroup HAWAABI
   autocmd BufWritePre * :call TrimWhiteSpace()
 augroup END
 
-" NERDTree
-nnoremap <leader>n :NERDTreeToggle<CR>
-let NERDTreeShowHidden=1
-
 " Toggle NERDCommenter with Ctrl + /
 nmap <C-_>   <Plug>NERDCommenterToggle
 vmap <C-_>   <Plug>NERDCommenterToggle<CR>gv
@@ -93,10 +89,6 @@ nnoremap <C-h> <C-W>h
 nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
 nnoremap <C-l> <C-W>l
-
-" Open NERDTree by default and close the default explorer
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 
 " Stay in visual mode when indenting
 vnoremap < <gv
@@ -110,4 +102,5 @@ source $HOME/.config/nvim/plug-config/ale.vim
 source $HOME/.config/nvim/plug-config/coc.vim
 source $HOME/.config/nvim/plug-config/fzf.vim
 source $HOME/.config/nvim/plug-config/vim-fugitive.vim
+source $HOME/.config/nvim/plug-config/nerdtree.vim
 source $HOME/.config/nvim/plug-config/airline.vim
