@@ -63,6 +63,9 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 " Tmux
 Plug 'christoomey/vim-tmux-navigator'
+" JS
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'pangloss/vim-javascript'
 
 call plug#end()
 
