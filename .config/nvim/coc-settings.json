@@ -24,5 +24,6 @@
     "eruby"
   ],
   "diagnostic.displayByAle": true,
-  "snippets.userSnippetsDirectory": "~/.config/nvim/snippets"
+  "snippets.userSnippetsDirectory": "~/.config/nvim/snippets",
+  "eslint.autoFixOnSave": true
 }
