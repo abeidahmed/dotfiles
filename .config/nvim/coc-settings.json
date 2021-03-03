@@ -29,5 +29,7 @@
   "snippets.extends": {
     "javascriptreact": ["javascript", "html"],
     "javascript": ["html"]
-  }
+  },
+  "javascript.suggestionActions.enabled": false,
+  "javascript.validate.enable": false
 }
