@@ -42,6 +42,7 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'Yggdroot/indentLine'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
+Plug 'sheerun/vim-polyglot'
 " Snippets
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
@@ -65,7 +66,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'christoomey/vim-tmux-navigator'
 " JS
 Plug 'maxmellon/vim-jsx-pretty'
-Plug 'pangloss/vim-javascript'
 
 call plug#end()
 
