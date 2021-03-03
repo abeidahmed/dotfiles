@@ -3,8 +3,8 @@ let g:ale_disable_lsp = 1 " Disable so that coc completion can work
 let g:airline#extensions#ale#enabled = 1 " Show errors on airline
 
 let g:ale_fixers = {
-      \ 'javascript': ['prettier', 'eslint']
-      \}
+      \ 'javascript': ['prettier', 'eslint'],
+      \ }
 
 let g:ale_sign_warning = '😭'
 let g:ale_sign_error = '❌'
