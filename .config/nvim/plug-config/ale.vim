@@ -8,8 +8,8 @@ let g:ale_fixers = {
       \ }
 
 let g:ale_linters = {
-                  \ 'typescript': ['eslint'],
-                  \ 'javascript': ['eslint']
+                  \ 'typescript': ['eslint', 'stylelint'],
+                  \ 'javascript': ['eslint', 'stylelint']
                   \}
 
 let g:ale_sign_warning = '😭'
