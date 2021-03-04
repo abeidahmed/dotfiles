@@ -99,6 +99,7 @@ vnoremap > >gv
 
 " Remaps
 nnoremap <Tab> %
+nmap <leader>do <Plug>(coc-codeaction)
 
 source $HOME/.config/nvim/color-scheme/color.vim
 source $HOME/.config/nvim/plug-config/ale.vim
@@ -107,3 +108,4 @@ source $HOME/.config/nvim/plug-config/fzf.vim
 source $HOME/.config/nvim/plug-config/vim-fugitive.vim
 source $HOME/.config/nvim/plug-config/nerdtree.vim
 source $HOME/.config/nvim/plug-config/airline.vim
+
