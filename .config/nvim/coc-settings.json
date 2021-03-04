@@ -28,7 +28,9 @@
   "eslint.autoFixOnSave": true,
   "snippets.extends": {
     "javascriptreact": ["javascript", "html"],
-    "javascript": ["html"]
+    "javascript": ["html"],
+    "typescript": ["javascript", "html"],
+    "typescriptreact": ["javascript", "html"]
   },
   "javascript.suggestionActions.enabled": false,
   "javascript.validate.enable": false
