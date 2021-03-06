@@ -59,6 +59,7 @@ Plug 'dense-analysis/ale'
 " Git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'stsewd/fzf-checkout.vim'
 " FZF
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -101,6 +102,8 @@ vnoremap > >gv
 nnoremap <Tab> %
 
 let g:ale_disable_lsp = 1
+
+nnoremap <leader>co :GBranches<CR>
 
 source $HOME/.config/nvim/color-scheme/color.vim
 source $HOME/.config/nvim/plug-config/ale.vim
