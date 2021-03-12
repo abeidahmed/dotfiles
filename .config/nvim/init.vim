@@ -39,7 +39,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'preservim/nerdcommenter'
 Plug 'vim-airline/vim-airline'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-Plug 'Yggdroot/indentLine'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'sheerun/vim-polyglot'
@@ -67,6 +66,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'christoomey/vim-tmux-navigator'
 " JS
 Plug 'maxmellon/vim-jsx-pretty'
+" Prisma
+Plug 'pantharshit00/vim-prisma'
 
 call plug#end()
 
@@ -97,9 +98,6 @@ nnoremap <C-l> <C-W>l
 " Stay in visual mode when indenting
 vnoremap < <gv
 vnoremap > >gv
-
-" Remaps
-nnoremap <Tab> %
 
 let g:ale_disable_lsp = 1
 
