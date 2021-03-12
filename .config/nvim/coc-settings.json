@@ -10,7 +10,8 @@
     "typescriptreact",
     "graphql",
     "javascriptreact",
-    "typescript"
+    "typescript",
+    "prisma"
   ],
   "prettier.singleQuote": true,
   "prettier.trailingComma": "es5",
