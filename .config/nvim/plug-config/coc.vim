@@ -1,4 +1,6 @@
 " Use <c-space> to trigger completion.
+let g:coc_global_extensions = ['coc-prisma']
+
 if has('nvim')
   inoremap <silent><expr> <c-space> coc#refresh()
 else
