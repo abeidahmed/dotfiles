@@ -4,7 +4,8 @@ let g:airline#extensions#ale#enabled = 1 " Show errors on airline
 
 let g:ale_fixers = {
       \ 'javascript': ['prettier', 'eslint'],
-      \ 'typescript': ['prettier', 'eslint']
+      \ 'typescript': ['prettier', 'eslint'],
+      \ 'ruby': ['rubocop']
       \ }
 
 let g:ale_linters = {
