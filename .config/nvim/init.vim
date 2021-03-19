@@ -102,6 +102,8 @@ vnoremap > >gv
 let g:ale_disable_lsp = 1
 
 nnoremap <leader>co :GBranches<CR>
+" Indent p tag
+let g:html_indent_inctags = 'p'
 
 source $HOME/.config/nvim/color-scheme/color.vim
 source $HOME/.config/nvim/plug-config/ale.vim
