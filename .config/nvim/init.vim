@@ -58,7 +58,6 @@ Plug 'dense-analysis/ale'
 " Git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-Plug 'stsewd/fzf-checkout.vim'
 " FZF
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -66,9 +65,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'christoomey/vim-tmux-navigator'
 " JS
 Plug 'maxmellon/vim-jsx-pretty'
-" Prisma
-Plug 'pantharshit00/vim-prisma'
-
 call plug#end()
 
 let mapleader=" "
@@ -101,7 +97,6 @@ vnoremap > >gv
 
 let g:ale_disable_lsp = 1
 
-nnoremap <leader>co :GBranches<CR>
 " Indent p tag
 let g:html_indent_inctags = 'p'
 
