@@ -96,6 +96,7 @@ vnoremap < <gv
 vnoremap > >gv
 
 let g:ale_disable_lsp = 1
+let g:rspec_command = "Dispatch rspec {spec}"
 
 " Indent p tag
 let g:html_indent_inctags = 'p'
