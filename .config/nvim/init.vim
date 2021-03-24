@@ -42,6 +42,8 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-repeat'
 " Snippets
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
@@ -51,6 +53,7 @@ Plug 'honza/vim-snippets'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
+Plug 'thoughtbot/vim-rspec'
 " Theme
 Plug 'morhetz/gruvbox'
 " Linter
@@ -96,7 +99,6 @@ vnoremap < <gv
 vnoremap > >gv
 
 let g:ale_disable_lsp = 1
-let g:rspec_command = "Dispatch rspec {spec}"
 
 " Indent p tag
 let g:html_indent_inctags = 'p'
