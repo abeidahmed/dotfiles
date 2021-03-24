@@ -100,6 +100,9 @@ vnoremap > >gv
 
 let g:ale_disable_lsp = 1
 
+" Nerd commenter
+let g:NERDSpaceDelims = 1
+
 " Indent p tag
 let g:html_indent_inctags = 'p'
 
