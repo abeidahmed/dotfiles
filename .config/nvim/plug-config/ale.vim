@@ -11,7 +11,8 @@ let g:ale_fixers = {
 
 let g:ale_linters = {
                   \ 'typescript': ['eslint', 'stylelint'],
-                  \ 'javascript': ['eslint', 'stylelint']
+                  \ 'javascript': ['eslint', 'stylelint'],
+                  \ 'handlebars': ['embertemplatelint']
                   \}
 
 let g:ale_sign_warning = '😭'

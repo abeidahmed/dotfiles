@@ -131,3 +131,5 @@ export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 # Set powerline fonts on tmux
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
