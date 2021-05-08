@@ -1,0 +1,12 @@
+[color]
+	ui = true
+[user]
+	name = abeidahmed
+	email = abeidahmed92@gmail.com
+[alias]
+  co = checkout
+  ci = commit
+  st = status
+  br = branch
+[credential]
+	helper = store
