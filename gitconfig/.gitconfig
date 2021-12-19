@@ -1,0 +1,21 @@
+[color]
+	ui = true
+
+[user]
+	name = abeidahmed
+	email = abeidahmed92@gmail.com
+
+[init]
+  defaultBranch = main
+
+[core]
+	excludesFile = ~/.gitignore_global
+
+[alias]
+  co = checkout
+  ci = commit
+  st = status
+  br = branch
+
+[credential]
+	helper = store
