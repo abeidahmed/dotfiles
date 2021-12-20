@@ -111,5 +111,8 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 
+export GOPATH=$HOME/projects/golang
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+
 export EDITOR=nvim
 export FZF_DEFAULT_COMMAND="rg --files"
