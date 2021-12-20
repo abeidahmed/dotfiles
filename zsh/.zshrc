@@ -88,9 +88,6 @@ source $ZSH/oh-my-zsh.sh
 #   export EDITOR='mvim'
 # fi
 
-export EDITOR=vim
-export FZF_DEFAULT_COMMAND="rg --files"
-
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -113,3 +110,6 @@ alias elastic_stop="sudo -i service elasticsearch stop"
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+
+export EDITOR=nvim
+export FZF_DEFAULT_COMMAND="rg --files"
