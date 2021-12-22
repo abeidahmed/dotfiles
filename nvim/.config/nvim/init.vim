@@ -37,7 +37,6 @@ Plug 'preservim/nerdcommenter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
-Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-repeat'
 Plug 'nvim-lualine/lualine.nvim'
 " Ruby/Rails
