@@ -112,5 +112,3 @@ inoremap ? ?<c-g>u
 let g:html_indent_inctags = 'p'
 
 lua require('abeidahmed')
-
-source $HOME/.config/nvim/plugins/vim-fugitive.vim

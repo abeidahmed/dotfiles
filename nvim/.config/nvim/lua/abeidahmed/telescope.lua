@@ -33,5 +33,5 @@ require("telescope").setup {
 
 require("telescope").load_extension("fzy_native")
 
-vim.cmd [[nnoremap <leader>fs :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>]]
-vim.cmd [[nnoremap <leader>ff :lua require('telescope.builtin').find_files()<CR>]]
+vim.api.nvim_set_keymap('n', '<leader>fs', [[<Cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>]], { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>ff', [[<Cmd>lua require('telescope.builtin').find_files()<CR>]], { noremap = true })

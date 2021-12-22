@@ -1,0 +1,5 @@
+vim.api.nvim_set_keymap('n', '<leader>gs', ':Git<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>gc', ':Git commit<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>gp', ':Git push<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>gh', ':diffget //2<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>gl', ':diffget //3<CR>', { noremap = true })
