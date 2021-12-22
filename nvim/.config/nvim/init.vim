@@ -32,7 +32,7 @@ set completeopt=menu,menuone,noselect
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'scrooloose/nerdtree'
+Plug 'kyazdani42/nvim-tree.lua'
 Plug 'numToStr/Comment.nvim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'jiangmiao/auto-pairs'
@@ -113,5 +113,4 @@ let g:html_indent_inctags = 'p'
 
 lua require('abeidahmed')
 
-source $HOME/.config/nvim/plugins/nerdtree.vim
 source $HOME/.config/nvim/plugins/vim-fugitive.vim
