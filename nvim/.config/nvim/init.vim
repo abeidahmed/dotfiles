@@ -43,6 +43,8 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
+" Vue
+Plug 'posva/vim-vue'
 " Git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
