@@ -1,35 +1,3 @@
-syntax on
-filetype plugin on
-
-set nu
-set relativenumber
-set hidden
-set scrolloff=8
-set noerrorbells
-set noru
-set nohlsearch
-set termguicolors
-set colorcolumn=121
-set background=dark
-set expandtab
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set cursorline
-set smartindent
-set nowrap
-set noswapfile
-set nobackup
-set nowritebackup
-set incsearch
-set signcolumn=yes
-set updatetime=50
-set shortmess+=c " coc recommended
-set clipboard=unnamedplus,unnamed
-set mouse=a
-set cmdheight=2
-set completeopt=menu,menuone,noselect
-
 call plug#begin('~/.vim/plugged')
 
 Plug 'kyazdani42/nvim-tree.lua'
