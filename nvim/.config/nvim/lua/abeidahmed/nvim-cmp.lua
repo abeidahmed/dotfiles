@@ -12,6 +12,34 @@ lspkind.init()
 
 local cmp = require 'cmp'
 
+local kind_icons = {
+  Text = "",
+  Method = "m",
+  Function = "",
+  Constructor = "",
+  Field = "",
+  Variable = "",
+  Class = "",
+  Interface = "",
+  Module = "",
+  Property = "",
+  Unit = "",
+  Value = "",
+  Enum = "",
+  Keyword = "",
+  Snippet = "",
+  Color = "",
+  File = "",
+  Reference = "",
+  Folder = "",
+  EnumMember = "",
+  Constant = "",
+  Struct = "",
+  Event = "",
+  Operator = "",
+  TypeParameter = "",
+}
+
 cmp.setup {
   mapping = {
     ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
@@ -19,9 +47,9 @@ cmp.setup {
     ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
     ['<C-y>'] = cmp.config.disable,
     ['<C-e>'] = cmp.mapping({
-        i = cmp.mapping.abort(),
-        c = cmp.mapping.close(),
-      }),
+      i = cmp.mapping.abort(),
+      c = cmp.mapping.close(),
+    }),
 
     ['<Tab>'] = cmp.mapping(
       cmp.mapping.confirm {
@@ -29,7 +57,7 @@ cmp.setup {
         select = true,
       },
       { "i", "c" }
-      ),
+    ),
 
     ['<C-j>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
@@ -63,15 +91,17 @@ cmp.setup {
     end,
   },
   formatting = {
-    format = lspkind.cmp_format {
-      with_text = true,
-      menu = {
-        buffer = "[BUF]",
-        nvim_lsp = "[LSP]",
-        path = "[PATH]",
-        vsnip = "[SNIP]",
-      },
-    },
+    format = function(entry, vim_item)
+      vim_item.kind = string.format('%s', kind_icons[vim_item.kind])
+      vim_item.menu = ({
+        nvim_lsp = '[LSP]',
+        vsnip = '[Snip]',
+        buffer = '[Buf]',
+        path = '[Path]',
+      })[entry.source.name]
+
+      return vim_item
+    end,
   },
   experimental = {
     native_menu = false,
@@ -80,34 +110,28 @@ cmp.setup {
 }
 
 cmp.setup.cmdline("/", {
-    completion = {
-      -- Might allow this later, but I don't like it right now really.
-      -- Although, perhaps if it just triggers w/ @ then we could.
-      --
-      -- I will have to come back to this.
-      autocomplete = false,
-    },
-    sources = cmp.config.sources({
-        { name = "nvim_lsp_document_symbol" },
-      }, {
-        -- { name = "buffer", keyword_length = 5 },
-      }),
-  })
+  completion = {
+    autocomplete = false,
+  },
+  sources = cmp.config.sources({
+    { name = "nvim_lsp_document_symbol" },
+  }),
+})
 
 cmp.setup.cmdline(":", {
-    completion = {
-      autocomplete = false,
-    },
+  completion = {
+    autocomplete = false,
+  },
 
-    sources = cmp.config.sources({
-        {
-          name = "path",
-        },
-      }, {
-        {
-          name = "cmdline",
-          max_item_count = 20,
-          keyword_length = 4,
-        },
-      }),
-  })
+  sources = cmp.config.sources({
+    {
+      name = "path",
+    },
+  }, {
+    {
+      name = "cmdline",
+      max_item_count = 20,
+      keyword_length = 4,
+    },
+  }),
+})
