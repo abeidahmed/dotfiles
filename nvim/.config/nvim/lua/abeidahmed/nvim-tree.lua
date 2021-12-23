@@ -7,11 +7,24 @@ local list = {
 
 nvim_tree.setup {
   auto_close = true,
+  update_focused_file = {
+    enable = true,
+    update_cwd = true,
+    ignore_list = {},
+  },
   view = {
     auto_resize = true,
     mappings = {
       list = list,
     },
+  },
+  quit_on_open = 0,
+  show_icons = {
+    git = 1,
+    folders = 1,
+    files = 1,
+    folder_arrows = 1,
+    tree_width = 30,
   },
 }
 

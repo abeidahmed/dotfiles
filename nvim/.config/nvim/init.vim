@@ -37,19 +37,4 @@ Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
 
-" Trim trailing white spaces on save
-fun! TrimWhiteSpace()
-  let l:save = winsaveview()
-  keeppatterns %s/\s\+$//e
-  call winrestview(l:save)
-endfun
-
-augroup HAWAABI
-  autocmd!
-  autocmd BufWritePre * :call TrimWhiteSpace()
-augroup END
-
-" Indent p tag
-let g:html_indent_inctags = 'p'
-
 lua require('abeidahmed')
