@@ -1,3 +1,4 @@
+require('abeidahmed.color')
 require('abeidahmed.telescope')
 require('abeidahmed.lualine')
 require('abeidahmed.nvim-lsp')
