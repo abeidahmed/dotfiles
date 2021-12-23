@@ -1,3 +1,4 @@
+require('abeidahmed.keymaps')
 require('abeidahmed.color')
 require('abeidahmed.telescope')
 require('abeidahmed.lualine')

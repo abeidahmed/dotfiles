@@ -69,8 +69,6 @@ Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
 
-let mapleader=" "
-
 " Trim trailing white spaces on save
 fun! TrimWhiteSpace()
   let l:save = winsaveview()
@@ -82,29 +80,6 @@ augroup HAWAABI
   autocmd!
   autocmd BufWritePre * :call TrimWhiteSpace()
 augroup END
-
-" Allow Ctrl + movements to navigate between window splits
-nnoremap <C-h> <C-W>h
-nnoremap <C-j> <C-W>j
-nnoremap <C-k> <C-W>k
-nnoremap <C-l> <C-W>l
-
-" Stay in visual mode when indenting
-vnoremap < <gv
-vnoremap > >gv
-
-" Behave vim
-nnoremap Y y$
-
-" Keeping it centered
-nnoremap n nzzzv
-nnoremap N Nzzzv
-
-" Undo break-points
-inoremap , ,<c-g>u
-inoremap . .<c-g>u
-inoremap ! !<c-g>u
-inoremap ? ?<c-g>u
 
 " Indent p tag
 let g:html_indent_inctags = 'p'
