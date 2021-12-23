@@ -71,8 +71,6 @@ call plug#end()
 
 let mapleader=" "
 
-colorscheme nord
-
 " Trim trailing white spaces on save
 fun! TrimWhiteSpace()
   let l:save = winsaveview()
