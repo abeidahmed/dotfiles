@@ -5,11 +5,11 @@ require('abeidahmed.telescope')
 require('abeidahmed.lualine')
 require('abeidahmed.nvim-lsp')
 require('abeidahmed.nvim-cmp')
-require('abeidahmed.vim-vue')
 require('abeidahmed.comment')
 require('abeidahmed.nvim-tree')
 require('abeidahmed.vim-fugitive')
 require('abeidahmed.null-ls')
+require('abeidahmed.treesitter')
 
 -- Function taken from https://github.com/norcalli/nvim_utils
 function nvim_create_augroups(definitions)
