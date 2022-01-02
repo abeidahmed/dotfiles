@@ -16,7 +16,6 @@ keymap('v', '>', '>gv', opts)
 
 -- Behave vim
 keymap('n', 'Y', 'y$', opts)
-keymap("v", "p", '"_dP', opts)
 
 -- Keeping it centered
 keymap('n', 'n', 'nzzzv', opts)

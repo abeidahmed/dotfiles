@@ -13,6 +13,8 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
 " Vue
 Plug 'posva/vim-vue'
+" Ember
+Plug 'joukevandermaas/vim-ember-hbs'
 " Git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -32,6 +34,7 @@ Plug 'L3MON4D3/LuaSnip'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'rafamadriz/friendly-snippets'
+Plug 'jose-elias-alvarez/null-ls.nvim'
 " Visuals
 Plug 'arcticicestudio/nord-vim'
 
