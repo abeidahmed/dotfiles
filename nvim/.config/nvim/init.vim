@@ -24,16 +24,17 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'onsails/lspkind-nvim'
-Plug 'L3MON4D3/LuaSnip'
+" Snippets
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'rafamadriz/friendly-snippets'
-Plug 'jose-elias-alvarez/null-ls.nvim'
 " Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Visuals
 Plug 'arcticicestudio/nord-vim'
 Plug 'nvim-lualine/lualine.nvim'
+" Formatters
+Plug 'jose-elias-alvarez/null-ls.nvim'
 
 call plug#end()
 
