@@ -8,8 +8,13 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 " Ruby/Rails
+Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
+" Ember
+Plug 'joukevandermaas/vim-ember-hbs'
+" Vue
+Plug 'posva/vim-vue'
 " Git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -28,8 +33,6 @@ Plug 'onsails/lspkind-nvim'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'rafamadriz/friendly-snippets'
-" Treesitter
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Visuals
 Plug 'arcticicestudio/nord-vim'
 Plug 'nvim-lualine/lualine.nvim'

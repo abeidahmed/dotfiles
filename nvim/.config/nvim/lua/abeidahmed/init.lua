@@ -9,7 +9,7 @@ require('abeidahmed.comment')
 require('abeidahmed.nvim-tree')
 require('abeidahmed.vim-fugitive')
 require('abeidahmed.null-ls')
-require('abeidahmed.treesitter')
+require('abeidahmed.vim-vue')
 require('abeidahmed.vsnip')
 
 -- Function taken from https://github.com/norcalli/nvim_utils
