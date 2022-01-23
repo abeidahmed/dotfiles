@@ -106,6 +106,8 @@ alias postgres="sudo service postgresql restart"
 alias r="rails"
 alias elastic_start="sudo -i service elasticsearch start"
 alias elastic_stop="sudo -i service elasticsearch stop"
+alias ngrok="~/ngrok"
+alias minio="sudo ./minio server /minio"
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
