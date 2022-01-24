@@ -36,8 +36,10 @@ Plug 'rafamadriz/friendly-snippets'
 " Visuals
 Plug 'arcticicestudio/nord-vim'
 Plug 'nvim-lualine/lualine.nvim'
+Plug 'gruvbox-community/gruvbox'
 " Formatters
 Plug 'jose-elias-alvarez/null-ls.nvim'
+Plug 'nvim-treesitter/nvim-treesitter'
 
 call plug#end()
 
