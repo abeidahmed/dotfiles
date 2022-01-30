@@ -8,9 +8,7 @@ end
 
 vim.diagnostic.config({
   virtual_text = false,
-  signs = {
-    active = signs,
-  },
+  signs = true,
   update_in_insert = true,
   underline = true,
   severity_sort = true,
@@ -20,7 +18,7 @@ vim.diagnostic.config({
     border = 'rounded',
     source = 'always',
     header = '',
-    prefix = ''
+    prefix = '',
   },
 })
 

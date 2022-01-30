@@ -39,7 +39,7 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'gruvbox-community/gruvbox'
 " Formatters
 Plug 'jose-elias-alvarez/null-ls.nvim'
-Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 call plug#end()
 
