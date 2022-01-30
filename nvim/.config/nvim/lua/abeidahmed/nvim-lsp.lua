@@ -70,7 +70,7 @@ local on_attach = function(client, bufnr)
   lsp_highlight_document(client)
 end
 
-local servers = { 'html', 'cssls', 'eslint', 'jsonls', 'solargraph', 'gopls', 'vuels', 'ember' }
+local servers = { 'tsserver', 'html', 'cssls', 'eslint', 'jsonls', 'solargraph', 'gopls', 'vuels', 'ember' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -81,12 +81,12 @@ for _, lsp in ipairs(servers) do
 end
 
 -- Let null-ls handle formatting
-nvim_lsp.tsserver.setup {
-  on_attach = function(client)
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
-  end,
-  flags = {
-    debounce_text_changes = 150,
-  },
-}
+-- nvim_lsp.tsserver.setup {
+--   on_attach = function(client)
+--     client.resolved_capabilities.document_formatting = false
+--     client.resolved_capabilities.document_range_formatting = false
+--   end,
+--   flags = {
+--     debounce_text_changes = 150,
+--   },
+-- }
