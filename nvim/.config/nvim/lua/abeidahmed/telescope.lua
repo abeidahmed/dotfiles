@@ -1,4 +1,5 @@
 local actions = require("telescope.actions")
+local builtin = require("telescope.builtin")
 
 require("telescope").setup {
   defaults = {
@@ -33,5 +34,29 @@ require("telescope").setup {
 
 require("telescope").load_extension("fzy_native")
 
+local M = {}
+
+function M.edit_neovim()
+  builtin.find_files {
+    cwd = "~/.config/nvim",
+    prompt_prefix = " nvim > ",
+    height = 10,
+  }
+end
+
+function M.git_branches()
+  builtin.git_branches {
+    attach_mappings = function(prompt_bufnr, map)
+      map('i', '<c-d>', actions.git_delete_branch)
+      map('n', '<c-d>', actions.git_delete_branch)
+      return true
+    end
+  }
+end
+
 vim.api.nvim_set_keymap('n', '<leader>fs', [[<Cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>]], { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>ff', [[<Cmd>lua require('telescope.builtin').find_files()<CR>]], { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>fd', [[<cmd>lua require('abeidahmed.telescope').edit_neovim()<CR>]], { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>fb', [[<cmd>lua require('abeidahmed.telescope').git_branches()<CR>]], { noremap = true })
+
+return M
