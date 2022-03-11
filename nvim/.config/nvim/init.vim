@@ -11,10 +11,8 @@ Plug 'tpope/vim-repeat'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
-" Ember
-Plug 'joukevandermaas/vim-ember-hbs'
 " Vue
-Plug 'posva/vim-vue'
+" Plug 'posva/vim-vue'
 " Git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -36,9 +34,9 @@ Plug 'rafamadriz/friendly-snippets'
 " Visuals
 Plug 'arcticicestudio/nord-vim'
 Plug 'nvim-lualine/lualine.nvim'
-Plug 'gruvbox-community/gruvbox'
 " Formatters
 Plug 'jose-elias-alvarez/null-ls.nvim'
+" Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 call plug#end()

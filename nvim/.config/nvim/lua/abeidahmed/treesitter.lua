@@ -4,10 +4,10 @@ require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
     disable = { 'ruby' },
-    additional_vim_regex_highlighting = false,
+    additional_vim_regex_highlighting = true,
   },
   indent = {
     enable = true,
-    disable = { 'ruby', 'vue' },
+    disable = { 'ruby', 'yaml' },
   },
 }
