@@ -8,8 +8,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 " Ruby/Rails
+Plug 'RRethy/nvim-treesitter-endwise'
 Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
 " Vue
 " Plug 'posva/vim-vue'
