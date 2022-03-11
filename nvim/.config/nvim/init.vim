@@ -7,6 +7,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'vim-test/vim-test'
 " Ruby/Rails
 Plug 'RRethy/nvim-treesitter-endwise'
 Plug 'vim-ruby/vim-ruby'

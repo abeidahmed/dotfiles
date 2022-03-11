@@ -11,6 +11,7 @@ require('abeidahmed.vim-fugitive')
 require('abeidahmed.null-ls')
 require('abeidahmed.vsnip')
 require('abeidahmed.treesitter')
+require('abeidahmed.vim-test')
 
 -- Function taken from https://github.com/norcalli/nvim_utils
 function nvim_create_augroups(definitions)
