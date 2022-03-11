@@ -11,8 +11,6 @@ Plug 'tpope/vim-repeat'
 Plug 'RRethy/nvim-treesitter-endwise'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
-" Vue
-" Plug 'posva/vim-vue'
 " Git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
