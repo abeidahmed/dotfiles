@@ -5,6 +5,7 @@ require("telescope").setup {
   defaults = {
     file_sorter = require("telescope.sorters").get_fzy_sorter,
     prompt_prefix = " > ",
+    selection_caret = " ",
     color_devicons = true,
     file_ignore_patterns = {
       ".git",
@@ -34,10 +35,12 @@ require("telescope").setup {
   },
   extensions = {
     fzy_native = {
+      fuzzy = true,
       override_generic_sorter = false,
       override_file_sorter = true,
-    }
-  }
+      case_mode = "smart_case",
+    },
+  },
 }
 
 require("telescope").load_extension("fzy_native")
@@ -55,16 +58,16 @@ end
 function M.git_branches()
   builtin.git_branches {
     attach_mappings = function(prompt_bufnr, map)
-      map('i', '<c-d>', actions.git_delete_branch)
-      map('n', '<c-d>', actions.git_delete_branch)
+      map("i", "<c-d>", actions.git_delete_branch)
+      map("n", "<c-d>", actions.git_delete_branch)
       return true
     end
   }
 end
 
-vim.api.nvim_set_keymap('n', '<leader>fs', [[<Cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>]], { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>ff', [[<Cmd>lua require('telescope.builtin').find_files()<CR>]], { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>fd', [[<cmd>lua require('abeidahmed.telescope').edit_neovim()<CR>]], { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>fb', [[<cmd>lua require('abeidahmed.telescope').git_branches()<CR>]], { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>fs", [[<Cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>]], { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>ff", [[<Cmd>lua require('telescope.builtin').find_files()<CR>]], { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>fd", [[<cmd>lua require('abeidahmed.telescope').edit_neovim()<CR>]], { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>fb", [[<cmd>lua require('abeidahmed.telescope').git_branches()<CR>]], { noremap = true })
 
 return M
