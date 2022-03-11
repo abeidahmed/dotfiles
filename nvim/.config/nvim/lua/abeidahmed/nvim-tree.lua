@@ -1,3 +1,5 @@
+vim.g.nvim_tree_indent_markers = 1
+
 local nvim_tree = require 'nvim-tree'
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 
@@ -12,6 +14,14 @@ nvim_tree.setup {
     mappings = {
       list = list,
     },
+  },
+  filters = {
+    custom = { '*.tmp', '.git' },
+  },
+  update_focused_file = {
+    enable = true,
+    update_cwd = true,
+    ignore_list = {},
   },
 }
 
