@@ -26,5 +26,6 @@ opt.mouse = 'a'
 opt.cmdheight = 2
 opt.conceallevel = 0
 opt.completeopt = { 'menu', 'menuone', 'noselect' }
+opt.guicursor = ''
 
 opt.shortmess:append "c"
