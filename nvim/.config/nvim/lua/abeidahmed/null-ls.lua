@@ -6,6 +6,7 @@ null_ls.setup {
     null_ls.builtins.formatting.eslint,
     null_ls.builtins.formatting.gofmt,
     null_ls.builtins.formatting.standardrb,
+    null_ls.builtins.formatting.rustfmt,
   },
   on_attach = function(client)
     if client.resolved_capabilities.document_formatting then

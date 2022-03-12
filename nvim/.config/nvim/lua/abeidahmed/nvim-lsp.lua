@@ -68,7 +68,7 @@ local on_attach = function(client, bufnr)
   lsp_highlight_document(client)
 end
 
-local servers = { 'tsserver', 'html', 'cssls', 'eslint', 'jsonls', 'solargraph', 'gopls', 'vuels', 'ember' }
+local servers = { 'tsserver', 'html', 'cssls', 'eslint', 'jsonls', 'solargraph', 'gopls', 'vuels', 'ember', 'rust_analyzer' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
