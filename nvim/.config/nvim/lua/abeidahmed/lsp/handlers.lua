@@ -20,6 +20,9 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.handl
   underline = true,
   virtual_text = false,
   severity_sort = true,
+  float = {
+    show_header = true,
+  },
 })
 
 vim.lsp.handlers["window/showMessage"] = require("abeidahmed.lsp.show-message")
