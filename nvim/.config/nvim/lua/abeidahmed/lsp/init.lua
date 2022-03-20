@@ -1,12 +1,6 @@
 local nvim_lsp = require('lspconfig')
 require("abeidahmed.lsp.handlers")
 
-local signs = { Error = '', Warn = '', Info = '', Hint = '' }
-for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
-
 local function lsp_highlight_document(client)
   if client.resolved_capabilities.document_highlight then
     vim.cmd [[
@@ -42,7 +36,6 @@ local custom_on_attach = function(client, bufnr)
 
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  -- Mappings.
   local opts = { noremap = true, silent = true }
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
