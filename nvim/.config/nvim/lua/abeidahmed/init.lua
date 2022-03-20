@@ -35,7 +35,7 @@ end
 -- Autocmds
 local autocmds = {
   visual = {
-    { 'TextYankPost', '*', "silent!lua require('vim.highlight').on_yank({higroup = 'Visual', timeout = 200})" }
+    { 'TextYankPost', '*', "silent!lua require('vim.highlight').on_yank({higroup = 'Substitute', timeout = 150, on_macro = true})" }
   },
   formatter = {
     { 'BufWritePre', '*', 'lua trim_whitespace()' },
