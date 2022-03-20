@@ -30,3 +30,7 @@ keymap('i', '?', '?<c-g>u', opts)
 -- Move text up and down
 keymap('x', '<A-j>', ":move '>+1<CR>gv-gv", opts)
 keymap('x', '<A-k>', ":move '<-2<CR>gv-gv", opts)
+
+-- Sizing window horizontally
+keymap('n', '<A-,>', '<C-W>5>', opts)
+keymap('n', '<A-.>', '<C-W>5<', opts)
