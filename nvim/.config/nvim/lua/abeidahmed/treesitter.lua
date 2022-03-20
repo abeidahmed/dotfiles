@@ -7,8 +7,8 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
   indent = {
-    enable = true,
-    disable = { 'yaml' },
+    enable = false,
+    disable = { 'yaml', 'ruby' },
   },
   endwise = {
     enable = true,
