@@ -25,8 +25,8 @@ local create_little_window = function(messages)
   local ui = vim.api.nvim_list_uis()[1]
   local ui_width = ui.width
 
-  local win_height = math.min(50, msg_lines)
-  local win_width = math.min(150, msg_width) + 5
+  local win_height = math.abs(math.min(50, msg_lines))
+  local win_width = math.abs(math.min(150, msg_width)) + 5
 
   return vim.api.nvim_open_win(bufnr, false, {
     relative = "editor",
@@ -38,12 +38,6 @@ local create_little_window = function(messages)
     col = ui_width - win_width - 2,
     border = border,
   })
-end
-
--- TODO: map this to a keybind :)
-function LspShowMessageBuffer()
-  vim.cmd [[new]]
-  vim.cmd([[buffer ]] .. _LspMessageBuffer)
 end
 
 return function(_, result, ctx)

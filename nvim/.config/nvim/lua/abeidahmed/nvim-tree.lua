@@ -18,11 +18,6 @@ nvim_tree.setup {
   filters = {
     custom = { '*.tmp', '.git' },
   },
-  update_focused_file = {
-    enable = true,
-    update_cwd = true,
-    ignore_list = {},
-  },
 }
 
 vim.api.nvim_set_keymap('n', '<leader>n', ':NvimTreeToggle<CR>', { noremap = true, silent = true })

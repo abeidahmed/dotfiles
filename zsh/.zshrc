@@ -96,6 +96,8 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#64748b'
+
 alias vim="nvim"
 alias cls="clear"
 alias vimrc="vim ~/.config/nvim/init.vim"
@@ -109,6 +111,7 @@ alias elastic_stop="sudo -i service elasticsearch stop"
 alias ngrok="~/ngrok"
 alias minio="sudo ./minio server /minio"
 alias up="git pull --rebase && bundle check || bundle && yarn && rails db:migrate"
+alias p="python3"
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"

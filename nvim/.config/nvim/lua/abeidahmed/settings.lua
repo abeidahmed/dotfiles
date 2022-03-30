@@ -22,12 +22,11 @@ opt.incsearch = true
 opt.signcolumn = "yes"
 opt.updatetime = 1000
 opt.clipboard = { "unnamedplus", "unnamed" }
-opt.mouse = "n"
+opt.mouse = "nv"
 opt.cmdheight = 2
 opt.conceallevel = 0
 opt.completeopt = { "menu", "menuone", "noselect" }
 opt.guicursor = ""
-opt.splitright = true
 opt.belloff = "all"
 
 -- Cool floating window popup menu for completion on command line
