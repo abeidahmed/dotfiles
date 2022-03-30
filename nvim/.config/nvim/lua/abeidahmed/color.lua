@@ -1,9 +1,9 @@
 local onedarkpro = require("onedarkpro")
+local utils = require("onedarkpro.utils")
+local colors = require("onedarkpro").get_colors()
 
 vim.o.background = "dark"
--- vim.g.nord_italic = false
--- vim.g.nord_contrast = true
--- vim.g.nord_borders = true
+
 -- vim.cmd [[colorscheme onedarkpro]]
 
 -- vim.cmd [[hi DiagnosticError guifg=#f87171]]
@@ -20,6 +20,11 @@ onedarkpro.setup {
   },
   options = {
     italic = false,
+  },
+  hlgroups = {
+    TabLineSel = { fg = colors.black, bg = colors.green },
+    TabLineFill = { bg = utils.lighten(colors.bg, 0.95) },
+    TabLine = { bg = utils.lighten(colors.bg, 0.95) }
   },
 }
 
