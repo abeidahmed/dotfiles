@@ -14,7 +14,7 @@ Plug 'RRethy/nvim-treesitter-endwise'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 " Git
-Plug 'airblade/vim-gitgutter'
+Plug 'lewis6991/gitsigns.nvim'
 Plug 'tpope/vim-fugitive'
 " Fuzzy finders
 Plug 'nvim-lua/popup.nvim'
