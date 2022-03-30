@@ -32,10 +32,7 @@ Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'rafamadriz/friendly-snippets'
 " Visuals
-" Plug 'arcticicestudio/nord-vim'
-Plug 'shaunsingh/nord.nvim'
 Plug 'olimorris/onedarkpro.nvim'
-Plug 'ellisonleao/gruvbox.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 " Formatters
 Plug 'jose-elias-alvarez/null-ls.nvim'
