@@ -8,7 +8,6 @@ local list = {
 }
 
 nvim_tree.setup {
-  auto_close = true,
   view = {
     auto_resize = true,
     mappings = {
