@@ -28,8 +28,8 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'onsails/lspkind-nvim'
 " Snippets
-Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/vim-vsnip'
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'rafamadriz/friendly-snippets'
 " Visuals
 Plug 'olimorris/onedarkpro.nvim'
