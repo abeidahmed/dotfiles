@@ -13,6 +13,7 @@ require('abeidahmed.vsnip')
 require('abeidahmed.treesitter')
 require('abeidahmed.vim-test')
 require('abeidahmed.gsigns')
+require('abeidahmed.luasnip')
 
 -- Function taken from https://github.com/norcalli/nvim_utils
 function nvim_create_augroups(definitions)
