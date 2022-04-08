@@ -9,7 +9,7 @@ ls.config.setup {
   enable_autosnippets = false,
 }
 
--- We cannot create a file named `gitcommit.lua`
+-- Files starting with `git` not a great idea
 ls.filetype_extend("gitcommit", { "gcommit" })
 
 -- Keymaps for luasnip
