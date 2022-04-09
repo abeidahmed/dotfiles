@@ -112,6 +112,7 @@ alias ngrok="~/ngrok"
 alias minio="sudo ./minio server /minio"
 alias up="git pull --rebase && bundle check || bundle && yarn && rails db:migrate"
 alias p="python3"
+alias dc="docker-compose"
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
