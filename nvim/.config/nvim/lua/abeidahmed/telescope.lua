@@ -1,7 +1,12 @@
+local status_ok, telescope = pcall(require, "telescope")
+if not status_ok then
+  return
+end
+
 local actions = require("telescope.actions")
 local builtin = require("telescope.builtin")
 
-require("telescope").setup {
+telescope.setup {
   defaults = {
     file_sorter = require("telescope.sorters").get_fzy_sorter,
     prompt_prefix = " > ",

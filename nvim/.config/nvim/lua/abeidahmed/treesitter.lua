@@ -1,5 +1,10 @@
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = 'maintained',
+local status_ok, config = pcall(require, "nvim-treesitter.configs")
+if not status_ok then
+  return
+end
+
+config.setup {
+  ensure_installed = "maintained",
   sync_install = false,
   highlight = {
     enable = true,
@@ -8,7 +13,7 @@ require'nvim-treesitter.configs'.setup {
   },
   indent = {
     enable = true,
-    disable = { 'yaml', 'ruby' },
+    disable = { "yaml", "ruby" },
   },
   endwise = {
     enable = true,

@@ -1,4 +1,8 @@
-local nvim_lsp = require('lspconfig')
+local status_ok, nvim_lsp = pcall(require, "lspconfig")
+if not status_ok then
+  return
+end
+
 require("abeidahmed.lsp.handlers")
 
 local function lsp_highlight_document(client)

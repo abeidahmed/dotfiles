@@ -1,8 +1,12 @@
-local nvim_tree = require 'nvim-tree'
-local tree_cb = require'nvim-tree.config'.nvim_tree_callback
+local status_ok, nvim_tree = pcall(require, "nvim-tree")
+if not status_ok then
+  return
+end
+
+local tree_cb = require"nvim-tree.config".nvim_tree_callback
 
 local list = {
-  { key = 'x', cb = tree_cb('close_node') },
+  { key = "x", cb = tree_cb("close_node") },
 }
 
 nvim_tree.setup {
@@ -13,7 +17,7 @@ nvim_tree.setup {
     },
   },
   filters = {
-    custom = { '*.tmp', '.git' },
+    custom = { "*.tmp", ".git" },
   },
   renderer = {
     indent_markers = {
@@ -22,4 +26,4 @@ nvim_tree.setup {
   },
 }
 
-vim.api.nvim_set_keymap('n', '<leader>n', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>n", ":NvimTreeToggle<CR>", { noremap = true, silent = true })

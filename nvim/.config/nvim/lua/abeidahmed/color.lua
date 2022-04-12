@@ -1,6 +1,10 @@
-local onedarkpro = require("onedarkpro")
+local status_ok, onedarkpro = pcall(require, "onedarkpro")
+if not status_ok then
+  return
+end
+
 local utils = require("onedarkpro.utils")
-local colors = require("onedarkpro").get_colors()
+local colors = onedarkpro.get_colors()
 
 vim.o.background = "dark"
 
