@@ -1,5 +1,3 @@
-vim.g.nvim_tree_indent_markers = 1
-
 local nvim_tree = require 'nvim-tree'
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 
@@ -16,6 +14,11 @@ nvim_tree.setup {
   },
   filters = {
     custom = { '*.tmp', '.git' },
+  },
+  renderer = {
+    indent_markers = {
+      enable = true,
+    },
   },
 }
 
