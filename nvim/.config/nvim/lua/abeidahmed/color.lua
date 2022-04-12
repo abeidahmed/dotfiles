@@ -16,7 +16,32 @@ vim.o.background = "dark"
 
 onedarkpro.setup {
   plugins = {
-    polyglot = false,
+    aerial = false,
+    barbar = false,
+    dashboard = false,
+    gitsigns_nvim = true,
+    hop = false,
+    indentline = false,
+    lsp_saga = false,
+    marks = false,
+    native_lsp = true,
+    neo_tree = false,
+    notify = false,
+    nvim_cmp = true,
+    nvim_dap = false,
+    nvim_dap_ui = false,
+    nvim_hlslens = false,
+    nvim_tree = true,
+    nvim_ts_rainbow = false,
+    packer = false,
+    polygot = false,
+    startify = false,
+    telescope = true,
+    toggleterm = false,
+    treesitter = true,
+    trouble_nvim = false,
+    vim_ultest = false,
+    which_key_nvim = false,
   },
   options = {
     italic = false,
@@ -25,6 +50,9 @@ onedarkpro.setup {
     TabLineSel = { fg = colors.black, bg = colors.green },
     TabLineFill = { bg = utils.lighten(colors.bg, 0.95) },
     TabLine = { bg = utils.lighten(colors.bg, 0.95) }
+  },
+  colors = {
+    fg_gutter = utils.lighten(colors.bg, 0.95),
   },
 }
 
