@@ -4,6 +4,13 @@ if not status_ok then
 end
 
 gitsigns.setup {
+  signs = {
+    add = { text = "+" },
+    change = { text = "~" },
+    delete = { text = "-" },
+    topdelete = { text = "‾" },
+    changedelete = { text = "~_" },
+  },
   on_attach = function(bufnr)
     local gs = package.loaded.gitsigns
 
@@ -15,5 +22,6 @@ gitsigns.setup {
 
     -- Maps
     map("n", "<leader>hb", function() gs.blame_line{ full = true } end)
+    map("n", "<leader>td", gs.toggle_deleted)
   end
 }
