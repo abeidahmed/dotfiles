@@ -20,10 +20,6 @@ local has_words_before = function()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
-local feedkey = function(key, mode)
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
-end
-
 local kind_icons = {
   Text = "",
   Method = "m",
@@ -57,19 +53,27 @@ cmp.setup {
     ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
     ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
     ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-    ["<C-y>"] = cmp.config.disable,
-    ["<C-e>"] = cmp.mapping({
-      i = cmp.mapping.abort(),
-      c = cmp.mapping.close(),
-    }),
-
-    ["<Tab>"] = cmp.mapping(
+    ["<C-y>"] = cmp.mapping(
       cmp.mapping.confirm {
         behavior = cmp.ConfirmBehavior.Insert,
         select = true,
       },
       { "i", "c" }
     ),
+
+    ["<C-e>"] = cmp.mapping({
+      i = cmp.mapping.abort(),
+      c = cmp.mapping.close(),
+    }),
+
+    ["<Tab>"] = cmp.config.disable,
+    -- ["<Tab>"] = function(fallback)
+    --   if cmp.visible() then
+    --     cmp.select_next_item()
+    --   else
+    --     fallback()
+    --   end
+    -- end,
 
     ["<C-j>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
@@ -123,29 +127,29 @@ cmp.setup {
   },
 }
 
-cmp.setup.cmdline("/", {
-  completion = {
-    autocomplete = false,
-  },
-  sources = cmp.config.sources({
-    { name = "nvim_lsp_document_symbol" },
-  }),
-})
-
-cmp.setup.cmdline(":", {
-  completion = {
-    autocomplete = false,
-  },
-
-  sources = cmp.config.sources({
-    {
-      name = "path",
-    },
-  }, {
-    {
-      name = "cmdline",
-      max_item_count = 20,
-      keyword_length = 4,
-    },
-  }),
-})
+-- cmp.setup.cmdline("/", {
+--   completion = {
+--     autocomplete = false,
+--   },
+--   sources = cmp.config.sources({
+--     { name = "nvim_lsp_document_symbol" },
+--   }),
+-- })
+--
+-- cmp.setup.cmdline(":", {
+--   completion = {
+--     autocomplete = false,
+--   },
+--
+--   sources = cmp.config.sources({
+--     {
+--       name = "path",
+--     },
+--   }, {
+--     {
+--       name = "cmdline",
+--       max_item_count = 20,
+--       keyword_length = 4,
+--     },
+--   }),
+-- })
