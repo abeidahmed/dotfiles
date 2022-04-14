@@ -49,7 +49,7 @@ local kind_icons = {
 }
 
 cmp.setup {
-  mapping = {
+  mapping = cmp.mapping.preset.insert({
     ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
     ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
     ["<C-y>"] = cmp.mapping(
@@ -110,7 +110,7 @@ cmp.setup {
         fallback()
       end
     end, { "i", "s" }),
-  },
+  }),
   sources = {
     { name = "nvim_lsp" },
     { name = "path" },
@@ -150,9 +150,9 @@ cmp.setup {
 -- })
 --
 -- cmp.setup.cmdline(":", {
---   completion = {
---     autocomplete = false,
---   },
+--   mapping = cmp.mapping.preset.cmdline({
+--     ["<Tab>"] = cmp.config.disable,
+--   }),
 --
 --   sources = cmp.config.sources({
 --     {
