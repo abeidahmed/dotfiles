@@ -17,7 +17,8 @@ nvim_tree.setup {
     },
   },
   filters = {
-    custom = { "*.tmp", ".git" },
+    custom = {},
+    dotfiles = false,
   },
   renderer = {
     indent_markers = {
