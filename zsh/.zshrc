@@ -110,7 +110,7 @@ alias elastic_start="sudo -i service elasticsearch start"
 alias elastic_stop="sudo -i service elasticsearch stop"
 alias ngrok="~/ngrok"
 alias minio="sudo ./minio server /minio"
-alias up="git pull --rebase && bundle check || bundle && yarn && rails db:migrate"
+alias up="git checkout master && git pull origin master"
 alias p="python3"
 alias dc="docker-compose"
 
