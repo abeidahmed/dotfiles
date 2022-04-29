@@ -11,7 +11,6 @@ local list = {
 
 nvim_tree.setup {
   view = {
-    auto_resize = true,
     mappings = {
       list = list,
     },
