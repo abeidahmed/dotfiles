@@ -6,7 +6,7 @@ end
 null_ls.setup {
   sources = {
     null_ls.builtins.formatting.prettier,
-    null_ls.builtins.formatting.eslint,
+    -- null_ls.builtins.formatting.eslint,
     null_ls.builtins.formatting.gofmt,
     null_ls.builtins.formatting.standardrb,
     null_ls.builtins.formatting.rustfmt,
