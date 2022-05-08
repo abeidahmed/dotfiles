@@ -24,6 +24,14 @@ nvim_tree.setup {
       enable = true,
     },
   },
+  actions = {
+    open_file = {
+      quit_on_open = true,
+      window_picker = {
+        enable = false,
+      },
+    },
+  },
 }
 
 vim.api.nvim_set_keymap("n", "<leader>n", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
