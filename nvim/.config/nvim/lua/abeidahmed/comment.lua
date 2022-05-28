@@ -5,7 +5,7 @@ end
 
 comment.setup {}
 
-local ft = require('Comment.ft')
+local ft = require("Comment.ft")
 
-ft.set('lua', { '--%s', '--[[%s]]' })
-ft.set('html.handlebars', { '{{!-- %s --}}', '{{!-- %s --}}' })
+ft.set("lua", { "--%s", "--[[%s]]" })
+ft.set("html.handlebars", { "{{!-- %s --}}", "{{!-- %s --}}" })
