@@ -122,10 +122,10 @@ cmp.setup {
       return vim_item
     end,
   },
-  window = {
-    completion = cmp.config.window.bordered({ border = "single" }),
-    documentation = cmp.config.window.bordered({ border = "single" }),
-  },
+  -- window = {
+  --   completion = cmp.config.window.bordered({ border = "single" }),
+  --   documentation = cmp.config.window.bordered({ border = "single" }),
+  -- },
   experimental = {
     ghost_text = false,
   },
