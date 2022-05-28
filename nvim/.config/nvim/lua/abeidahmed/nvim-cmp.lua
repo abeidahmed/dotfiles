@@ -52,28 +52,17 @@ cmp.setup {
   mapping = cmp.mapping.preset.insert({
     ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
     ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-    ["<C-y>"] = cmp.mapping(
+    ["<Tab>"] = cmp.mapping(
       cmp.mapping.confirm {
         behavior = cmp.ConfirmBehavior.Insert,
         select = true,
       },
       { "i", "c" }
     ),
-
     ["<C-e>"] = cmp.mapping({
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
     }),
-
-    ["<Tab>"] = cmp.config.disable,
-    -- ["<Tab>"] = function(fallback)
-    --   if cmp.visible() then
-    --     cmp.select_next_item()
-    --   else
-    --     fallback()
-    --   end
-    -- end,
-
     ["<C-space>"] = cmp.mapping {
       i = cmp.mapping.complete(),
       c = function(
@@ -88,7 +77,6 @@ cmp.setup {
         end
       end,
     },
-
     ["<C-j>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -100,7 +88,6 @@ cmp.setup {
         fallback()
       end
     end, { "i", "s" }),
-
     ["<C-k>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
@@ -135,34 +122,27 @@ cmp.setup {
       return vim_item
     end,
   },
+  window = {
+    completion = cmp.config.window.bordered({ border = "single" }),
+    documentation = cmp.config.window.bordered({ border = "single" }),
+  },
   experimental = {
     ghost_text = false,
   },
 }
 
--- cmp.setup.cmdline("/", {
---   completion = {
---     autocomplete = false,
---   },
---   sources = cmp.config.sources({
---     { name = "nvim_lsp_document_symbol" },
---   }),
--- })
---
--- cmp.setup.cmdline(":", {
---   mapping = cmp.mapping.preset.cmdline({
---     ["<Tab>"] = cmp.config.disable,
---   }),
---
---   sources = cmp.config.sources({
---     {
---       name = "path",
---     },
---   }, {
---     {
---       name = "cmdline",
---       max_item_count = 20,
---       keyword_length = 4,
---     },
---   }),
--- })
+cmp.setup.cmdline(":", {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = "path" }
+  }, {
+    { name = "cmdline" },
+  })
+})
+
+cmp.setup.cmdline("/", {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = "buffer" }
+  }
+})
