@@ -3,16 +3,6 @@ local protocol = require("vim.lsp.protocol")
 _LspMessageBuffer = _LspMessageBuffer or vim.api.nvim_create_buf(false, true)
 
 local bufnr = _LspMessageBuffer
-local border = {
-  { "🭽", "FloatBorder" },
-  { "▔", "FloatBorder" },
-  { "🭾", "FloatBorder" },
-  { "▕", "FloatBorder" },
-  { "🭿", "FloatBorder" },
-  { "▁", "FloatBorder" },
-  { "🭼", "FloatBorder" },
-  { "▏", "FloatBorder" },
-}
 
 local create_little_window = function(messages)
   local msg_lines = #messages
@@ -36,7 +26,7 @@ local create_little_window = function(messages)
     -- row = ui_height - win_height - 10,
     row = 1,
     col = ui_width - win_width - 2,
-    border = border,
+    border = "single",
   })
 end
 
