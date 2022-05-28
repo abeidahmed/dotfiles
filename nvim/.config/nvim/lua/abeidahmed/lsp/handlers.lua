@@ -20,8 +20,8 @@ vim.diagnostic.config {
   },
 }
 
-vim.lsp.handlers["textdocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
-vim.lsp.handlers["textdocument/signaturehelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" })
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
+vim.lsp.handlers["textDocument/signaturehelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" })
 
 -- Jump directly to the first available definition every time.
 vim.lsp.handlers["textDocument/definition"] = function(_, result)
