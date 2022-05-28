@@ -40,7 +40,7 @@ onedarkpro.setup {
     packer = false,
     polygot = false,
     startify = false,
-    telescope = true,
+    telescope = false,
     toggleterm = false,
     treesitter = true,
     trouble_nvim = false,
@@ -51,9 +51,18 @@ onedarkpro.setup {
     italic = false,
   },
   hlgroups = {
+    -- General
+    NormalFloat = { bg = colors.black }, -- Text inside a floating window
+    -- TabLine
     TabLineSel = { fg = colors.black, bg = colors.green },
     TabLineFill = { bg = utils.lighten(colors.bg, 0.95) },
-    TabLine = { bg = utils.lighten(colors.bg, 0.95) }
+    TabLine = { bg = utils.lighten(colors.bg, 0.95) },
+    -- Telescope
+    TelescopeResultsTitle = { fg = colors.black, bg = colors.purple },
+    TelescopeBorder = { fg = colors.comment },
+    TelescopePromptPrefix = { fg = colors.purple },
+    TelescopeMatching = { fg = colors.purple },
+    TelescopeSelection = { bg = utils.lighten(colors.bg, 0.92) },
   },
   colors = {
     fg_gutter = utils.lighten(colors.bg, 0.95),
