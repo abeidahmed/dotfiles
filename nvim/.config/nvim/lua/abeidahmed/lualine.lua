@@ -8,9 +8,10 @@ lualine.setup {
     component_separators = { left = "", right = ""},
     section_separators = { left = "", right = ""},
     always_divide_middle = false,
+    globalstatus = true, -- Experimental
   },
   sections = {
-    lualine_b = { "branch" },
+    lualine_b = { "branch", "diagnostics" },
     lualine_x = {},
     lualine_c = {
       {
