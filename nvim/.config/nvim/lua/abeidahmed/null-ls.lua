@@ -45,7 +45,7 @@ null_ls.setup {
     null_ls.builtins.formatting.rustfmt,
   },
   on_attach = function(client, bufnr)
-    if client.resolved_capabilities.document_formatting then
+    if client.server_capabilities.document_formatting then
       vim.api.nvim_set_keymap("n", "<leader>lf", ":lua vim.lsp.buf.formatting()<CR>", { noremap = true })
     end
 

@@ -1,7 +1,7 @@
 local M = {}
 
 M.on_attach = function(client, bufnr)
-  client.resolved_capabilities.document_formatting = false
+  client.server_capabilities.document_formatting = false
 end
 
 M.filetypes = {

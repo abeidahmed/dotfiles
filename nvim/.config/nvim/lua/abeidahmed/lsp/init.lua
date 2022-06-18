@@ -6,7 +6,7 @@ end
 require("abeidahmed.lsp.handlers")
 
 local function lsp_highlight_document(client)
-  if client.resolved_capabilities.document_highlight then
+  if client.server_capabilities.document_highlight then
     vim.cmd [[
       augroup lsp_document_highlight
         autocmd! * <buffer>
@@ -18,7 +18,7 @@ local function lsp_highlight_document(client)
 end
 
 local function refresh_code_lens(client)
-  if client.resolved_capabilities.code_lens then
+  if client.server_capabilities.code_lens then
     vim.cmd [[
       augroup lsp_document_codelens
         au! * <buffer>
