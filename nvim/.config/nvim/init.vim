@@ -8,7 +8,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'vim-test/vim-test'
-Plug 'b0o/schemastore.nvim'
+Plug 'b0o/SchemaStore.nvim'
 " Ruby/Rails
 Plug 'RRethy/nvim-treesitter-endwise'
 Plug 'vim-ruby/vim-ruby'
