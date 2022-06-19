@@ -3,7 +3,7 @@ if not status_ok then
   return
 end
 
-local auto_format_servers = { "tsserver" }
+local auto_format_servers = { "null-ls" }
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local format = function(bufnr)
@@ -14,6 +14,8 @@ local format = function(bufnr)
           return true
         end
       end
+
+      return false
     end,
     bufnr = bufnr,
   }
@@ -21,8 +23,8 @@ end
 
 null_ls.setup {
   sources = {
-    null_ls.builtins.formatting.prettier_d_slim,
-    null_ls.builtins.formatting.eslint,
+    null_ls.builtins.formatting.prettierd,
+    null_ls.builtins.formatting.eslint_d,
     null_ls.builtins.formatting.gofmt,
     null_ls.builtins.formatting.standardrb,
     null_ls.builtins.formatting.rustfmt,
