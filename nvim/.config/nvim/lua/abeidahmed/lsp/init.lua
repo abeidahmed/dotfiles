@@ -75,7 +75,7 @@ local servers = {
   solargraph = require("abeidahmed.lsp.servers.solargraph"),
   gopls = true,
   vuels = require("abeidahmed.lsp.servers.vuels"),
-  ember = true,
+  -- ember = true,
   rust_analyzer = true,
 }
 
