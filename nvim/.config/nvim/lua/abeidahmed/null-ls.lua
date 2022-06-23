@@ -18,6 +18,7 @@ local format = function(bufnr)
       return false
     end,
     bufnr = bufnr,
+    async = true,
   }
 end
 
