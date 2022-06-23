@@ -70,8 +70,7 @@ ZSH_THEME="hawaabi"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-export NVM_LAZY=1
-plugins=(git zsh-autosuggestions nvm)
+plugins=(git zsh-autosuggestions asdf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -126,20 +125,3 @@ export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 
 export EDITOR=nvim
 export FZF_DEFAULT_COMMAND="rg --files"
-
-# !! Contents within this block are managed by 'conda init' !!
-# __conda_setup="$('/home/abeid/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-# if [ $? -eq 0 ]; then
-#     eval "$__conda_setup"
-# else
-#     if [ -f "/home/abeid/anaconda3/etc/profile.d/conda.sh" ]; then
-#         . "/home/abeid/anaconda3/etc/profile.d/conda.sh"
-#     else
-#         export PATH="/home/abeid/anaconda3/bin:$PATH"
-#     fi
-# fi
-# unset __conda_setup
-
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
