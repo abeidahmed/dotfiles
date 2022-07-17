@@ -23,3 +23,4 @@ user.permitted! :manageUsersPermissions
 user.permitted! :giftUserSubscriptions
 user.permitted! :viewDashboardSiteAdministration
 user.permitted! :siteAdministration
+user.permitted! :manageTestimonials
