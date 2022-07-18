@@ -25,3 +25,4 @@ user.permitted! :viewDashboardSiteAdministration
 user.permitted! :siteAdministration
 user.permitted! :manageTestimonials
 user.permitted! :manageBlogPosts
+user.permitted! :manageResourcesAll
