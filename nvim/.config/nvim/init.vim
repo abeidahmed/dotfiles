@@ -9,6 +9,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'vim-test/vim-test'
 Plug 'b0o/SchemaStore.nvim'
+Plug 'tpope/vim-dispatch'
 " Ruby/Rails
 Plug 'RRethy/nvim-treesitter-endwise'
 Plug 'vim-ruby/vim-ruby'

@@ -8,6 +8,7 @@ keymap("n", "<leader>rl", ":TestLast<CR>", opts)
 keymap("n", "<leader>rv", ":TestVisit<CR>", opts)
 
 vim.cmd [[
-  let test#strategy = "neovim"
-  let test#neovim#term_position = "bot 15"
+  let test#strategy = "dispatch"
 ]]
+
+-- let test#neovim#term_position = "bot 15"
