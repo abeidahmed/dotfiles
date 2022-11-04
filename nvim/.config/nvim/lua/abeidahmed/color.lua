@@ -19,9 +19,6 @@ vim.o.background = "dark"
 -- vim.cmd [[hi CursorLineNr guifg=#EBCB8B]]
 
 onedarkpro.setup {
-  plugins = {
-    telescope = true,
-  },
   options = {
     italic = false,
     bold = false,
