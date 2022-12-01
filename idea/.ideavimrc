@@ -1,0 +1,44 @@
+set relativenumber
+set scrolloff=8
+set incsearch
+set clipboard=unnamedplus
+set clipboard+=unnamed
+set clipboard+=ideaput
+set visualbell " No annoying sound on errors
+set multiple-cursors
+set ideajoin " Use Idea to join lines smartly
+
+set NERDTree
+
+Plug "tpope/vim-surround"
+Plug "tpope/vim-commentary"
+
+nnoremap <SPACE> <Nop>
+let mapleader="\<Space>"
+
+" Shortcutting split navigation
+map <c-h> <C-w>h
+map <c-j> <C-w>j
+map <c-k> <C-w>k
+map <c-l> <C-w>l
+
+" Keep visual selection
+vnoremap < <gv
+vnoremap > >gv
+
+" NERDTree
+nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>nf :NERDTreeFocus<CR>
+
+nnoremap <leader>rn :action RenameElement<CR>
+nnoremap <leader>gtt :action GotoTest<CR>
+nnoremap ]d :action GotoNextError<CR>
+nnoremap [d :action GotoPreviousError<CR>
+nnoremap ]] :action MethodDown<CR>
+nnoremap [[ :action MethodUp<CR>
+nnoremap gl :action ShowErrorDescription<CR>
+nnoremap <leader>rf :action RecentFiles<CR>
+
+" Moving lines
+nnoremap <a-k> :action MoveLineUp<cr>
+nnoremap <a-j> :action MoveLineDown<cr>
