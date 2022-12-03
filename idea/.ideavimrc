@@ -42,3 +42,6 @@ nnoremap <leader>rf :action RecentFiles<CR>
 " Moving lines
 nnoremap <a-k> :action MoveLineUp<cr>
 nnoremap <a-j> :action MoveLineDown<cr>
+
+" Behave vim
+nnoremap Y y$
