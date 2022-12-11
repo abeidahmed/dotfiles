@@ -32,13 +32,18 @@ nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>nf :NERDTreeFocus<CR>
 
 nnoremap <leader>rn :action RenameElement<CR>
-nnoremap <leader>gtt :action GotoTest<CR>
 nnoremap ]d :action GotoNextError<CR>
 nnoremap [d :action GotoPreviousError<CR>
 nnoremap ]] :action MethodDown<CR>
 nnoremap [[ :action MethodUp<CR>
 nnoremap gl :action ShowErrorDescription<CR>
 nnoremap <leader>rf :action RecentFiles<CR>
+
+" Tests
+nnoremap <leader>gtt :action GotoTest<CR>
+nnoremap <leader>rf :action Run<CR>
+nnoremap <leader>rl :action Rerun<CR>
+nnoremap <leader>rt :action RunClass<CR>
 
 " Moving lines
 nnoremap <a-k> :action MoveLineUp<cr>
