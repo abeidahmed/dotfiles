@@ -39,6 +39,9 @@ nnoremap [[ :action MethodUp<CR>
 nnoremap gl :action ShowErrorDescription<CR>
 nnoremap <leader>rf :action RecentFiles<CR>
 
+" Find
+nnoremap <leader>fs :action FindInPath<CR>
+
 " Tests
 nnoremap <leader>gtt :action GotoTest<CR>
 nnoremap <leader>rf :action Run<CR>
