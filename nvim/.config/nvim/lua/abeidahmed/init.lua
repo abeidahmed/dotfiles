@@ -15,6 +15,7 @@ require("abeidahmed.gsigns")
 require("abeidahmed.luasnip")
 require("abeidahmed.netrw") -- Experimental
 require("abeidahmed.tabline")
+require("abeidahmed.autopairs")
 
 -- Function taken from https://github.com/norcalli/nvim_utils
 function nvim_create_augroups(definitions)
