@@ -30,19 +30,10 @@ function nvim_create_augroups(definitions)
   end
 end
 
-function trim_whitespace()
-  local save = vim.fn.winsaveview()
-  vim.api.nvim_exec(string.format("silent! %s", [[%s/\s\+$//e]]), false)
-  vim.fn.winrestview(save)
-end
-
 -- Autocmds
 local autocmds = {
   visual = {
     { "TextYankPost", "*", "silent!lua require('vim.highlight').on_yank({higroup = 'Substitute', timeout = 150, on_macro = true})" }
-  },
-  formatter = {
-    { "BufWritePre", "*", "lua trim_whitespace()" },
   },
 }
 
