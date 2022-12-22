@@ -72,6 +72,6 @@ end
 vim.api.nvim_set_keymap("n", "<leader>fs", [[<Cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>]], { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>ff", [[<Cmd>lua require('telescope.builtin').find_files()<CR>]], { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>fn", [[<Cmd>lua require('abeidahmed.telescope').edit_neovim()<CR>]], { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>fb", [[<cmd>lua require('abeidahmed.telescope').git_branches()<CR>]], { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>fb", [[<Cmd>lua require('abeidahmed.telescope').git_branches()<CR>]], { noremap = true })
 
 return M
