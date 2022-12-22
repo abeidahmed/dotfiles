@@ -17,27 +17,16 @@ require("abeidahmed.netrw") -- Experimental
 require("abeidahmed.tabline")
 require("abeidahmed.autopairs")
 
--- Function taken from https://github.com/norcalli/nvim_utils
-function nvim_create_augroups(definitions)
-  for group_name, definition in pairs(definitions) do
-    vim.api.nvim_command("augroup "..group_name)
-    vim.api.nvim_command("autocmd!")
-    for _, def in ipairs(definition) do
-      local command = table.concat(vim.tbl_flatten{"autocmd", def}, ' ')
-      vim.api.nvim_command(command)
-    end
-    vim.api.nvim_command("augroup END")
-  end
-end
-
--- Autocmds
-local autocmds = {
-  visual = {
-    { "TextYankPost", "*", "silent!lua require('vim.highlight').on_yank({higroup = 'Substitute', timeout = 150, on_macro = true})" }
-  },
-}
-
-nvim_create_augroups(autocmds)
+-- Hightlight on yank
+-- See `:help vim.highlight.on_yank()`
+local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+vim.api.nvim_create_autocmd("TextYankPost", {
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = "*",
+})
 
 -- Miscellaneous
 vim.g.html_indent_inctags = "p"
