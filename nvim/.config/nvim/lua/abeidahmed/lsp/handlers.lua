@@ -10,7 +10,7 @@ vim.diagnostic.config {
   underline = true,
   update_in_insert = false,
   severity_sort = true,
-  virtual_text = false,
+  virtual_text = true,
   float = {
     style = "minimal",
     border = "single",
