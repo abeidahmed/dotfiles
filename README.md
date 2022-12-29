@@ -1,6 +1,6 @@
 # Personal Dotfiles
 
-Feel free to borrow whatever you'd like from it.
+Feel free to borrow whatever you like.
 
 ## Installation
 
@@ -10,7 +10,7 @@ First, you need to install the `stow` package.
 sudo apt install stow
 ```
 
-Secondly, clone this repo and `cd` into it. Execute `./install.sh` after that.
+After installing, clone this repo and `cd` into it. Execute `./install.sh` after that.
 
 ## License
 
