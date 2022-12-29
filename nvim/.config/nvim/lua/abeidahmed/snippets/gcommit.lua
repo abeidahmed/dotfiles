@@ -12,7 +12,6 @@ return {
   s("coauthor", {
     c(1, {
       t { "Co-authored-by: Kevin Dias <diasks2@gmail.com>" },
-      t { "Co-authored-by: Nate Hill <natanio@gmail.com>" },
       t { "Co-authored-by: Kurt Meyerhofer <k@kcmr.io>" },
       t { "Co-authored-by: nsoseka <lisaacjunior@yahoo.com>" },
     }),
