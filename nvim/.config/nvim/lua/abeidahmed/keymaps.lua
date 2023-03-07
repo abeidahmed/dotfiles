@@ -34,3 +34,6 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 -- Sizing window horizontally
 keymap("n", "<A-,>", "<C-W>5>", opts)
 keymap("n", "<A-.>", "<C-W>5<", opts)
+
+-- Persist paste
+keymap("x", "<leader>p", "\"_dP", opts)
