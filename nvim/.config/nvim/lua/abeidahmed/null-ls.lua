@@ -24,7 +24,6 @@ end
 
 null_ls.setup {
   sources = {
-    null_ls.builtins.formatting.eslint_d,
     null_ls.builtins.formatting.prettierd.with {
       disabled_filetypes = { "markdown" }
     },
