@@ -33,7 +33,7 @@ Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'rafamadriz/friendly-snippets'
 " Visuals
-Plug 'olimorris/onedarkpro.nvim'
+Plug 'olimorris/onedarkpro.nvim', {'frozen': 1}
 Plug 'nvim-lualine/lualine.nvim'
 " Formatters
 Plug 'jose-elias-alvarez/null-ls.nvim'
