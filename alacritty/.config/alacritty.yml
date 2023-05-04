@@ -43,7 +43,8 @@ font:
     family: CaskaydiaCove Nerd Font
     style: SemiBold
 
-  size: 11.5 # home size -> 10.0
+  size: 10.0 # home size
+  # size: 11.5 # Abu Dhabi size
 
   offset:
     x: 0
