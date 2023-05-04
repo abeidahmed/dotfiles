@@ -37,6 +37,7 @@ Plug 'olimorris/onedarkpro.nvim', {'frozen': 1}
 Plug 'nvim-lualine/lualine.nvim'
 " Formatters
 Plug 'jose-elias-alvarez/null-ls.nvim'
+Plug 'junegunn/vim-easy-align'
 " Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
