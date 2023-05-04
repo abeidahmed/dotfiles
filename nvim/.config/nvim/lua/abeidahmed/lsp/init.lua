@@ -80,7 +80,7 @@ local servers = {
   vuels = require("abeidahmed.lsp.servers.vuels"),
   rust_analyzer = true,
   -- svelte = true,
-  -- ember = true,
+  ember = true,
 }
 
 local setup_server = function(server, config)
