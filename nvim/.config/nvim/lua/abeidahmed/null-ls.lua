@@ -25,8 +25,9 @@ end
 null_ls.setup {
   sources = {
     null_ls.builtins.formatting.prettierd.with {
-      disabled_filetypes = { "markdown" }
+      disabled_filetypes = { "markdown", "yaml" }
     },
+    null_ls.builtins.formatting.eslint_d,
     null_ls.builtins.formatting.gofmt,
     null_ls.builtins.formatting.trim_whitespace,
     -- null_ls.builtins.formatting.standardrb,
