@@ -2,3 +2,6 @@ typescript
 typescript-language-server
 vscode-langservers-extracted
 yarn
+eslint_d
+@fsouza/prettierd
+@lifeart/ember-language-server
