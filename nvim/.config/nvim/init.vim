@@ -12,8 +12,8 @@ Plug 'b0o/SchemaStore.nvim'
 Plug 'tpope/vim-dispatch'
 " Ruby/Rails
 Plug 'RRethy/nvim-treesitter-endwise'
-Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-rails'
+" Plug 'vim-ruby/vim-ruby'
+" Plug 'tpope/vim-rails'
 " Git
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'tpope/vim-fugitive'
@@ -35,6 +35,7 @@ Plug 'rafamadriz/friendly-snippets'
 " Visuals
 Plug 'olimorris/onedarkpro.nvim', {'frozen': 1}
 Plug 'nvim-lualine/lualine.nvim'
+Plug 'catppuccin/nvim'
 " Formatters
 Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'junegunn/vim-easy-align'
