@@ -1,17 +1,11 @@
--- local status_ok, onedarkpro = pcall(require, "onedarkpro")
--- if not status_ok then
---   return
--- end
---
--- local utils = require("onedarkpro.lib.color")
--- local colors = onedarkpro.get_colors()
+local status_ok, theme = pcall(require, "catppuccin")
+if not status_ok then
+  return
+end
 
 vim.o.background = "light"
 
-require("catppuccin").setup {
-  background = {
-    light = "latte"
-  },
+theme.setup {
   transparent_background = false,
   integrations = {
     cmp = {
@@ -22,29 +16,13 @@ require("catppuccin").setup {
       },
     },
   },
+  custom_highlights = function(color)
+    return {
+      TabLineSel = { fg = color.base, bg = color.blue },
+      TabLineFill = { bg = color.base },
+      TabLine = { fg = color.text, bg = color.base },
+    }
+  end,
 }
 
 vim.cmd.colorscheme "catppuccin"
-
--- vim.cmd [[hi DiagnosticError guifg=#f87171]]
--- vim.cmd [[hi DiagnosticWarn guibg=#2e3440]]
--- vim.cmd [[hi DiagnosticInfo guibg=#2e3440]]
--- vim.cmd [[hi DiagnosticHint guibg=#2e3440]]
-
--- vim.cmd [[hi LineNr guifg=#64748b]]
--- vim.cmd [[hi CursorLineNr guifg=#EBCB8B]]
-
--- onedarkpro.setup {
---   options = {
---     italic = false,
---     bold = false,
---   },
---   highlights = {
---     -- TabLine
---     TabLineSel = { fg = colors.black, bg = colors.green },
---     TabLineFill = { bg = utils.lighten(colors.bg, 0.95) },
---     TabLine = { bg = utils.lighten(colors.bg, 0.95) },
---   },
--- }
---
--- onedarkpro.load()
