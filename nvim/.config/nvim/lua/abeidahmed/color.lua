@@ -3,10 +3,14 @@ if not status_ok then
   return
 end
 
-vim.o.background = "light"
+vim.o.background = "dark"
 
 theme.setup {
   transparent_background = false,
+  background = {
+    light = "latte",
+    dark = "macchiato",
+  },
   integrations = {
     cmp = {
       enabled = true,
@@ -17,11 +21,19 @@ theme.setup {
     },
   },
   custom_highlights = function(color)
-    return {
-      TabLineSel = { fg = color.base, bg = color.blue },
-      TabLineFill = { bg = color.base },
-      TabLine = { fg = color.text, bg = color.base },
-    }
+    if vim.o.background == "light" then
+      return {
+        TabLineSel = { fg = color.base, bg = color.blue },
+        TabLineFill = { bg = color.base },
+        TabLine = { fg = color.text, bg = color.base },
+      }
+    else
+      return {
+        TabLineSel = { fg = color.base, bg = color.green },
+        TabLineFill = { bg = color.base },
+        TabLine = { fg = color.text, bg = color.base },
+      }
+    end
   end,
 }
 
