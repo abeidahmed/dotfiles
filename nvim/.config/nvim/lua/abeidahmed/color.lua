@@ -29,9 +29,9 @@ theme.setup {
       }
     else
       return {
-        TabLineSel = { fg = color.base, bg = color.green },
-        TabLineFill = { bg = color.base },
-        TabLine = { fg = color.text, bg = color.base },
+        TabLineSel = { fg = color.text, bg = color.none },
+        TabLineFill = { bg = color.mantle },
+        TabLine = { fg = color.overlay1, bg = color.mantle },
       }
     end
   end,
