@@ -11,6 +11,7 @@ theme.setup {
     light = "latte",
     dark = "macchiato",
   },
+  no_italic = true,
   integrations = {
     cmp = {
       enabled = true,
