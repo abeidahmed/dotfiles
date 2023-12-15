@@ -76,6 +76,7 @@ local servers = {
   eslint = true,
   jsonls = require("abeidahmed.lsp.servers.jsonls"),
   solargraph = require("abeidahmed.lsp.servers.solargraph"),
+  standardrb = true,
   gopls = true,
   vuels = require("abeidahmed.lsp.servers.vuels"),
   rust_analyzer = true,
