@@ -43,8 +43,8 @@ font:
     family: JetBrainsMono Nerd Font
     style: Medium
 
-  # size: 10.0 # home size
-  size: 12 # Abu Dhabi size
+  size: 10.0 # home size
+  # size: 12 # Abu Dhabi size
 
   offset:
     x: 0
