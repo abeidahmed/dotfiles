@@ -3,7 +3,7 @@ if not status_ok then
   return
 end
 
-vim.o.background = "dark"
+vim.o.background = "light"
 
 theme.setup {
   transparent_background = false,
