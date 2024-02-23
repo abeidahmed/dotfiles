@@ -76,6 +76,7 @@ local servers = {
   eslint = true,
   jsonls = require("abeidahmed.lsp.servers.jsonls"),
   solargraph = require("abeidahmed.lsp.servers.solargraph"),
+  -- rubocop = true,
   standardrb = true,
   gopls = true,
   volar = true,
