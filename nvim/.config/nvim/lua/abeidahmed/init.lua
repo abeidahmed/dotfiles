@@ -28,5 +28,11 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   pattern = "*",
 })
 
+-- Copy current buffer's path relative to the project directory.
+vim.api.nvim_create_user_command("CopyPath", function()
+  local path = vim.fn.expand("%p")
+  vim.fn.setreg("+", path)
+end, {})
+
 -- Miscellaneous
 vim.g.html_indent_inctags = "p"
