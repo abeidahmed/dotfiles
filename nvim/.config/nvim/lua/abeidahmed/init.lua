@@ -16,7 +16,6 @@ require("abeidahmed.luasnip")
 require("abeidahmed.netrw") -- Experimental
 require("abeidahmed.tabline")
 require("abeidahmed.autopairs")
-require("abeidahmed.copilot")
 
 -- Hightlight on yank
 -- See `:help vim.highlight.on_yank()`
