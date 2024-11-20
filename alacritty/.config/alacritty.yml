@@ -36,11 +36,13 @@ scrolling:
 
 font:
   normal:
-    family: JetBrainsMono Nerd Font
+    # family: JetBrainsMono Nerd Font
+    family: CaskaydiaCove Nerd Font
     style: Regular
 
   bold:
-    family: JetBrainsMono Nerd Font
+    # family: JetBrainsMono Nerd Font
+    family: CaskaydiaCove Nerd Font
     style: Medium
 
   size: 10.0 # home size

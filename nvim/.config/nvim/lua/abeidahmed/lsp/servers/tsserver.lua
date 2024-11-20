@@ -1,4 +1,5 @@
 local M = {}
+-- local vue_language_server_path = '/home/abeid/.asdf/shims/vue-language-server'
 
 local function organize_imports()
   local params = {
@@ -9,6 +10,16 @@ local function organize_imports()
 
   vim.lsp.buf.execute_command(params)
 end
+
+-- M.init_options = {
+--   plugins = {
+--     {
+--       name = '@vue/typescript-plugin',
+--       location = vue_language_server_path,
+--       languages = { 'vue' },
+--     },
+--   },
+-- }
 
 M.on_attach = function(client, bufnr)
   client.server_capabilities.document_formatting = false
@@ -21,6 +32,7 @@ M.filetypes = {
   "typescript",
   "typescriptreact",
   "typescript.tsx",
+  "vue"
 }
 
 M.commands = {

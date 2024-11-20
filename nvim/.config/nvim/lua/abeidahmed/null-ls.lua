@@ -18,7 +18,7 @@ local format = function(bufnr)
       return false
     end,
     bufnr = bufnr,
-    async = true,
+    async = false,
   }
 end
 
@@ -40,7 +40,7 @@ null_ls.setup {
 
     if client.supports_method("textDocument/formatting") then
       vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-      vim.api.nvim_create_autocmd("BufWritePost", {
+      vim.api.nvim_create_autocmd("BufWritePre", {
         group = augroup,
         buffer = bufnr,
         callback = function()

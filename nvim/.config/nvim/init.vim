@@ -12,8 +12,6 @@ Plug 'b0o/SchemaStore.nvim'
 Plug 'tpope/vim-dispatch'
 " Ruby/Rails
 Plug 'RRethy/nvim-treesitter-endwise'
-" Plug 'vim-ruby/vim-ruby'
-" Plug 'tpope/vim-rails'
 " Git
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'tpope/vim-fugitive'
