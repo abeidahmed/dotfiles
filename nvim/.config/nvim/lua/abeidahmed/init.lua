@@ -34,5 +34,8 @@ vim.api.nvim_create_user_command("CopyPath", function()
   vim.fn.setreg("+", path)
 end, {})
 
+-- Mark jbuilder files as ruby
+vim.filetype.add({ extension = { jbuilder = "ruby" } })
+
 -- Miscellaneous
 vim.g.html_indent_inctags = "p"
