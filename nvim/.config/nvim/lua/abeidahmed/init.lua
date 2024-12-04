@@ -36,6 +36,7 @@ end, {})
 
 -- Mark jbuilder files as ruby
 vim.filetype.add({ extension = { jbuilder = "ruby" } })
+vim.filetype.add({ extension = { axlsx = "ruby" } })
 
 -- Miscellaneous
 vim.g.html_indent_inctags = "p"
