@@ -82,7 +82,7 @@ local servers = {
   volar = require("abeidahmed.lsp.servers.volar"),
   -- vuels = require("abeidahmed.lsp.servers.vuels"),
   rust_analyzer = true,
-  -- svelte = true,
+  svelte = true,
   ember = true,
 }
 
