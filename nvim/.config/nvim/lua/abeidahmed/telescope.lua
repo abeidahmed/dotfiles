@@ -14,6 +14,7 @@ telescope.setup {
     color_devicons = true,
     file_ignore_patterns = {
       ".git",
+      "public/CKEditor5/",
     },
 
     file_previewer = require("telescope.previewers").vim_buffer_cat.new,

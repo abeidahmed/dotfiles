@@ -10,6 +10,7 @@ Plug 'tpope/vim-repeat'
 Plug 'vim-test/vim-test'
 Plug 'b0o/SchemaStore.nvim'
 Plug 'tpope/vim-dispatch'
+" Plug 'github/copilot.vim'
 " Ruby/Rails
 Plug 'RRethy/nvim-treesitter-endwise'
 " Git

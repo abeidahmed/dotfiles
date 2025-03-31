@@ -25,7 +25,26 @@ end
 null_ls.setup {
   sources = {
     null_ls.builtins.formatting.prettierd.with {
-      disabled_filetypes = { "markdown", "yaml" }
+      filetypes = {
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "vue",
+        "css",
+        "scss",
+        "less",
+        "html",
+        "json",
+        "jsonc",
+        "yaml",
+        "markdown",
+        "markdown.mdx",
+        "graphql",
+        "handlebars",
+        "svelte",
+      },
+      disabled_filetypes = { "markdown", "yaml" },
     },
     null_ls.builtins.formatting.eslint_d,
     null_ls.builtins.formatting.gofmt,
