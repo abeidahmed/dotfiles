@@ -1,10 +1,15 @@
+local util = require("lspconfig.util")
 local M = {}
 -- local vue_language_server_path = '/home/abeid/.asdf/shims/vue-language-server'
+
+local get_root_dir = function(fname)
+  return util.root_pattern(".git")(fname) or util.root_pattern("package.json", "tsconfig.json")(fname)
+end
 
 local function organize_imports()
   local params = {
     command = "_typescript.organizeImports",
-    arguments = {vim.api.nvim_buf_get_name(0)},
+    arguments = { vim.api.nvim_buf_get_name(0) },
     title = ""
   }
 
@@ -20,6 +25,7 @@ end
 --     },
 --   },
 -- }
+M.root_dir = get_root_dir
 
 M.on_attach = function(client, bufnr)
   client.server_capabilities.document_formatting = false
