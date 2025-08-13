@@ -1,9 +1,10 @@
+@fsouza/prettierd
+@lifeart/ember-language-server
+@vue/language-server
+@vue/typescript-plugin
+eslint_d
+svelte-language-server
 typescript
 typescript-language-server
 vscode-langservers-extracted
 yarn@1.22.19
-eslint_d
-@fsouza/prettierd
-@lifeart/ember-language-server
-@vue/language-server
-svelte-language-server

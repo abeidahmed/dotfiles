@@ -9,3 +9,4 @@ local ft = require("Comment.ft")
 
 ft.set("lua", { "--%s", "--[[%s]]" })
 ft.set("handlebars", { "{{!-- %s --}}", "{{!-- %s --}}" })
+ft.set("svelte", { "//%s", "/*%s*/" })

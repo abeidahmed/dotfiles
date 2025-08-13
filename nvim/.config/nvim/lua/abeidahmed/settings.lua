@@ -29,6 +29,7 @@ opt.conceallevel = 0
 opt.completeopt = { "menu", "menuone", "noselect" }
 opt.guicursor = ""
 opt.belloff = "all"
+opt.verbosefile = ""
 
 -- Cool floating window popup menu for completion on command line
 opt.pumblend = 0 -- Disable transparency on popup menu
