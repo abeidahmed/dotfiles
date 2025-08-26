@@ -1,0 +1,12 @@
+local status_ok, comment = pcall(require, "Comment")
+if not status_ok then
+  return
+end
+
+comment.setup {}
+
+local ft = require("Comment.ft")
+
+ft.set("lua", { "--%s", "--[[%s]]" })
+ft.set("handlebars", { "{{!-- %s --}}", "{{!-- %s --}}" })
+ft.set("svelte", { "//%s", "/*%s*/" })
