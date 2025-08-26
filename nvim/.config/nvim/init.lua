@@ -50,4 +50,5 @@ require("lazy").setup({
 	require("abeidahmed.telescope"),
 	require("abeidahmed.lsp"),
 	require("abeidahmed.autoformat"),
+	require("abeidahmed.autocompletion"),
 })
