@@ -51,4 +51,5 @@ require("lazy").setup({
 	require("abeidahmed.lsp"),
 	require("abeidahmed.autoformat"),
 	require("abeidahmed.autocompletion"),
+	require("abeidahmed.mini"),
 })
