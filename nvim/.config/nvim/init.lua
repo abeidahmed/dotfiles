@@ -44,4 +44,5 @@ require("lazy").setup({
   require "abeidahmed.autopairs",
   require "abeidahmed.gitsigns",
   require "abeidahmed.telescope",
+  require "abeidahmed.lsp",
 })
