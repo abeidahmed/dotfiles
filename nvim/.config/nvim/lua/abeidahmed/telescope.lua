@@ -1,78 +1,65 @@
-local status_ok, telescope = pcall(require, "telescope")
-if not status_ok then
-  return
-end
-
-local actions = require("telescope.actions")
-local builtin = require("telescope.builtin")
-
-telescope.setup {
-  defaults = {
-    file_sorter = require("telescope.sorters").get_fzy_sorter,
-    prompt_prefix = " > ",
-    selection_caret = " ",
-    color_devicons = true,
-    file_ignore_patterns = {
-      ".git",
-      "public/CKEditor5/",
+return {
+  "nvim-telescope/telescope.nvim",
+  event = "VimEnter",
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    {
+      "nvim-telescope/telescope-fzf-native.nvim",
+      build = "make",
+      cond = function()
+        return vim.fn.executable "make" == 1
+      end,
     },
+    { "nvim-telescope/telescope-ui-select.nvim" },
+  },
+  config = function()
+    local actions = require("telescope.actions")
 
-    file_previewer = require("telescope.previewers").vim_buffer_cat.new,
-    grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
-    qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
-
-    mappings = {
-      i = {
-        ["<C-q>"] = actions.send_to_qflist,
-        ["<C-n>"] = false,
-        ["<C-p>"] = false,
-        ["<C-j>"] = actions.move_selection_next,
-        ["<C-k>"] = actions.move_selection_previous,
-        ["<C-c>"] = false,
-        ["<esc>"] = actions.close,
+    require("telescope").setup {
+      defaults = {
+        prompt_prefix = " > ",
+        selection_caret = " ",
+        color_devicons = true,
+        file_ignore_patterns = {
+          ".git",
+          "public/CKEditor5/",
+        },
+        mappings = {
+          i = {
+            ["<C-q>"] = actions.send_to_qflist,
+            ["<C-j>"] = actions.move_selection_next,
+            ["<C-k>"] = actions.move_selection_previous,
+            ["<esc>"] = actions.close,
+          },
+        }
+      },
+      extensions = {
+        pickers = {
+          find_files = {
+            hidden = true,
+          },
+        },
+        ["ui-select"] = {
+          require("telescope.themes").get_dropdown(),
+        },
       },
     }
-  },
-  pickers = {
-    find_files = {
-      hidden = true,
-    },
-  },
-  extensions = {
-    fzy_native = {
-      fuzzy = true,
-      override_generic_sorter = false,
-      override_file_sorter = true,
-      case_mode = "smart_case",
-    },
-  },
+
+    -- Enable Telescope extensions if they are installed
+    pcall(require("telescope").load_extension, "fzf")
+    pcall(require("telescope").load_extension, "ui-select")
+
+    -- See `:help telescope.builtin`
+    local builtin = require "telescope.builtin"
+    vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
+    vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
+    vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
+    vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
+    vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
+    vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
+    vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
+    vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
+    vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = "[S]earch Recent Files ('.' for repeat)" })
+    vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
+  end
 }
-
-require("telescope").load_extension("fzy_native")
-
-local M = {}
-
-function M.edit_neovim()
-  builtin.find_files {
-    cwd = "~/.config/nvim",
-    prompt_prefix = " nvim > ",
-    height = 10,
-  }
-end
-
-function M.git_branches()
-  builtin.git_branches {
-    attach_mappings = function(prompt_bufnr, map)
-      map("i", "<c-d>", actions.git_delete_branch)
-      map("n", "<c-d>", actions.git_delete_branch)
-      return true
-    end
-  }
-end
-
-vim.api.nvim_set_keymap("n", "<leader>fs", [[<Cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>]], { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>ff", [[<Cmd>lua require('telescope.builtin').find_files()<CR>]], { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>fn", [[<Cmd>lua require('abeidahmed.telescope').edit_neovim()<CR>]], { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>fb", [[<Cmd>lua require('abeidahmed.telescope').git_branches()<CR>]], { noremap = true })
-
-return M

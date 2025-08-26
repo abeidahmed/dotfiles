@@ -7,7 +7,6 @@ opt.scrolloff = 8
 opt.hlsearch = false
 opt.termguicolors = true
 opt.colorcolumn = "121"
--- opt.background = "dark" -- present in color.lua
 opt.expandtab = true
 opt.tabstop = 2
 opt.shiftwidth = 2
@@ -21,9 +20,13 @@ opt.writebackup = false
 opt.incsearch = true
 opt.signcolumn = "yes"
 opt.updatetime = 1000
-opt.clipboard = { "unnamedplus", "unnamed" }
+
+-- Schedule the setting after `UiEnter` because it can increase startup time.
+vim.schedule(function()
+  opt.clipboard = { "unnamedplus", "unnamed" }
+end)
+
 opt.mouse = "nv"
-opt.mousemodel = ""
 opt.cmdheight = 2
 opt.conceallevel = 0
 opt.completeopt = { "menu", "menuone", "noselect" }

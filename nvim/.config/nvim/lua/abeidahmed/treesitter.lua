@@ -1,20 +1,23 @@
-local status_ok, config = pcall(require, "nvim-treesitter.configs")
-if not status_ok then
-  return
-end
-
-config.setup {
-  sync_install = false,
-  highlight = {
-    enable = true,
-    disable = {},
-    additional_vim_regex_highlighting = false,
+return {
+  "nvim-treesitter/nvim-treesitter",
+  build = ":TSUpdate",
+  main = "nvim-treesitter.configs", -- Sets main module to use for opts
+  dependencies = { 
+    "RRethy/nvim-treesitter-endwise"
   },
-  indent = {
-    enable = true,
-    disable = { "yaml", "ruby" },
-  },
-  endwise = {
-    enable = true,
+  opts = {
+    ensure_installed = { "bash", "diff", "html", "lua", "luadoc", "markdown", "markdown_inline", "query", "vim", "vimdoc", "ruby" },
+    auto_install = true,
+    highlight = {
+      enable = true,
+      additional_vim_regex_highlighting = { "ruby" },
+    },
+    indent = {
+      enable = true,
+      disable = { "ruby" },
+    },
+    endwise = { 
+      enable = true,
+    },
   },
 }
