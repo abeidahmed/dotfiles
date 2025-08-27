@@ -23,8 +23,11 @@ opt.updatetime = 1000
 
 -- Schedule the setting after `UiEnter` because it can increase startup time.
 vim.schedule(function()
-  opt.clipboard = { "unnamedplus", "unnamed" }
+	opt.clipboard = { "unnamedplus", "unnamed" }
 end)
+
+-- Add borders around popups.
+vim.o.winborder = "rounded"
 
 opt.mouse = "nv"
 opt.cmdheight = 2
@@ -39,17 +42,17 @@ opt.pumblend = 0 -- Disable transparency on popup menu
 opt.wildmode = "longest:full"
 opt.wildoptions = "pum"
 
-opt.shortmess:append "c"
+opt.shortmess:append("c")
 
 opt.formatoptions = opt.formatoptions
-  - "a" -- Auto formatting is BAD.
-  - "t" -- Don't auto format my code. I got linters for that.
-  + "c" -- In general, I like it when comments respect textwidth
-  + "q" -- Allow formatting comments w/ gq
-  - "o" -- O and o, don't continue comments
-  + "r" -- But do continue when pressing enter.
-  + "n" -- Indent past the formatlistpat, not underneath it.
-  + "j" -- Auto-remove comments if possible.
-  - "2" -- I'm not in gradeschool anymore
+	- "a" -- Auto formatting is BAD.
+	- "t" -- Don't auto format my code. I got linters for that.
+	+ "c" -- In general, I like it when comments respect textwidth
+	+ "q" -- Allow formatting comments w/ gq
+	- "o" -- O and o, don't continue comments
+	+ "r" -- But do continue when pressing enter.
+	+ "n" -- Indent past the formatlistpat, not underneath it.
+	+ "j" -- Auto-remove comments if possible.
+	- "2" -- I'm not in gradeschool anymore
 
 opt.joinspaces = false
