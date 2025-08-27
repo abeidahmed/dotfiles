@@ -58,4 +58,5 @@ require("lazy").setup({
 	require("abeidahmed.mini"),
 	require("abeidahmed.vim_fugitive"),
 	require("abeidahmed.neo_tree"),
+	require("abeidahmed.lualine"),
 })
