@@ -1,23 +1,13 @@
 return {
-	"catppuccin/nvim",
-	name = "catppuccin",
-	priority = 1000,
+	"folke/tokyonight.nvim",
+	priority = 1000, -- Make sure to load this before all the other start plugins.
 	config = function()
-		vim.o.background = "light"
-		require("catppuccin").setup({
-			transparent_background = false,
-			background = {
-				light = "latte",
-				dark = "macchiato",
-			},
-			no_italic = true,
-			integrations = {
-				blink_cmp = {
-					style = "bordered",
-				},
+		require("tokyonight").setup({
+			styles = {
+				comments = { italic = false },
 			},
 		})
 
-		vim.cmd.colorscheme("catppuccin")
+		vim.cmd.colorscheme("tokyonight-moon")
 	end,
 }
