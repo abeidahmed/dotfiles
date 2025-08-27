@@ -83,6 +83,7 @@ return {
 			},
 			ruby_lsp = {},
 			ts_ls = {},
+			eslint = {},
 		}
 
 		local ensure_installed = vim.tbl_keys(servers or {})
