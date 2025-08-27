@@ -82,7 +82,9 @@ return {
 				},
 			},
 			ruby_lsp = {},
-			ts_ls = {},
+			-- Use vtsls instead of ts_ls for better Vue 3 support
+			vtsls = {},
+			vue_ls = {},
 			eslint = {},
 		}
 
@@ -90,7 +92,10 @@ return {
 		vim.list_extend(ensure_installed, {
 			"stylua", -- Used to format Lua code
 		})
-		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+
+		require("mason-tool-installer").setup({
+			ensure_installed = ensure_installed,
+		})
 
 		require("mason-lspconfig").setup({
 			ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
@@ -98,12 +103,40 @@ return {
 			handlers = {
 				function(server_name)
 					local server = servers[server_name] or {}
+					-- Skip vtsls here, we'll configure it manually below
+					if server_name == "vtsls" then
+						return
+					end
 					-- This handles overriding only values explicitly passed
 					-- by the server configuration above. Useful when disabling
 					-- certain features of an LSP (for example, turning off formatting for ts_ls)
 					server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
 					require("lspconfig")[server_name].setup(server)
 				end,
+			},
+		})
+
+		-- Manual configuration for vtsls to ensure Vue support
+		local vue_language_server_path = vim.fn.stdpath("data")
+			.. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
+
+		require("lspconfig").vtsls.setup({
+			capabilities = capabilities,
+			filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+			settings = {
+				vtsls = {
+					tsserver = {
+						globalPlugins = {
+							{
+								name = "@vue/typescript-plugin",
+								location = vue_language_server_path,
+								languages = { "vue" },
+								configNamespace = "typescript",
+								enableForWorkspaceTypeScriptVersions = true,
+							},
+						},
+					},
+				},
 			},
 		})
 	end,
