@@ -19,11 +19,15 @@ return {
 				-- https://github.com/nvim-neo-tree/neo-tree.nvim/blob/bbeda076c8a2e7d16614287cd70239f577e5bf55/lua/neo-tree/defaults.lua#L387
 				mappings = {
 					["<leader>n"] = "close_window",
+					["<C-v>"] = "open_vsplit",
+					["<C-t>"] = "open_tabnew",
 				},
 			},
 			filtered_items = {
 				hide_dotfiles = false,
-				hide_gitignored = false,
+				hide_by_pattern = {
+					"/public/CKEditor5/**.js",
+				},
 			},
 		},
 	},
