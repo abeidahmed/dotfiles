@@ -39,9 +39,13 @@ local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
 
 require("lazy").setup({
-	-- Navigate between vim and tmux panes with vim keybindings
+	-- Navigate between vim and tmux panes with vim keybindings.
 	-- https://github.com/christoomey/vim-tmux-navigator
 	"christoomey/vim-tmux-navigator",
+
+	-- Surround things.
+	-- https://github.com/tpope/vim-surround
+	"https://github.com/tpope/vim-surround",
 
 	require("abeidahmed.color"),
 	require("abeidahmed.treesitter"),
