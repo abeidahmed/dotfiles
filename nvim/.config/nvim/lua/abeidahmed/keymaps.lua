@@ -36,4 +36,4 @@ keymap("n", "<A-,>", "<C-W>5>", opts)
 keymap("n", "<A-.>", "<C-W>5<", opts)
 
 -- Persist paste
-keymap("x", "<leader>p", "\"_dP", opts)
+keymap("x", "<leader>p", '"_dP', opts)
