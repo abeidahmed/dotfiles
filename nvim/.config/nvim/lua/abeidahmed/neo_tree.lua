@@ -11,14 +11,13 @@ return {
 	},
 	lazy = false,
 	keys = {
-		{ "<leader>n", ":Neotree reveal<CR>", desc = "NeoTree reveal", silent = true },
+		{ "<leader>n", ":Neotree toggle<CR>", desc = "NeoTree toggle", silent = true },
 	},
 	opts = {
 		filesystem = {
 			window = {
 				-- https://github.com/nvim-neo-tree/neo-tree.nvim/blob/bbeda076c8a2e7d16614287cd70239f577e5bf55/lua/neo-tree/defaults.lua#L387
 				mappings = {
-					["<leader>n"] = "close_window",
 					["<C-v>"] = "open_vsplit",
 					["<C-t>"] = "open_tabnew",
 				},
