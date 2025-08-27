@@ -17,17 +17,28 @@ return {
 				return "make install_jsregexp"
 			end)(),
 			dependencies = {
-				-- `friendly-snippets` contains a variety of premade snippets.
-				--    See the README about individual language/framework/plugin snippets:
-				--    https://github.com/rafamadriz/friendly-snippets
-				-- {
-				--   "rafamadriz/friendly-snippets",
-				--   config = function()
-				--     require("luasnip.loaders.from_vscode").lazy_load()
-				--   end,
-				-- },
+				{
+					"rafamadriz/friendly-snippets",
+					config = function()
+						require("luasnip.loaders.from_vscode").lazy_load()
+						require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/lua/abeidahmed/snippets" })
+					end,
+				},
 			},
 			opts = {},
+			config = function()
+				local ls = require("luasnip")
+
+				-- Extend snippets to these filetypes
+				ls.filetype_extend("gitcommit", { "gcommit" })
+				ls.filetype_extend("handlebars", { "html" })
+				ls.filetype_extend("vue", { "html" })
+				ls.filetype_extend("eruby", { "html" })
+				ls.filetype_extend("typescriptreact", { "html" })
+
+				-- Keymaps for luasnip
+				vim.api.nvim_set_keymap("i", "<C-l>", "<Plug>luasnip-next-choice", {})
+			end,
 		},
 		"folke/lazydev.nvim",
 	},
