@@ -52,4 +52,5 @@ require("lazy").setup({
 	require("abeidahmed.autoformat"),
 	require("abeidahmed.autocompletion"),
 	require("abeidahmed.mini"),
+	require("abeidahmed.vim_fugitive"),
 })
