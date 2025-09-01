@@ -25,13 +25,9 @@ return {
 					vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 				end
 
-				-- Rename variable
 				map("<space>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-
-				-- Jump to the definition of the word under your cursor.
 				map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
-
-				-- Execute a code action.
+				map("gr", require("telescope.builtin").lsp_references, "[G]et [R]eferences")
 				map("<space>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
 			end,
 		})
