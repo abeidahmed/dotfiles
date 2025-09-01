@@ -28,6 +28,7 @@ return {
 				map("<space>rn", vim.lsp.buf.rename, "[R]e[n]ame")
 				map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
 				map("gr", require("telescope.builtin").lsp_references, "[G]et [R]eferences")
+				map("gl", vim.diagnostic.open_float, "Open Diagnostic Float")
 				map("<space>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
 			end,
 		})
@@ -45,19 +46,7 @@ return {
 					[vim.diagnostic.severity.HINT] = "󰌶 ",
 				},
 			},
-			virtual_text = {
-				source = "if_many",
-				spacing = 2,
-				format = function(diagnostic)
-					local diagnostic_message = {
-						[vim.diagnostic.severity.ERROR] = diagnostic.message,
-						[vim.diagnostic.severity.WARN] = diagnostic.message,
-						[vim.diagnostic.severity.INFO] = diagnostic.message,
-						[vim.diagnostic.severity.HINT] = diagnostic.message,
-					}
-					return diagnostic_message[diagnostic.severity]
-				end,
-			},
+			virtual_text = false,
 		})
 
 		-- LSP servers and clients are able to communicate to each other what features they support.
