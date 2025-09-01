@@ -20,6 +20,7 @@ return {
 				mappings = {
 					["<C-v>"] = "open_vsplit",
 					["<C-t>"] = "open_tabnew",
+					["w"] = false,
 				},
 			},
 			filtered_items = {
