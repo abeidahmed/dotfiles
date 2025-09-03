@@ -21,6 +21,7 @@ return {
 					["<C-v>"] = "open_vsplit",
 					["<C-t>"] = "open_tabnew",
 					["w"] = false,
+					["/"] = false,
 				},
 			},
 			filtered_items = {
