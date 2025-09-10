@@ -80,9 +80,11 @@ return {
 			},
 		},
 		sources = {
-			default = { "lsp", "path", "snippets", "lazydev" },
+			default = { "lsp", "path", "snippets", "lazydev", "buffer" },
 			providers = {
 				lazydev = { module = "lazydev.integrations.blink", score_offset = 100 },
+				-- Autocomplete from the active buffer.
+				lsp = { fallbacks = {} },
 			},
 		},
 		snippets = { preset = "luasnip" },
