@@ -37,14 +37,14 @@ scrolling:
 font:
   normal:
     # family: JetBrainsMono Nerd Font
-    # family: CaskaydiaCove Nerd Font
-    family: InputMono Nerd Font
+    family: CaskaydiaCove Nerd Font
+    # family: InputMono Nerd Font
     style: Regular
 
   bold:
     # family: JetBrainsMono Nerd Font
-    # family: CaskaydiaCove Nerd Font
-    family: InputMono Nerd Font
+    family: CaskaydiaCove Nerd Font
+    # family: InputMono Nerd Font
     style: Medium
 
   size: 10.0 # home size
@@ -254,36 +254,62 @@ font:
 window:
   opacity: 1.0
 
-# Colors
+# Tokyonight colors
+# colors:
+#   primary:
+#     background: "#222436"
+#     foreground: "#c8d3f5"
+#
+#   # cursor:
+#   #   cursor: '#c8d3f5'
+#   #   text: '#222436'
+#
+#   normal:
+#     black:   "#1b1d2b"
+#     red:     "#ff757f"
+#     green:   "#c3e88d"
+#     yellow:  "#ffc777"
+#     blue:    "#82aaff"
+#     magenta: "#c099ff"
+#     cyan:    "#86e1fc"
+#     white:   "#828bb8"
+#
+#   bright:
+#     black:   "#444a73"
+#     red:     "#ff8d94"
+#     green:   "#c7fb6d"
+#     yellow:  "#ffd8ab"
+#     blue:    "#9ab8ff"
+#     magenta: "#caabff"
+#     cyan:    "#b2ebff"
+#     white:   "#c8d3f5"
+#
+#   indexed_colors:
+#     - { index: 16, color: "#ff966c" }
+#     - { index: 17, color: "#c53b53" }
+
+# Vague colors
 colors:
   primary:
-    background: "#222436"
-    foreground: "#c8d3f5"
-
-  # cursor:
-  #   cursor: '#c8d3f5'
-  #   text: '#222436'
+    background: "#141415"
+    foreground: "#cdcdcd"
 
   normal:
-    black:   "#1b1d2b"
-    red:     "#ff757f"
-    green:   "#c3e88d"
-    yellow:  "#ffc777"
-    blue:    "#82aaff"
-    magenta: "#c099ff"
-    cyan:    "#86e1fc"
-    white:   "#828bb8"
+    black: "#252530"
+    red: "#d8647e"
+    green: "#7fa563"
+    yellow: "#f3be7c"
+    blue: "#6e94b2"
+    magenta: "#bb9dbd"
+    cyan: "#aeaed1"
+    white: "#cdcdcd"
 
   bright:
-    black:   "#444a73"
-    red:     "#ff8d94"
-    green:   "#c7fb6d"
-    yellow:  "#ffd8ab"
-    blue:    "#9ab8ff"
-    magenta: "#caabff"
-    cyan:    "#b2ebff"
-    white:   "#c8d3f5"
-
-  indexed_colors:
-    - { index: 16, color: "#ff966c" }
-    - { index: 17, color: "#c53b53" }
+    black: "#606079"
+    red: "#e08398"
+    green: "#99b782"
+    yellow: "#f5cb96"
+    blue: "#8ba9c1"
+    magenta: "#c9b1ca"
+    cyan: "#bebeda"
+    white: "#d7d7d7"
