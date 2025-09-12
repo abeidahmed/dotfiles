@@ -29,6 +29,9 @@ return {
 					"/public/CKEditor5/**.js",
 				},
 			},
+			follow_current_file = {
+				enabled = true,
+			},
 		},
 	},
 }
