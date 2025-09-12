@@ -29,8 +29,19 @@ return {
 					"/public/CKEditor5/**.js",
 				},
 			},
-			follow_current_file = {
-				enabled = true,
+			event_handlers = {
+				{
+					event = "file_added",
+					handler = function(state)
+						-- Focus on the newly created file/directory.
+						require("neo-tree.command").execute({
+							action = "focus",
+							source = "filesystem",
+							reveal_file = state,
+							reveal_force_cwd = true,
+						})
+					end,
+				},
 			},
 		},
 	},
