@@ -72,6 +72,7 @@ return {
 			vue_ls = {},
 			eslint = {},
 			cssls = {},
+			gopls = {},
 		}
 
 		local ensure_installed = vim.tbl_keys(servers or {})

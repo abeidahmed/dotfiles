@@ -29,6 +29,7 @@ return {
 			end
 		end,
 		formatters_by_ft = {
+			go = { "goimports", "gofmt" },
 			lua = { "stylua" },
 			javascript = { "eslint_d" },
 			typescript = { "eslint_d" },
