@@ -21,6 +21,7 @@ return {
 					["<C-t>"] = "open_tabnew",
 					["w"] = false,
 					["/"] = false,
+					["z"] = "close_all_nodes",
 				},
 			},
 			filtered_items = {
