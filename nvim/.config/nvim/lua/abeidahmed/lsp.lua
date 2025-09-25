@@ -26,8 +26,8 @@ return {
 				end
 
 				map("<space>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-				map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
-				map("gr", require("telescope.builtin").lsp_references, "[G]et [R]eferences")
+				map("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
+				map("gr", vim.lsp.buf.references, "[G]et [R]eferences")
 				map("gl", vim.diagnostic.open_float, "Open Diagnostic Float")
 				map("<space>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
 			end,
