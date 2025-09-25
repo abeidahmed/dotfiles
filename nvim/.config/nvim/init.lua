@@ -61,3 +61,29 @@ require("lazy").setup({
 	require("abeidahmed.lualine"),
 	require("abeidahmed.vim_test"),
 })
+
+-- Define :Cremove for removing the quickfix entry under cursor
+vim.api.nvim_create_user_command("Cremove", function()
+	-- Ensure we are in a quickfix window
+	if vim.bo.buftype ~= "quickfix" then
+		vim.notify("Not in quickfix window", vim.log.levels.WARN)
+		return
+	end
+
+	-- Get current line (1-based in quickfix window, convert to 0-based index)
+	local lnum = vim.fn.line(".") - 1
+
+	-- Get quickfix list
+	local qflist = vim.fn.getqflist()
+
+	-- Remove entry under cursor
+	table.remove(qflist, lnum + 1) -- Lua tables are 1-based
+
+	-- Replace quickfix list with updated one
+	vim.fn.setqflist(qflist, "r")
+
+	-- Reopen quickfix window to refresh
+	vim.cmd("copen")
+	-- Move the cursor back to the same spot
+	vim.cmd("normal! " .. (lnum + 1) .. "G")
+end, {})
