@@ -45,7 +45,10 @@ require("lazy").setup({
 
 	-- Surround things.
 	-- https://github.com/tpope/vim-surround
-	"https://github.com/tpope/vim-surround",
+	"tpope/vim-surround",
+
+	-- ttps://github.com/tpope/vim-repeat
+	"tpope/vim-repeat",
 
 	require("abeidahmed.color"),
 	require("abeidahmed.treesitter"),
