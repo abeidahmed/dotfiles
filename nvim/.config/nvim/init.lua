@@ -47,8 +47,12 @@ require("lazy").setup({
 	-- https://github.com/tpope/vim-surround
 	"tpope/vim-surround",
 
-	-- ttps://github.com/tpope/vim-repeat
+	-- https://github.com/tpope/vim-repeat
 	"tpope/vim-repeat",
+
+	-- Increment and decrement date and time
+	-- https://github.com/tpope/vim-speeddating
+	"tpope/vim-speeddating",
 
 	require("abeidahmed.color"),
 	require("abeidahmed.treesitter"),
