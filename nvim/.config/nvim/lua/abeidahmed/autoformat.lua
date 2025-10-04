@@ -35,7 +35,16 @@ return {
 			typescript = { "eslint_d" },
 			vue = { "eslint_d" },
 			svelte = { "eslint_d" },
+			["javascript.glimmer"] = { "prettier", stop_after_first = true },
+			["typescript.glimmer"] = { "prettier", stop_after_first = true },
 			["*"] = { "trim_whitespace" },
+			formatters = {
+				-- Only require the project's prettier.
+				-- Don't format with prettier if project hasn't installed it.
+				prettier = {
+					required_cwd = true,
+				},
+			},
 		},
 	},
 }
