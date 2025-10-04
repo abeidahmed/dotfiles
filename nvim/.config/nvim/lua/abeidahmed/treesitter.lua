@@ -25,6 +25,7 @@ return {
 			"svelte",
 			"yaml",
 			"go",
+			"glimmer",
 		},
 		auto_install = true,
 		highlight = {
