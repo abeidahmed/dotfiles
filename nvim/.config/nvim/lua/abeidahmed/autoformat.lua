@@ -33,6 +33,8 @@ return {
 			lua = { "stylua" },
 			javascript = { "eslint_d" },
 			typescript = { "eslint_d" },
+			javascriptreact = { "prettierd", "eslint_d" },
+			typescriptreact = { "prettierd", "eslint_d" },
 			vue = { "eslint_d" },
 			svelte = { "eslint_d" },
 			["javascript.glimmer"] = { "prettier", stop_after_first = true },
@@ -41,7 +43,7 @@ return {
 			formatters = {
 				-- Only require the project's prettier.
 				-- Don't format with prettier if project hasn't installed it.
-				prettier = {
+				prettierd = {
 					required_cwd = true,
 				},
 			},
