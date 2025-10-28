@@ -33,7 +33,7 @@ return {
 			lua = { "stylua" },
 			javascript = { "eslint_d" },
 			typescript = { "eslint_d" },
-			-- javascriptreact = { "prettierd", "eslint_d" },
+			javascriptreact = { "prettierd", "eslint_d" },
 			typescriptreact = { "eslint_d" },
 			vue = { "eslint_d" },
 			svelte = { "eslint_d" },
