@@ -64,7 +64,7 @@ require("lazy").setup({
 	require("abeidahmed.autocompletion"),
 	require("abeidahmed.mini"),
 	require("abeidahmed.vim_fugitive"),
-	require("abeidahmed.neo_tree"),
+	require("abeidahmed.oil"),
 	require("abeidahmed.lualine"),
 	require("abeidahmed.vim_test"),
 })
