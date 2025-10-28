@@ -20,6 +20,7 @@ opt.writebackup = false
 opt.incsearch = true
 opt.signcolumn = "yes"
 opt.updatetime = 1000
+opt.splitright = true
 
 -- Schedule the setting after `UiEnter` because it can increase startup time.
 vim.schedule(function()
