@@ -35,6 +35,7 @@ return {
 				ls.filetype_extend("vue", { "html" })
 				ls.filetype_extend("eruby", { "html" })
 				ls.filetype_extend("typescriptreact", { "html" })
+				ls.filetype_extend("javascriptreact", { "html" })
 
 				-- Keymaps for luasnip
 				vim.api.nvim_set_keymap("i", "<C-l>", "<Plug>luasnip-next-choice", {})
