@@ -23,6 +23,7 @@ return {
 				file_ignore_patterns = {
 					".git",
 					"public/CKEditor5/",
+					"spec/fixtures/real_data_dumps/",
 				},
 				mappings = {
 					i = {
