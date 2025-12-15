@@ -13,7 +13,9 @@ return {
 		c(1, {
 			t({ "Co-authored-by: Kevin Dias <diasks2@gmail.com>" }),
 			t({ "Co-authored-by: Kurt Meyerhofer <k@kcmr.io>" }),
+			t({ "Co-authored-by: palamedes <jason.ellis@yahoo.com>" }),
 			t({ "Co-authored-by: nsoseka <lisaacjunior@yahoo.com>" }),
+			t({ "Co-authored-by: hroulston <h_roulston@live.com>" }),
 		}),
 	}),
 }
