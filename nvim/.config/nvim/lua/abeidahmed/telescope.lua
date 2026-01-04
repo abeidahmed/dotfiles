@@ -24,6 +24,7 @@ return {
 					".git",
 					"public/CKEditor5/",
 					"spec/fixtures/real_data_dumps/",
+					"vendor/javascript/",
 				},
 				mappings = {
 					i = {
