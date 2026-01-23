@@ -69,7 +69,6 @@ return {
 					},
 				},
 			},
-			ruby_lsp = {},
 			-- Use vtsls instead of ts_ls for better Vue 3 support
 			vtsls = {},
 			vue_ls = {},
@@ -93,8 +92,8 @@ return {
 			handlers = {
 				function(server_name)
 					local server = servers[server_name] or {}
-					-- Skip vtsls here, we'll configure it manually below
-					if server_name == "vtsls" then
+					-- Skip here, we'll configure it manually below
+					if server_name == "vtsls" or server_name == "ruby_lsp" then
 						return
 					end
 					-- This handles overriding only values explicitly passed
@@ -125,6 +124,22 @@ return {
 								enableForWorkspaceTypeScriptVersions = true,
 							},
 						},
+					},
+				},
+			},
+		})
+
+		-- ruby-lsp discourages the use of mason.
+		-- See: https://shopify.github.io/ruby-lsp/editors.html#built-in-vimlsp
+		require("lspconfig").ruby_lsp.setup({
+			capabilities = capabilities,
+			filetypes = { "ruby" },
+			cmd = { "ruby-lsp" },
+			root_markers = { "Gemfile", ".git" },
+			init_options = {
+				addonSettings = {
+					["Ruby LSP Rails"] = {
+						enablePendingMigrationsPrompt = false,
 					},
 				},
 			},
