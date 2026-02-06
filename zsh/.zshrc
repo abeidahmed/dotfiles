@@ -103,7 +103,7 @@ source $ZSH/oh-my-zsh.sh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#64748b'
 
 alias vim="nvim"
-alias cls="clear"
+# alias cls="clear"
 alias vimrc="vim ~/.config/nvim/init.vim"
 alias zshconfig="vim ~/.zshrc"
 alias alaconfig="vim ~/.config/alacritty/alacritty.yml"
@@ -143,5 +143,10 @@ export ANDROID_HOME=$HOME/Android/Sdk
 # flyctl
 export FLYCTL_INSTALL="/home/abeid/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
+
+cls() {
+  clear
+  [[ -n "$TMUX" ]] && tmux clear-history
+}
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
