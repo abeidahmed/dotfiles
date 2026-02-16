@@ -40,11 +40,17 @@ return {
 			["javascript.glimmer"] = { "prettier", stop_after_first = true },
 			["typescript.glimmer"] = { "prettier", stop_after_first = true },
 			["*"] = { "trim_whitespace" },
-			formatters = {
-				-- Only require the project's prettier.
-				-- Don't format with prettier if project hasn't installed it.
-				prettierd = {
-					required_cwd = true,
+		},
+		formatters = {
+			-- Only require the project's prettier.
+			-- Don't format with prettier if project hasn't installed it.
+			prettierd = {
+				required_cwd = true,
+			},
+			-- Force eslint_d to use the its bundled ESLint.
+			eslint_d = {
+				env = {
+					ESLINT_D_ROOT = "/home/abeid/.local/share/nvim/mason/packages/eslint_d/node_modules/eslint_d/node_modules",
 				},
 			},
 		},
