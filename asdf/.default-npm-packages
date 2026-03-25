@@ -8,3 +8,4 @@ typescript
 typescript-language-server
 vscode-langservers-extracted
 yarn@1.22.19
+@openai/codex
