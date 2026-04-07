@@ -73,6 +73,8 @@ require("lazy").setup({
 	require("abeidahmed.vim_test"),
 })
 
+require("abeidahmed.tabline").setup({})
+
 -- Define :Cremove for removing the quickfix entry under cursor
 vim.api.nvim_create_user_command("Cremove", function()
 	-- Ensure we are in a quickfix window
