@@ -54,6 +54,10 @@ require("lazy").setup({
 	-- https://github.com/tpope/vim-speeddating
 	"tpope/vim-speeddating",
 
+	-- A simple, easy-to-use Vim alignment plugin.
+	-- https://github.com/junegunn/vim-easy-align
+	"junegunn/vim-easy-align",
+
 	require("abeidahmed.color"),
 	require("abeidahmed.treesitter"),
 	require("abeidahmed.autopairs"),
