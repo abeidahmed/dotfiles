@@ -8,6 +8,7 @@ set clipboard+=ideaput
 set visualbell " No annoying sound on errors
 set multiple-cursors
 set ideajoin " Use Idea to join lines smartly
+set ideastatusicon=gray
 
 set NERDTree
 
@@ -23,6 +24,9 @@ map <c-j> <C-w>j
 map <c-k> <C-w>k
 map <c-l> <C-w>l
 
+" Navigation
+nnoremap <c-j> :action ActivateTerminalToolWindow<CR>
+
 " Keep visual selection
 vnoremap < <gv
 vnoremap > >gv
@@ -37,10 +41,11 @@ nnoremap [d :action GotoPreviousError<CR>
 nnoremap ]] :action MethodDown<CR>
 nnoremap [[ :action MethodUp<CR>
 nnoremap gl :action ShowErrorDescription<CR>
-nnoremap <leader>rf :action RecentFiles<CR>
 
 " Find
-nnoremap <leader>fs :action FindInPath<CR>
+nnoremap <leader>ff :action GotoFile<CR>
+nnoremap <leader>sg :action FindInPath<CR>
+nnoremap <leader>s. :action RecentFiles<CR>
 
 " Tests
 nnoremap <leader>gtt :action GotoTest<CR>
