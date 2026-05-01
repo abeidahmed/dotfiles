@@ -10,7 +10,7 @@ set multiple-cursors
 set ideajoin " Use Idea to join lines smartly
 set ideastatusicon=gray
 
-set NERDTree
+"set NERDTree
 
 Plug "tpope/vim-surround"
 Plug "tpope/vim-commentary"
@@ -25,37 +25,39 @@ map <c-k> <C-w>k
 map <c-l> <C-w>l
 
 " Navigation
-nnoremap <c-j> :action ActivateTerminalToolWindow<CR>
+"nnoremap <c-j> :action ActivateTerminalToolWindow<CR>
+
+" NERDTree
+"nnoremap <leader>n :NERDTreeToggle<CR>
+"nnoremap <leader>nf :NERDTreeFocus<CR>
+
+nmap <leader>rn <Action>(RenameElement)
+nmap ]d <Action>(GotoNextError)
+nmap [d <Action>(GotoPreviousError)
+nmap ]] <Action>(MethodDown)
+nmap [[ <Action>(MethodUp)
+nmap gl <Action>(ShowErrorDescription)
+
+" Find
+nmap <leader>ff <Action>(GotoFile)
+nmap <leader>sg <Action>(FindInPath)
+nmap <leader>s. <Action>(RecentFiles)
+
+" Tests
+nmap <leader>gtt <Action>(GotoTest)
+nmap <leader>rf <Action>(Run)
+nmap <leader>rl <Action>(Rerun)
+nmap <leader>rt <Action>(RunClass)
+
+" Moving lines
+vmap <a-k> <Action>(MoveLineUp)
+vmap <a-j> <Action>(MoveLineDown)
+
+" Behave vim
+nnoremap Y y$
 
 " Keep visual selection
 vnoremap < <gv
 vnoremap > >gv
 
-" NERDTree
-nnoremap <leader>n :NERDTreeToggle<CR>
-nnoremap <leader>nf :NERDTreeFocus<CR>
-
-nnoremap <leader>rn :action RenameElement<CR>
-nnoremap ]d :action GotoNextError<CR>
-nnoremap [d :action GotoPreviousError<CR>
-nnoremap ]] :action MethodDown<CR>
-nnoremap [[ :action MethodUp<CR>
-nnoremap gl :action ShowErrorDescription<CR>
-
-" Find
-nnoremap <leader>ff :action GotoFile<CR>
-nnoremap <leader>sg :action FindInPath<CR>
-nnoremap <leader>s. :action RecentFiles<CR>
-
-" Tests
-nnoremap <leader>gtt :action GotoTest<CR>
-nnoremap <leader>rf :action Run<CR>
-nnoremap <leader>rl :action Rerun<CR>
-nnoremap <leader>rt :action RunClass<CR>
-
-" Moving lines
-nnoremap <a-k> :action MoveLineUp<cr>
-nnoremap <a-j> :action MoveLineDown<cr>
-
-" Behave vim
-nnoremap Y y$
+sethandler <c-v> a:ide
