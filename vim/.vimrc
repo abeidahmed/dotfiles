@@ -40,13 +40,14 @@ let g:html_indent_inctags = 'html,body,head,tbody,p,li,dd,dt,h1,h2,h3,h4,h5,h6,b
 call plug#begin()
 
 Plug 'morhetz/gruvbox'
-Plug 'tpope/vim-sensible'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dispatch'
+Plug 'vim-test/vim-test'
 
 call plug#end()
 
@@ -58,6 +59,13 @@ nnoremap <leader>ga :Git commit --amend<CR>
 nnoremap <leader>gp :Git push<CR>
 nnoremap <leader>gh :diffget //2<CR>
 nnoremap <leader>gl :diffget //3<CR>
+
+" vim-test
+nnoremap <leader>rt :TestNearest<CR>
+nnoremap <leader>rf :TestFile<CR>
+nnoremap <leader>ra :TestSuite<CR>
+nnoremap <leader>rl :TestLast<CR>
+nnoremap <leader>rv :TestVisit<CR>
 
 " Allow Ctrl + movements to navigate between window splits
 nnoremap <silent> <C-h> <C-W>h
