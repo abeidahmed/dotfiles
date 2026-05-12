@@ -1,0 +1,177 @@
+[window]
+dimensions = { columns = 100, lines = 40 }
+padding = { x = 0, y = 0 }
+dynamic_padding = false
+decorations = "full"
+opacity = 1.0
+
+[scrolling]
+history = 0
+multiplier = 3
+
+[font]
+size = 10.0 # home size
+# size = 12 # Abu Dhabi size
+
+[font.normal]
+# family = "JetBrainsMono Nerd Font"
+# family = "CaskaydiaCove Nerd Font"
+# family = "InputMono Nerd Font"
+family = "SFMono Nerd Font"
+style = "Medium"
+
+[font.bold]
+# family = "JetBrainsMono Nerd Font"
+# family = "CaskaydiaCove Nerd Font"
+# family = "InputMono Nerd Font"
+family = "SFMono Nerd Font"
+style = "Medium"
+
+[font.offset]
+x = 0
+y = 0
+
+# One Dark Pro
+# [colors.primary]
+# background = "#282c34"
+# foreground = "#abb2bf"
+# [colors.normal]
+# black   = "#282c34"
+# red     = "#e06c75"
+# green   = "#98c379"
+# yellow  = "#e5c07b"
+# blue    = "#61afef"
+# magenta = "#c678dd"
+# cyan    = "#56b6c2"
+# white   = "#abb2bf"
+# [colors.bright]
+# black   = "#3f3f3f"
+# red     = "#e06c75"
+# green   = "#98c379"
+# yellow  = "#e5c07b"
+# blue    = "#61afef"
+# magenta = "#c678dd"
+# cyan    = "#56b6c2"
+# white   = "#bfc5ce"
+
+# Catppuccin Latte
+# [colors.primary]
+# background = "#EFF1F5"
+# foreground = "#4C4F69"
+# [colors.cursor]
+# text   = "#EFF1F5"
+# cursor = "#DC8A78"
+# [colors.normal]
+# black   = "#5C5F77"
+# red     = "#D20F39"
+# green   = "#40A02B"
+# yellow  = "#DF8E1D"
+# blue    = "#1E66F5"
+# magenta = "#EA76CB"
+# cyan    = "#179299"
+# white   = "#ACB0BE"
+# [colors.bright]
+# black   = "#6C6F85"
+# red     = "#D20F39"
+# green   = "#40A02B"
+# yellow  = "#DF8E1D"
+# blue    = "#1E66F5"
+# magenta = "#EA76CB"
+# cyan    = "#179299"
+# white   = "#BCC0CC"
+
+# Tokyonight
+# [colors.primary]
+# background = "#222436"
+# foreground = "#c8d3f5"
+# [colors.normal]
+# black   = "#1b1d2b"
+# red     = "#ff757f"
+# green   = "#c3e88d"
+# yellow  = "#ffc777"
+# blue    = "#82aaff"
+# magenta = "#c099ff"
+# cyan    = "#86e1fc"
+# white   = "#828bb8"
+# [colors.bright]
+# black   = "#444a73"
+# red     = "#ff8d94"
+# green   = "#c7fb6d"
+# yellow  = "#ffd8ab"
+# blue    = "#9ab8ff"
+# magenta = "#caabff"
+# cyan    = "#b2ebff"
+# white   = "#c8d3f5"
+
+# Vague
+# [colors.primary]
+# background = "#141415"
+# foreground = "#cdcdcd"
+# [colors.normal]
+# black   = "#252530"
+# red     = "#d8647e"
+# green   = "#7fa563"
+# yellow  = "#f3be7c"
+# blue    = "#6e94b2"
+# magenta = "#bb9dbd"
+# cyan    = "#aeaed1"
+# white   = "#cdcdcd"
+# [colors.bright]
+# black   = "#606079"
+# red     = "#e08398"
+# green   = "#99b782"
+# yellow  = "#f5cb96"
+# blue    = "#8ba9c1"
+# magenta = "#c9b1ca"
+# cyan    = "#bebeda"
+# white   = "#d7d7d7"
+
+# Gruvbox light
+# [colors.primary]
+# background = "#fbf1c7"
+# foreground = "#3c3836"
+
+# [colors.normal]
+# black   = "#fbf1c7"
+# red     = "#cc241d"
+# green   = "#98971a"
+# yellow  = "#d79921"
+# blue    = "#458588"
+# magenta = "#b16286"
+# cyan    = "#689d6a"
+# white   = "#7c6f64"
+
+# [colors.bright]
+# black   = "#928374"
+# red     = "#9d0006"
+# green   = "#79740e"
+# yellow  = "#b57614"
+# blue    = "#076678"
+# magenta = "#8f3f71"
+# cyan    = "#427b58"
+# white   = "#3c3836"
+
+# Gruvbox dark
+[colors.primary]
+background = "#282828"
+foreground = "#ebdbb2"
+
+[colors.normal]
+black   = "#282828"
+red     = "#cc241d"
+green   = "#98971a"
+yellow  = "#d79921"
+blue    = "#458588"
+magenta = "#b16286"
+cyan    = "#689d6a"
+white   = "#a89984"
+
+[colors.bright]
+black   = "#928374"
+red     = "#fb4934"
+green   = "#b8bb26"
+yellow  = "#fabd2f"
+blue    = "#83a598"
+magenta = "#d3869b"
+cyan    = "#8ec07c"
+white   = "#ebdbb2"
