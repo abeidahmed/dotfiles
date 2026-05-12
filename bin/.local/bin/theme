@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+set -euo pipefail
+ 
+THEMES_DIR="$HOME/.config/themes"
+CURRENT_DIR="$THEMES_DIR/current"
+NEXT_DIR="$THEMES_DIR/next-theme"
+THEME_NAME_FILE="$THEMES_DIR/current.name"
+ 
+list_themes() {
+  local active=""
+  [[ -f "$THEME_NAME_FILE" ]] && active=$(cat "$THEME_NAME_FILE")
+  echo "Available themes:"
+  for d in "$THEMES_DIR"/*/; do
+    local name
+    name=$(basename "$d")
+    [[ "$name" == "current" || "$name" == "next-theme" ]] && continue
+    if [[ "$name" == "$active" ]]; then
+      echo "  * $name  (active)"
+    else
+      echo "    $name"
+    fi
+  done
+}
+ 
+if [[ $# -eq 0 ]] || [[ "${1:-}" == "list" ]]; then
+  list_themes
+  exit 0
+fi
+ 
+THEME="$1"
+THEME_PATH="$THEMES_DIR/$THEME"
+ 
+if [[ ! -d "$THEME_PATH" ]]; then
+  echo "error: theme '$THEME' not found in $THEMES_DIR"
+  echo ""
+  list_themes
+  exit 1
+fi
+ 
+# Stage into next-theme (so current is never half-applied)
+rm -rf "$NEXT_DIR"
+mkdir -p "$NEXT_DIR"
+cp -r "$THEME_PATH"/. "$NEXT_DIR/"
+ 
+# Atomic swap
+rm -rf "$CURRENT_DIR"
+mv "$NEXT_DIR" "$CURRENT_DIR"
+echo "$THEME" > "$THEME_NAME_FILE"
+ 
+# Alacritty — watches its config file, touching triggers live reload
+touch "$HOME/.alacritty.toml"
+ 
+# tmux
+if tmux info &>/dev/null 2>&1; then
+  tmux source-file "$HOME/.tmux.conf"
+fi
+ 
+# Vim — reloads all running server instances
+for server in $(vim --serverlist 2>/dev/null); do
+  vim --servername "$server" \
+    --remote-send "<Esc>:source \$HOME/.vim/theme.vim<CR>" 2>/dev/null || true
+done
+ 
+echo "theme: $THEME"

@@ -40,6 +40,7 @@ let g:html_indent_inctags = 'html,body,head,tbody,p,li,dd,dt,h1,h2,h3,h4,h5,h6,b
 call plug#begin()
 
 Plug 'rakr/vim-one'
+Plug 'morhetz/gruvbox'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
@@ -109,8 +110,11 @@ nnoremap [q :cprev<CR>
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
-set background=light
-colorscheme one
+
+" Source the current theme
+if filereadable(expand("~/.vim/theme.vim"))
+  source ~/.vim/theme.vim
+endif
 
 " Copy current buffer's path relative to the project directory
 command! CopyPath let @+ = expand('%:p')
