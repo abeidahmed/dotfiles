@@ -58,6 +58,7 @@ nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>gc :Git commit<CR>
 nnoremap <leader>ga :Git commit --amend<CR>
 nnoremap <leader>gp :Git push<CR>
+nnoremap <leader>gt :Git difftool<CR>
 nnoremap <leader>gh :diffget //2<CR>
 nnoremap <leader>gl :diffget //3<CR>
 
