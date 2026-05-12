@@ -48,6 +48,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'vim-test/vim-test'
+Plug 'airblade/vim-gitgutter'
 
 call plug#end()
 
@@ -98,6 +99,10 @@ nnoremap <silent> <A-.> <C-W>5
 
 " Persist paste
 xnoremap <silent> <leader>p "_dP
+
+" Quickfix list
+nnoremap ]q :cnext<CR>
+nnoremap [q :cprev<CR>
 
 " Alacritty supports true color but vim can't auto-detect it
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
