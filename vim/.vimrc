@@ -105,3 +105,10 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
 set background=dark
 colorscheme gruvbox
+
+" Copy current buffer's path relative to the project directory
+command! CopyPath let @+ = expand('%:p')
+
+" Mark jbuilder and axlsx files as ruby
+autocmd BufRead,BufNewFile *.jbuilder set filetype=ruby
+autocmd BufRead,BufNewFile *.axlsx set filetype=ruby
