@@ -16,7 +16,7 @@ function! VimTestProjectRoot()
   return empty(l:found) ? getcwd() : fnamemodify(l:found, ':p:h')
 endfunction
 
-let test#project_root = 'VimTestProjectRoot'
+let Test#project_root = function('VimTestProjectRoot')
 
 function! VimTestUseBinTest() abort
   let l:bin = findfile('bin/test', '.;')
