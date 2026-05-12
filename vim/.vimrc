@@ -39,7 +39,7 @@ let g:html_indent_inctags = 'html,body,head,tbody,p,li,dd,dt,h1,h2,h3,h4,h5,h6,b
 
 call plug#begin()
 
-Plug 'morhetz/gruvbox'
+Plug 'rakr/vim-one'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
@@ -103,8 +103,8 @@ xnoremap <silent> <leader>p "_dP
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
-set background=dark
-colorscheme gruvbox
+set background=light
+colorscheme one
 
 " Copy current buffer's path relative to the project directory
 command! CopyPath let @+ = expand('%:p')
