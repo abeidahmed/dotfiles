@@ -6,6 +6,7 @@ padding = { x = 0, y = 0 }
 dynamic_padding = false
 decorations = "full"
 opacity = 1.0
+startup_mode = "Maximized"
 
 [scrolling]
 history = 0
