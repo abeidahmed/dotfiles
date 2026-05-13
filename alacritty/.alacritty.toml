@@ -34,6 +34,9 @@ style = "Medium"
 x = 0
 y = 0
 
+[mouse]
+hide_when_typing = true
+
 # One Dark Pro
 # [colors.primary]
 # background = "#282c34"
