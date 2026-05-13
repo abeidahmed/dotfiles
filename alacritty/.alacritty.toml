@@ -4,7 +4,7 @@ general.import = ["~/.config/themes/current/alacritty.toml"]
 dimensions = { columns = 100, lines = 40 }
 padding = { x = 0, y = 0 }
 dynamic_padding = false
-decorations = "full"
+decorations = "None"
 opacity = 1.0
 startup_mode = "Maximized"
 
