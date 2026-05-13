@@ -122,3 +122,13 @@ command! CopyPath let @+ = expand('%:p')
 " Mark jbuilder and axlsx files as ruby
 autocmd BufRead,BufNewFile *.jbuilder set filetype=ruby
 autocmd BufRead,BufNewFile *.axlsx set filetype=ruby
+
+" Trim trailing whitespace and empty lines at EOF on save
+function! TrimWhitespace()
+  let l:save = winsaveview()
+  keeppatterns %s/\s\+$//e
+  keeppatterns %s/\n\+\%$//e
+  call winrestview(l:save)
+endfunction
+
+autocmd BufWritePre * call TrimWhitespace()
