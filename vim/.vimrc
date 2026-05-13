@@ -50,6 +50,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'vim-test/vim-test'
 Plug 'airblade/vim-gitgutter'
+Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 
