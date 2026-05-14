@@ -51,6 +51,7 @@ Plug 'tpope/vim-dispatch'
 Plug 'vim-test/vim-test'
 Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
+Plug 'hrsh7th/vim-vsnip'
 
 call plug#end()
 
@@ -71,11 +72,8 @@ nnoremap <leader>ra :TestSuite<CR>
 nnoremap <leader>rl :TestLast<CR>
 nnoremap <leader>rv :TestVisit<CR>
 
-" Allow Ctrl + movements to navigate between window splits
-nnoremap <silent> <C-h> <C-W>h
-nnoremap <silent> <C-j> <C-W>j
-nnoremap <silent> <C-k> <C-W>k
-nnoremap <silent> <C-l> <C-W>l
+" Ctrl + h/j/k/l navigates between window splits and tmux panes.
+" Mappings are provided by vim-tmux-navigator; don't override them here.
 
 " Stay in visual mode when indenting
 vnoremap <silent> < <gv
@@ -109,6 +107,22 @@ nnoremap [q :cprev<CR>
 
 " Netrw
 nnoremap <leader>n :Ex<CR>
+
+" vim-vsnip
+" Set custom snippets directory
+let g:vsnip_snippet_dir = expand('~/.vim/snippets')
+let g:vsnip_filetypes = {}
+let g:vsnip_filetypes.eruby = ['html']
+let g:vsnip_filetypes.javascriptreact = ['javascript']
+let g:vsnip_filetypes.typescriptreact = ['typescript']
+" Expand
+imap <expr> <Tab> vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<Tab>'
+smap <expr> <Tab> vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<Tab>'
+" Jump forward or backward
+imap <expr> <C-j> vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<C-j>'
+smap <expr> <C-j> vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<C-j>'
+imap <expr> <C-k> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<C-k>'
+smap <expr> <C-k> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<C-k>'
 
 " Alacritty supports true color but vim can't auto-detect it
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"

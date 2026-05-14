@@ -1,0 +1,62 @@
+{
+    "Class definition": {
+        "prefix": "class",
+        "body": ["class ${1:ClassName}", "\t$0", "end"]
+    },
+    "if": {
+        "prefix": "if",
+        "body": ["if ${1:test}", "\t$0", "end"]
+    },
+    "Module definition": {
+        "prefix": "module",
+        "body": ["module ${1:ModuleName}", "\t$0", "end"]
+    },
+    "method definition": {
+        "prefix": "def",
+        "body": ["def ${1:method_name}", "\t$0", "end"]
+    },
+    "class method definition": {
+        "prefix": "defs",
+        "body": ["def self.${1:method_name}", "\t$0", "end"]
+    },
+    "alias method definition": {
+        "prefix": "am",
+        "body": "alias_method :${1:new_name}, :${0:old_name}"
+    },
+    "Rake Task": {
+        "prefix": "rake",
+        "description": "Create a Rake Task",
+        "body": [
+            "namespace :${1} do",
+            "\tdesc \"${2}\"",
+            "\ttask ${3}: :environment do",
+            "\t\t${4}",
+            "\tend",
+            "end"
+        ]
+    },
+    "Insert frozen literal string": {
+        "prefix": "frozen",
+        "body": ["# frozen_string_literal: true", "", "", ""]
+    },
+    "Insert describe class": {
+        "prefix": "desc",
+        "body": ["describe ${1:described_class} do", "\t$0", "end"]
+    },
+    "Insert context block": {
+        "prefix": "cont",
+        "body": ["context '${1:message}' do", "\t$0", "end"]
+    },
+    "Insert before block": {
+        "prefix": "bef",
+        "body": ["before :${1:each} do", "\t$0", "end"]
+    },
+    "Insert let": {
+        "prefix": "let",
+        "body": "let(:${1:object}) { $0 }"
+    },
+    "Insert it block": {
+        "prefix": "it",
+        "body": ["it '${1:spec_name}' do", "\t$0", "end"]
+    }
+}
