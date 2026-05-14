@@ -102,12 +102,7 @@ source $ZSH/oh-my-zsh.sh
 #
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#64748b'
 
-alias vim="nvim"
-# alias cls="clear"
-alias vimrc="vim ~/.config/nvim/init.vim"
-alias zshconfig="vim ~/.zshrc"
-alias alaconfig="vim ~/.config/alacritty/alacritty.yml"
-alias ohmyzsh="vim ~/.oh-my-zsh"
+alias vimrc="vim ~/dotfiles/vim/.vimrc"
 alias postgres="sudo service postgresql restart"
 alias r="rails"
 alias elastic_start="sudo -i service elasticsearch start"
@@ -124,9 +119,10 @@ alias fco="~/scripts/fetch_and_checkout.sh"
 alias stripe="~/./stripe"
 alias godir="cd $HOME/golang/src/github.com/abeidahmed/"
 
-export EDITOR=nvim
-export FZF_DEFAULT_COMMAND="rg --files --hidden --glob='!.git/' --glob='!public/CKEditor5/*'"
+export EDITOR=vim
+export FZF_DEFAULT_COMMAND="rg --files --hidden --glob='!.git/' --glob='!public/CKEditor5/'"
 export PATH="$HOME/.local/bin:$PATH"
+# export PATH="$HOME/bin:$PATH"
 
 # Ruby
 export PATH="$HOME/.rbenv/bin:$PATH"
@@ -137,12 +133,13 @@ export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 export GOPATH=$HOME/golang
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 
-# Android
-export ANDROID_HOME=$HOME/Android/Sdk
-
 # flyctl
 export FLYCTL_INSTALL="/home/abeid/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
+
+# ASDF
+# export ASDF_DATA_DIR="/home/abeid/.asdf"
+# export PATH="$ASDF_DATA_DIR/shims:$PATH"
 
 cls() {
   clear
