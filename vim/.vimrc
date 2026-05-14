@@ -107,6 +107,9 @@ xnoremap <silent> <leader>p "_dP
 nnoremap ]q :cnext<CR>
 nnoremap [q :cprev<CR>
 
+" Netrw
+nnoremap <leader>n :Ex<CR>
+
 " Alacritty supports true color but vim can't auto-detect it
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
