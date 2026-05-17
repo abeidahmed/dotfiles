@@ -52,6 +52,7 @@ Plug 'vim-test/vim-test'
 Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'hrsh7th/vim-vsnip'
+Plug 'tpope/vim-rails'
 
 call plug#end()
 
@@ -106,7 +107,7 @@ nnoremap ]q :cnext<CR>
 nnoremap [q :cprev<CR>
 
 " Netrw
-nnoremap <leader>n :Ex<CR>
+nnoremap <leader>n :Explore<CR>
 
 " vim-vsnip
 " Set custom snippets directory
