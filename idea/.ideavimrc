@@ -10,8 +10,6 @@ set multiple-cursors
 set ideajoin " Use Idea to join lines smartly
 set ideastatusicon=gray
 
-"set NERDTree
-
 Plug "tpope/vim-surround"
 Plug "tpope/vim-commentary"
 
@@ -26,10 +24,6 @@ map <c-l> <C-w>l
 
 " Navigation
 "nnoremap <c-j> :action ActivateTerminalToolWindow<CR>
-
-" NERDTree
-"nnoremap <leader>n :NERDTreeToggle<CR>
-"nnoremap <leader>nf :NERDTreeFocus<CR>
 
 nmap <leader>rn <Action>(RenameElement)
 nmap ]d <Action>(GotoNextError)
@@ -59,5 +53,8 @@ nnoremap Y y$
 " Keep visual selection
 vnoremap < <gv
 vnoremap > >gv
+
+" vim-rails keymaps
+command! A action GotoTest
 
 sethandler <c-v> a:ide
