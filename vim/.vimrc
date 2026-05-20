@@ -53,6 +53,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'tpope/vim-rails'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -151,3 +153,7 @@ function! TrimWhitespace()
 endfunction
 
 autocmd BufWritePre * call TrimWhitespace()
+
+" fzf
+nnoremap <leader>ff :Files<CR>
+nnoremap <leader>sg :Rg<CR>
