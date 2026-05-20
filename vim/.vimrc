@@ -158,11 +158,34 @@ autocmd BufWritePre * call TrimWhitespace()
 nnoremap <leader>ff :Files<CR>
 nnoremap <leader>sg :Rg<CR>
 
+" Send selected fzf entries to the quickfix list (parses :Rg's file:line:col:text)
+function! s:build_quickfix_list(lines)
+  let l:items = map(copy(a:lines), {_, line ->
+    \ matchlist(line, '\v^([^:]+):(\d+):(\d+):(.*)$') is# [] ?
+    \   { 'filename': line, 'lnum': 1 } :
+    \   { 'filename': matchstr(line, '\v^[^:]+'),
+    \     'lnum':     str2nr(matchstr(line, '\v^[^:]+:\zs\d+')),
+    \     'col':      str2nr(matchstr(line, '\v^[^:]+:\d+:\zs\d+')),
+    \     'text':     matchstr(line, '\v^[^:]+:\d+:\d+:\zs.*') }
+    \ })
+  call setqflist(l:items)
+  copen
+  cc
+endfunction
+
+let g:fzf_action = {
+  \ 'ctrl-q': function('s:build_quickfix_list'),
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all,ctrl-d:deselect-all'
+
 " Quickly find the rails partial usages across the codebase
 command! FindPartialUsages
   \ let s:partial = substitute(fnamemodify(expand('%:t:r'), ':r'), '^_', '', '') |
   \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case "' . s:partial . '" app/views/ app/helpers/',
+  \   'rg --column --line-number --no-heading --color=always --smart-case "render\b.*[\"''/]' . s:partial . '[\"'']" app/views/ app/helpers/',
   \   1,
   \   fzf#vim#with_preview(),
   \   0
