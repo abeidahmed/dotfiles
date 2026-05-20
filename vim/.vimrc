@@ -157,3 +157,13 @@ autocmd BufWritePre * call TrimWhitespace()
 " fzf
 nnoremap <leader>ff :Files<CR>
 nnoremap <leader>sg :Rg<CR>
+
+" Quickly find the rails partial usages across the codebase
+command! FindPartialUsages
+  \ let s:partial = substitute(fnamemodify(expand('%:t:r'), ':r'), '^_', '', '') |
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case "' . s:partial . '" app/views/ app/helpers/',
+  \   1,
+  \   fzf#vim#with_preview(),
+  \   0
+  \ )
