@@ -185,7 +185,7 @@ let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all,ctrl-d:deselect-all'
 command! FindPartialUsages
   \ let s:partial = substitute(fnamemodify(expand('%:t:r'), ':r'), '^_', '', '') |
   \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case "render\b.*[\"''/]' . s:partial . '[\"'']" app/views/ app/helpers/',
+  \   'rg --column --line-number --no-heading --color=always --smart-case "render\b.*([\"''/]' . s:partial . '[\"'']|@' . s:partial . '(es|s)?\b)" app/views/ app/helpers/',
   \   1,
   \   fzf#vim#with_preview(),
   \   0
