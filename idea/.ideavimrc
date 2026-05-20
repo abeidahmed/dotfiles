@@ -8,10 +8,10 @@ set clipboard+=ideaput
 set visualbell " No annoying sound on errors
 set multiple-cursors
 set ideajoin " Use Idea to join lines smartly
+set idearefactormode=keep
 set ideastatusicon=gray
 
 Plug "tpope/vim-surround"
-Plug "tpope/vim-commentary"
 
 nnoremap <SPACE> <Nop>
 let mapleader="\<Space>"
@@ -32,16 +32,19 @@ nmap ]] <Action>(MethodDown)
 nmap [[ <Action>(MethodUp)
 nmap gl <Action>(ShowErrorDescription)
 
+" LSP
+nmap gO <Action>(FileStructurePopup)
+
 " Find
 nmap <leader>ff <Action>(GotoFile)
 nmap <leader>sg <Action>(FindInPath)
+nmap <leader>fu <Action>(FindUsages)
 nmap <leader>s. <Action>(RecentFiles)
 
 " Tests
-nmap <leader>gtt <Action>(GotoTest)
-nmap <leader>rf <Action>(Run)
+nmap <leader>rt <Action>(ContextRun)
 nmap <leader>rl <Action>(Rerun)
-nmap <leader>rt <Action>(RunClass)
+nmap <leader>rf <Action>(RunClass)
 
 " Moving lines
 vmap <a-k> <Action>(MoveLineUp)
@@ -57,4 +60,9 @@ vnoremap > >gv
 " vim-rails keymaps
 command! A action GotoTest
 
+set NERDTree
+set commentary
+
 sethandler <c-v> a:ide
+
+nmap <leader>n :NERDTree<CR>
