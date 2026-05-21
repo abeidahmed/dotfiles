@@ -55,6 +55,7 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'tpope/vim-rails'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-easy-align'
 
 call plug#end()
 
