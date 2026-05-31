@@ -30,19 +30,6 @@ return {
 
       let test#strategy = "dispatch"
       let test#project_root = function('VimTestProjectRoot')
-
-      function! VimTestUseBinTest() abort
-        let l:bin = findfile('bin/test', '.;')
-        if !empty(l:bin)
-          let l:abs = fnamemodify(l:bin, ':p')
-          let g:test#ruby#rails#executable = l:abs
-        endif
-      endfunction
-
-      augroup VimTestBinTest
-        autocmd!
-        autocmd BufEnter,BufRead,BufNewFile *.rb call VimTestUseBinTest()
-      augroup END
     ]])
 	end,
 }
