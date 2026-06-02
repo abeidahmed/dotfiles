@@ -21,7 +21,7 @@ return {
 				selection_caret = " ",
 				color_devicons = true,
 				file_ignore_patterns = {
-					".git",
+					"%.git/",
 					"public/CKEditor5/",
 					"spec/fixtures/real_data_dumps/",
 					"vendor/javascript/",
@@ -35,12 +35,12 @@ return {
 					},
 				},
 			},
-			extensions = {
-				pickers = {
-					find_files = {
-						hidden = true,
-					},
+			pickers = {
+				find_files = {
+					hidden = true,
 				},
+			},
+			extensions = {
 				["ui-select"] = {
 					require("telescope.themes").get_dropdown(),
 				},
