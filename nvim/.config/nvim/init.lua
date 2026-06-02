@@ -54,6 +54,10 @@ require("lazy").setup({
 	-- https://github.com/tpope/vim-speeddating
 	"tpope/vim-speeddating",
 
+	-- Ruby on Rails navigation
+	-- https://github.com/tpope/vim-rails
+	"tpope/vim-rails",
+
 	-- A simple, easy-to-use Vim alignment plugin.
 	-- https://github.com/junegunn/vim-easy-align
 	"junegunn/vim-easy-align",
