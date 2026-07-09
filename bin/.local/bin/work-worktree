@@ -58,6 +58,19 @@ echo "==> Symlinking config/master.key"
 # directory deeper than a naive "../<repo>/config/master.key" assumes.
 ln -sfn "$master_key_src" "$worktree_dir/config/master.key"
 
+# Give this worktree its own test database + advisory-lock namespace via
+# TEST_ENV_NUMBER (see config/initializers/sequenced.rb and the test: block in
+# config/database.yml -> ambiki_test<TEST_ENV_NUMBER>). Written to .env.test so
+# it applies only in the test environment, keeping development/production blank.
+# Derived from the dir suffix (stripped to alphanumerics for a valid db name) so
+# it is stable per worktree and unique across worktrees.
+test_env_number="$(printf '%s' "$suffix" | tr -cd 'A-Za-z0-9')"
+if [[ -n "$test_env_number" ]]; then
+  echo "==> Writing .env.test (TEST_ENV_NUMBER=$test_env_number)"
+  printf 'TEST_ENV_NUMBER=%s\n' "$test_env_number" > "$worktree_dir/.env.test"
+  export TEST_ENV_NUMBER="$test_env_number"
+fi
+
 cd "$worktree_dir"
 
 echo "==> bundle install"
