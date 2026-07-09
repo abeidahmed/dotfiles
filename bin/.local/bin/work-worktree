@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# work-worktree — create a git worktree for a branch and initialize it for local dev.
+#
+# Usage:
+#   work-worktree <branch> [suffix]
+#
+# Creates a sibling worktree dir named "<repo>-<suffix>" next to the main repo,
+# then: symlinks config/master.key from the main repo, bundle install,
+# yarn install, and bundle exec rails db:test:prepare.
+#
+# If <suffix> is omitted it is derived from the trailing digits of the branch
+# name (e.g. aa/fix-scenario-042 -> 042), falling back to a sanitized branch
+# basename. If the branch already exists it is checked out; otherwise it is
+# created with -b.
+#
+# Run from anywhere inside the repo (main worktree or an existing worktree).
+
+die() { echo "work-worktree: $*" >&2; exit 1; }
+
+[[ $# -ge 1 ]] || die "usage: work-worktree <branch> [suffix]"
+
+branch="$1"
+suffix="${2:-}"
+
+# Locate the main worktree root via the shared git dir.
+git rev-parse --is-inside-work-tree >/dev/null 2>&1 || die "not inside a git repository"
+common_dir="$(git rev-parse --path-format=absolute --git-common-dir)"
+main_root="$(dirname "$common_dir")"
+repo_name="$(basename "$main_root")"
+parent_dir="$(dirname "$main_root")"
+
+# Derive a directory suffix if none was given.
+if [[ -z "$suffix" ]]; then
+  if [[ "$branch" =~ ([0-9]+)$ ]]; then
+    suffix="${BASH_REMATCH[1]}"
+  else
+    suffix="$(basename "$branch" | tr -c 'A-Za-z0-9._-' '-')"
+  fi
+fi
+
+worktree_dir="$parent_dir/$repo_name-$suffix"
+[[ ! -e "$worktree_dir" ]] || die "target already exists: $worktree_dir"
+
+master_key_src="$main_root/config/master.key"
+[[ -e "$master_key_src" ]] || die "master.key not found at $master_key_src"
+
+echo "==> Creating worktree $worktree_dir on branch $branch"
+if git -C "$main_root" show-ref --verify --quiet "refs/heads/$branch"; then
+  git -C "$main_root" worktree add "$worktree_dir" "$branch"
+else
+  git -C "$main_root" worktree add "$worktree_dir" -b "$branch"
+fi
+
+echo "==> Symlinking config/master.key"
+# Absolute target on purpose: relative targets break because a worktree sits one
+# directory deeper than a naive "../<repo>/config/master.key" assumes.
+ln -sfn "$master_key_src" "$worktree_dir/config/master.key"
+
+cd "$worktree_dir"
+
+echo "==> bundle install"
+bundle install
+
+echo "==> yarn install"
+yarn install
+
+echo "==> bundle exec rails db:test:prepare"
+bundle exec rails db:test:prepare
+
+echo "==> Done. Worktree ready:"
+echo "    cd $worktree_dir"
