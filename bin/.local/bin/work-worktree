@@ -4,11 +4,17 @@ set -euo pipefail
 # work-worktree — create a git worktree for a branch and initialize it for local dev.
 #
 # Usage:
-#   work-worktree <branch> [suffix]
+#   work-worktree <branch> [suffix]     create + init a worktree
+#   work-worktree --remove [--force]    tear down the current worktree
 #
 # Creates a sibling worktree dir named "<repo>-<suffix>" next to the main repo,
 # then: symlinks config/master.key from the main repo, bundle install,
 # yarn install, and bundle exec rails db:test:prepare.
+#
+# --remove (run from inside a worktree) reverses that: drops the test DB
+# (RAILS_ENV=test rails db:drop), removes the worktree via git, and kills its
+# tmux session, switching the client to the first remaining session. It refuses
+# on uncommitted changes unless --force is given.
 #
 # If <suffix> is omitted it is derived from the trailing digits of the branch
 # name (e.g. aa/fix-scenario-042 -> 042), falling back to a sanitized branch
@@ -22,10 +28,19 @@ die() { echo "work-worktree: $*" >&2; exit 1; }
 # Name the failing step on any abort instead of dying silently.
 trap 'echo "work-worktree: FAILED near line $LINENO (see output above)" >&2' ERR
 
-[[ $# -ge 1 ]] || die "usage: work-worktree <branch> [suffix]"
-
-branch="$1"
-suffix="${2:-}"
+# Parse flags. --remove tears down the current worktree; --force allows removal
+# despite uncommitted changes. Positional args are only used by the create path.
+remove=0
+force=0
+positional=()
+for arg in "$@"; do
+  case "$arg" in
+    --remove) remove=1 ;;
+    --force)  force=1 ;;
+    *)        positional+=("$arg") ;;
+  esac
+done
+set -- "${positional[@]+"${positional[@]}"}"
 
 # Locate the main worktree root via the shared git dir.
 git rev-parse --is-inside-work-tree >/dev/null 2>&1 || die "not inside a git repository"
@@ -33,6 +48,47 @@ common_dir="$(git rev-parse --path-format=absolute --git-common-dir)"
 main_root="$(dirname "$common_dir")"
 repo_name="$(basename "$main_root")"
 parent_dir="$(dirname "$main_root")"
+
+# --remove: drop the test DB, remove this worktree, kill its tmux session.
+if [[ "$remove" -eq 1 ]]; then
+  worktree_dir="$(git rev-parse --show-toplevel)"
+  [[ "$worktree_dir" != "$main_root" ]] || die "refusing to remove the main worktree"
+  session_name="$(basename "$worktree_dir")"
+
+  if [[ "$force" -ne 1 && -n "$(git -C "$worktree_dir" status --porcelain)" ]]; then
+    die "worktree has uncommitted changes; re-run with --force"
+  fi
+
+  echo "==> Dropping test database (RAILS_ENV=test)"
+  ( cd "$worktree_dir" && RAILS_ENV=test bundle exec rails db:drop ) \
+    || echo "work-worktree: db:drop failed (already gone?), continuing" >&2
+
+  echo "==> Removing worktree $worktree_dir"
+  # Run from the main root: git refuses to remove a worktree from inside it.
+  cd "$main_root"
+  remove_args=()
+  [[ "$force" -eq 1 ]] && remove_args+=(--force)
+  git -C "$main_root" worktree remove "${remove_args[@]+"${remove_args[@]}"}" "$worktree_dir"
+
+  # tmux teardown LAST: kill-session terminates this script's own pane, so switch
+  # the client away first and kill the session as the final action.
+  if command -v tmux >/dev/null 2>&1 && tmux has-session -t "=$session_name" 2>/dev/null; then
+    target="$(tmux list-sessions -F '#{session_name}' | grep -vx "$session_name" | head -n1)"
+    if [[ -n "${TMUX:-}" && -n "$target" ]]; then
+      tmux switch-client -t "$target"
+    elif [[ -z "$target" ]]; then
+      echo "work-worktree: $session_name is the only session; killing it exits the tmux server" >&2
+    fi
+    tmux kill-session -t "=$session_name"
+  fi
+
+  exit 0
+fi
+
+[[ $# -ge 1 ]] || die "usage: work-worktree <branch> [suffix]  |  work-worktree --remove [--force]"
+
+branch="$1"
+suffix="${2:-}"
 
 # Derive a directory suffix if none was given.
 if [[ -z "$suffix" ]]; then
