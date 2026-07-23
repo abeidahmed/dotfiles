@@ -4,8 +4,16 @@ set -euo pipefail
 # work-worktree — create a git worktree for a branch and initialize it for local dev.
 #
 # Usage:
+#   work-worktree                       adopt the current branch into a worktree
 #   work-worktree <branch> [suffix]     create + init a worktree
 #   work-worktree --remove [--force]    tear down the current worktree
+#
+# With no <branch> (adopt mode) the current branch is moved into its own
+# worktree: the main worktree is switched back to the default branch (origin's
+# HEAD, e.g. main/master) and the current branch is checked out in the new
+# worktree instead. Lets you branch + commit in the main repo, then run
+# `work-worktree` to peel that work off without hand-switching branches. Must be
+# run from the main worktree on a clean tree (--force overrides the clean check).
 #
 # Creates a sibling worktree dir named "<repo>-<suffix>" next to the main repo,
 # then: symlinks config/master.key from the main repo, bundle install,
@@ -85,10 +93,39 @@ if [[ "$remove" -eq 1 ]]; then
   exit 0
 fi
 
-[[ $# -ge 1 ]] || die "usage: work-worktree <branch> [suffix]  |  work-worktree --remove [--force]"
+# Adopt mode: no branch given. Take the current branch, switch the main worktree
+# back to the default branch, and hand the branch off to the new worktree below.
+adopt=0
+if [[ $# -eq 0 ]]; then
+  adopt=1
+  cur_root="$(git rev-parse --show-toplevel)"
+  [[ "$cur_root" == "$main_root" ]] || die "adopt mode must run from the main worktree, not $cur_root"
 
-branch="$1"
-suffix="${2:-}"
+  branch="$(git -C "$main_root" symbolic-ref --quiet --short HEAD)" \
+    || die "detached HEAD; adopt mode needs a checked-out branch"
+
+  # Resolve the default branch from origin's HEAD, falling back to main/master.
+  default_branch="$(git -C "$main_root" symbolic-ref --quiet --short refs/remotes/origin/HEAD 2>/dev/null | sed 's@^origin/@@')" || default_branch=""
+  if [[ -z "$default_branch" ]]; then
+    for b in main master; do
+      git -C "$main_root" show-ref --verify --quiet "refs/heads/$b" && { default_branch="$b"; break; }
+    done
+  fi
+  [[ -n "$default_branch" ]] || die "could not determine the default branch"
+  [[ "$branch" != "$default_branch" ]] || die "already on the default branch ($default_branch); nothing to adopt"
+
+  if [[ "$force" -ne 1 && -n "$(git -C "$main_root" status --porcelain)" ]]; then
+    die "main worktree has uncommitted changes; commit them or re-run with --force"
+  fi
+
+  echo "==> Switching main worktree back to $default_branch"
+  git -C "$main_root" checkout "$default_branch"
+
+  suffix=""
+else
+  branch="$1"
+  suffix="${2:-}"
+fi
 
 # Derive a directory suffix if none was given.
 if [[ -z "$suffix" ]]; then
