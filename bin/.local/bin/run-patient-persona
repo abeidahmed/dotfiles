@@ -2,7 +2,7 @@
 # Run every persona scenario that references a given patient id.
 #
 # Usage:
-#   ./tmp/run_patient_personas.sh <patient_id> [--list]
+#   run-patient-persona <patient_id> [--list]
 #
 # Scans spec/services/ledgers/patient_personas/*_spec.rb, collects the
 # [SCENARIO-NNN] contexts whose (uncommented) body references the patient id,
