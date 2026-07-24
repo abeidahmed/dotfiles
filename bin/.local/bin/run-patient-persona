@@ -1,0 +1,126 @@
+#!/usr/bin/env bash
+# Run every persona scenario that references a given patient id.
+#
+# Usage:
+#   ./tmp/run_patient_personas.sh <patient_id> [--list]
+#
+# Scans spec/services/ledgers/patient_personas/*_spec.rb, collects the
+# [SCENARIO-NNN] contexts whose (uncommented) body references the patient id,
+# and runs each one with:
+#   CI=true DEBUG_MODE=true bundle exec rspec <file> -e "[SCENARIO-NNN]"
+
+set -uo pipefail
+
+PATIENT_ID="${1:-}"
+LIST_ONLY="${2:-}"
+
+if [[ -z "$PATIENT_ID" ]]; then
+  echo "usage: $0 <patient_id> [--list]" >&2
+  exit 1
+fi
+
+SPEC_DIR="spec/services/ledgers/patient_personas"
+
+# Resolve repo root: explicit override, then git, then the script's own location.
+resolve_repo_root() {
+  if [[ -n "${AMBIKI_ROOT:-}" && -d "$AMBIKI_ROOT/$SPEC_DIR" ]]; then
+    echo "$AMBIKI_ROOT"
+    return
+  fi
+
+  local git_root
+  git_root="$(git rev-parse --show-toplevel 2>/dev/null || true)"
+  if [[ -n "$git_root" && -d "$git_root/$SPEC_DIR" ]]; then
+    echo "$git_root"
+    return
+  fi
+
+  local script_root
+  script_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." 2>/dev/null && pwd || true)"
+  if [[ -n "$script_root" && -d "$script_root/$SPEC_DIR" ]]; then
+    echo "$script_root"
+    return
+  fi
+}
+
+REPO_ROOT="$(resolve_repo_root)"
+if [[ -z "$REPO_ROOT" ]]; then
+  echo "Could not locate the repo root (no $SPEC_DIR found). Run from inside the repo, or set AMBIKI_ROOT." >&2
+  exit 1
+fi
+cd "$REPO_ROOT" || { echo "Failed to cd into $REPO_ROOT" >&2; exit 1; }
+OUTPUT_DIR="tmp/ledger_scenarios"
+mkdir -p "$OUTPUT_DIR"
+
+# Collect "file<TAB>SCENARIO-NNN" pairs.
+shopt -s nullglob
+SPEC_FILES=("$SPEC_DIR"/*_spec.rb)
+shopt -u nullglob
+
+if [[ ${#SPEC_FILES[@]} -eq 0 ]]; then
+  echo "No spec files in $REPO_ROOT/$SPEC_DIR" >&2
+  exit 1
+fi
+
+mapfile -t PAIRS < <(
+  for file in "${SPEC_FILES[@]}"; do
+    # reseed_scenarios_spec.rb is very slow; skip it in ad-hoc runs.
+    [[ "$(basename "$file")" == "reseed_scenarios_spec.rb" ]] && continue
+
+    awk -v pid="$PATIENT_ID" -v f="$file" '
+      # Track the most recent uncommented context "[SCENARIO-NNN] ..."
+      /^[[:space:]]*context[[:space:]]+"\[SCENARIO-[0-9]+\]/ {
+        match($0, /SCENARIO-[0-9]+/)
+        current = substr($0, RSTART, RLENGTH)
+        next
+      }
+      # Ignore commented-out lines entirely.
+      /^[[:space:]]*#/ { next }
+      index($0, pid) > 0 && current != "" && !seen[current]++ {
+        print f "\t" current
+      }
+    ' "$file"
+  done | sort -u
+)
+
+if [[ ${#PAIRS[@]} -eq 0 ]]; then
+  echo "No scenarios found for patient $PATIENT_ID in $SPEC_DIR" >&2
+  exit 1
+fi
+
+echo "Found ${#PAIRS[@]} scenario(s) for patient $PATIENT_ID:"
+for pair in "${PAIRS[@]}"; do
+  printf '  %s  %s\n' "${pair%%$'\t'*}" "${pair##*$'\t'}"
+done
+echo
+
+if [[ "$LIST_ONLY" == "--list" ]]; then
+  exit 0
+fi
+
+FAILED=()
+PASSED=()
+
+for pair in "${PAIRS[@]}"; do
+  file="${pair%%$'\t'*}"
+  scenario="${pair##*$'\t'}"
+  log="$OUTPUT_DIR/$(basename "$file" .rb)_${scenario}.log"
+
+  echo "==> $file -e \"[$scenario]\""
+  if CI=true DEBUG_MODE=true bundle exec rspec "./$file" -e "[$scenario]" > "$log" 2>&1; then
+    PASSED+=("$scenario ($(basename "$file"))")
+    echo "    PASS  log: $log"
+  else
+    FAILED+=("$scenario ($(basename "$file"))")
+    echo "    FAIL  log: $log"
+    tail -n 20 "$log" | sed 's/^/    /'
+  fi
+done
+
+echo
+echo "Summary: ${#PASSED[@]} passed, ${#FAILED[@]} failed"
+if [[ ${#FAILED[@]} -gt 0 ]]; then
+  printf 'Failed:\n'
+  printf '  %s\n' "${FAILED[@]}"
+  exit 1
+fi
