@@ -81,11 +81,17 @@ if [[ "$remove" -eq 1 ]]; then
   # tmux teardown LAST: kill-session terminates this script's own pane, so switch
   # the client away first and kill the session as the final action.
   if command -v tmux >/dev/null 2>&1 && tmux has-session -t "=$session_name" 2>/dev/null; then
-    target="$(tmux list-sessions -F '#{session_name}' | grep -vx "$session_name" | head -n1)"
-    if [[ -n "${TMUX:-}" && -n "$target" ]]; then
-      tmux switch-client -t "$target"
-    elif [[ -z "$target" ]]; then
-      echo "work-worktree: $session_name is the only session; killing it exits the tmux server" >&2
+    # Only switch the client away if we are attached to the session being
+    # killed; otherwise leave the client where it is.
+    current_session=""
+    [[ -n "${TMUX:-}" ]] && current_session="$(tmux display-message -p '#{session_name}')"
+    if [[ "$current_session" == "$session_name" ]]; then
+      target="$(tmux list-sessions -F '#{session_name}' | grep -vx "$session_name" | head -n1)"
+      if [[ -n "$target" ]]; then
+        tmux switch-client -t "$target"
+      else
+        echo "work-worktree: $session_name is the only session; killing it exits the tmux server" >&2
+      fi
     fi
     tmux kill-session -t "=$session_name"
   fi
