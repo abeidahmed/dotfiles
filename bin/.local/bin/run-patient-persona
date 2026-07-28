@@ -49,8 +49,6 @@ if [[ -z "$REPO_ROOT" ]]; then
   exit 1
 fi
 cd "$REPO_ROOT" || { echo "Failed to cd into $REPO_ROOT" >&2; exit 1; }
-OUTPUT_DIR="tmp/ledger_scenarios"
-mkdir -p "$OUTPUT_DIR"
 
 # Collect "file<TAB>SCENARIO-NNN" pairs.
 shopt -s nullglob
@@ -104,16 +102,14 @@ PASSED=()
 for pair in "${PAIRS[@]}"; do
   file="${pair%%$'\t'*}"
   scenario="${pair##*$'\t'}"
-  log="$OUTPUT_DIR/$(basename "$file" .rb)_${scenario}.log"
 
   echo "==> $file -e \"[$scenario]\""
-  if CI=true DEBUG_MODE=true bundle exec rspec "./$file" -e "[$scenario]" > "$log" 2>&1; then
+  if CI=true DEBUG_MODE=true bundle exec rspec "./$file" -e "[$scenario]"; then
     PASSED+=("$scenario ($(basename "$file"))")
-    echo "    PASS  log: $log"
+    echo "    PASS"
   else
     FAILED+=("$scenario ($(basename "$file"))")
-    echo "    FAIL  log: $log"
-    tail -n 20 "$log" | sed 's/^/    /'
+    echo "    FAIL"
   fi
 done
 
