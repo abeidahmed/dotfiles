@@ -7,7 +7,7 @@
 # Scans spec/services/ledgers/patient_personas/*_spec.rb, collects the
 # [SCENARIO-NNN] contexts whose (uncommented) body references the patient id,
 # and runs each one with:
-#   CI=true DEBUG_MODE=true bundle exec rspec <file> -e "[SCENARIO-NNN]"
+#   bundle exec rspec <file> -e "[SCENARIO-NNN]"
 
 set -uo pipefail
 
@@ -104,7 +104,7 @@ for pair in "${PAIRS[@]}"; do
   scenario="${pair##*$'\t'}"
 
   echo "==> $file -e \"[$scenario]\""
-  if CI=true DEBUG_MODE=true bundle exec rspec "./$file" -e "[$scenario]"; then
+  if bundle exec rspec "./$file" -e "[$scenario]"; then
     PASSED+=("$scenario ($(basename "$file"))")
     echo "    PASS"
   else
