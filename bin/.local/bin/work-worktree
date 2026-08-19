@@ -33,6 +33,22 @@ set -euo pipefail
 
 die() { echo "work-worktree: $*" >&2; exit 1; }
 
+# A spring server outlives the worktree that spawned it: its cwd is the worktree
+# dir, and it keeps serving on the same md5(ruby_version + project_root) socket
+# after that dir is removed. Because the dir suffix is derived from the branch
+# name, re-creating a worktree for the same branch lands on the same path, so
+# the client warm-connects to the stale server and every command it forks dies
+# with "Dir.pwd: No such file or directory - getcwd".
+kill_spring_for() {
+  local dir="$1" pid cwd
+  for pid in $(pgrep -u "$(id -u)" -f spring 2>/dev/null); do
+    cwd="$(readlink "/proc/$pid/cwd" 2>/dev/null)" || continue
+    [[ "${cwd% (deleted)}" == "$dir" ]] || continue
+    echo "==> Stopping stale spring process $pid rooted at $dir"
+    kill "$pid" 2>/dev/null || true
+  done
+}
+
 # Name the failing step on any abort instead of dying silently.
 trap 'echo "work-worktree: FAILED near line $LINENO (see output above)" >&2' ERR
 
@@ -70,6 +86,10 @@ if [[ "$remove" -eq 1 ]]; then
   echo "==> Dropping test database (RAILS_ENV=test)"
   ( cd "$worktree_dir" && RAILS_ENV=test bundle exec rails db:drop ) \
     || echo "work-worktree: db:drop failed (already gone?), continuing" >&2
+
+  # Kill spring before the dir disappears, or it lingers with a dead cwd and
+  # breaks the next worktree created at this same path.
+  kill_spring_for "$worktree_dir"
 
   echo "==> Removing worktree $worktree_dir"
   # Run from the main root: git refuses to remove a worktree from inside it.
@@ -145,6 +165,10 @@ fi
 worktree_dir="$parent_dir/$repo_name-$suffix"
 [[ ! -e "$worktree_dir" ]] || die "target already exists: $worktree_dir"
 
+# Reap any spring server left behind by a previous worktree at this same path
+# (removed by hand, or before this script learned to stop spring).
+kill_spring_for "$worktree_dir"
+
 master_key_src="$main_root/config/master.key"
 [[ -e "$master_key_src" ]] || die "master.key not found at $master_key_src"
 
@@ -184,7 +208,7 @@ cd "$worktree_dir"
 # maintain_test_schema config). RAILS_ENV=test makes dotenv load .env.test so
 # TEST_ENV_NUMBER resolves to the same suffix written above.
 echo "==> Creating test database (RAILS_ENV=test)"
-RAILS_ENV=test bundle exec rails db:create db:schema:load
+DISABLE_SPRING=1 RAILS_ENV=test bundle exec rails db:create db:schema:load
 
 # Verify the DB actually exists before declaring success.
 if [[ -n "$test_env_number" ]]; then
