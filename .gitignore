@@ -1,2 +1,7 @@
 # Contains live Stripe API keys. Regenerate on a new machine with `stripe login`.
 stripe/.config/stripe/config.toml
+
+# Runtime state: `theme <name>` rewrites these on every switch, and
+# ~/.config/themes is a stow fold symlink pointing straight back here.
+themes/.config/themes/current/
+themes/.config/themes/current.name
