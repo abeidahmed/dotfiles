@@ -1,6 +1,11 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# Keep $PATH free of duplicates. The prepends further down are not
+# idempotent, so re-sourcing this file (nested shells, tmux) would
+# otherwise stack another copy of every entry.
+typeset -U path PATH
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -70,6 +75,9 @@ ZSH_THEME="hawaabi"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+# asdf is load-bearing: the plugin is what puts $ASDF_DATA_DIR/shims on PATH
+# and exports ASDF_DATA_DIR. Drop it and node/npm/yarn disappear until the
+# ASDF block further down is uncommented.
 plugins=(git zsh-autosuggestions asdf)
 
 source $ZSH/oh-my-zsh.sh
@@ -139,8 +147,9 @@ export PATH="$FLYCTL_INSTALL/bin:$PATH"
 
 export CAVEMAN_DEFAULT_MODE=ultra
 
-# ASDF
-# export ASDF_DATA_DIR="/home/abeid/.asdf"
+# ASDF -- handled by the oh-my-zsh asdf plugin above. Uncomment only if that
+# plugin is removed.
+# export ASDF_DATA_DIR="$HOME/.asdf"
 # export PATH="$ASDF_DATA_DIR/shims:$PATH"
 
 cls() {
