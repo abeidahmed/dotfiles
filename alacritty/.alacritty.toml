@@ -9,7 +9,8 @@ opacity = 1.0
 startup_mode = "Maximized"
 
 [scrolling]
-history = 0
+# tmux carries the real scrollback; this only covers bare shells.
+history = 10000
 multiplier = 3
 
 [font]
