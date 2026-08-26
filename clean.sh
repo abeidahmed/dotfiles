@@ -10,7 +10,7 @@ set -uo pipefail
 cd "$(dirname "$(readlink -f "$0")")"
 
 PACKAGES=(
-  alacritty asdf bin gitconfig idea irb lib npm nvim ohmyzsh
+  alacritty asdf bin gitconfig idea irb lib nvim ohmyzsh
   ruby stripe themes tmux vim zsh
 )
 

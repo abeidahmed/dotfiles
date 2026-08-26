@@ -13,10 +13,12 @@ set -uo pipefail
 
 cd "$(dirname "$(readlink -f "$0")")"
 
-# Every top-level directory that is a stow package. old_nvim is deliberately
-# excluded: it targets the same ~/.config/nvim as nvim and would conflict.
+# Every top-level directory that is a stow package. Two are deliberately left
+# out: old_nvim targets the same ~/.config/nvim as nvim, and ~/.npmrc is not
+# managed here at all -- `npm login` rewrites that file in place, which would
+# write a live registry token straight into this repo through the symlink.
 PACKAGES=(
-  alacritty asdf bin gitconfig idea irb lib npm nvim ohmyzsh
+  alacritty asdf bin gitconfig idea irb lib nvim ohmyzsh
   ruby stripe themes tmux vim zsh
 )
 
