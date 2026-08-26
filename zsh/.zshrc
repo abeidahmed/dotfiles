@@ -105,11 +105,10 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#64748b'
 alias vimrc="vim ~/dotfiles/vim/.vimrc"
 alias postgres="sudo service postgresql restart"
 alias r="rails"
-alias elastic_start="sudo -i service elasticsearch start"
-alias elastic_stop="sudo -i service elasticsearch stop"
+alias elastic_start="sudo -i service ~/Downloads/elasticsearch/bin/elasticsearch start"
+alias elastic_stop="sudo -i service ~/Downloads/elasticsearch/bin/elasticsearch stop"
 alias ngrok="~/ngrok"
 alias minio="sudo ./minio server /minio"
-alias up="git checkout master && git pull origin master"
 alias p="python3"
 alias python="python3"
 alias dc="docker compose"
@@ -119,8 +118,9 @@ alias fco="~/scripts/fetch_and_checkout.sh"
 alias stripe="~/./stripe"
 alias godir="cd $HOME/golang/src/github.com/abeidahmed/"
 
-export EDITOR=vim
-export FZF_DEFAULT_COMMAND="rg --files --hidden --glob='!.git/' --glob='!public/CKEditor5/'"
+export EDITOR=nvim
+export FZF_DEFAULT_COMMAND="rg --files --hidden --glob=!.git/ --glob=!node_modules --glob=!public/CKEditor5/"
+export FZF_COMPLETION_TRIGGER="**"
 export PATH="$HOME/.local/bin:$PATH"
 # export PATH="$HOME/bin:$PATH"
 
@@ -134,8 +134,10 @@ export GOPATH=$HOME/golang
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 
 # flyctl
-export FLYCTL_INSTALL="/home/abeid/.fly"
+export FLYCTL_INSTALL="$HOME/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
+
+export CAVEMAN_DEFAULT_MODE=ultra
 
 # ASDF
 # export ASDF_DATA_DIR="/home/abeid/.asdf"
@@ -146,4 +148,27 @@ cls() {
   [[ -n "$TMUX" ]] && tmux clear-history
 }
 
+up() {
+  local branch
+  branch="$(git symbolic-ref --quiet --short refs/remotes/origin/HEAD 2>/dev/null)"
+  branch="${branch#origin/}"
+
+  if [[ -z "$branch" ]]; then
+    # ask remote directly, then cache it locally
+    branch="$(git ls-remote --symref origin HEAD 2>/dev/null | awk '/^ref:/ {sub("refs/heads/","",$2); print $2; exit}')"
+    [[ -n "$branch" ]] && git remote set-head origin "$branch" >/dev/null 2>&1
+  fi
+
+  if [[ -z "$branch" ]]; then
+    echo "up: cannot determine default branch" >&2
+    return 1
+  fi
+
+  git checkout "$branch" && git pull origin "$branch"
+}
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Machine-local settings and secrets (API tokens, per-machine paths).
+# Not tracked: see ~/.zshrc.local
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
