@@ -1,0 +1,2 @@
+# Contains live Stripe API keys. Regenerate on a new machine with `stripe login`.
+stripe/.config/stripe/config.toml
