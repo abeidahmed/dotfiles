@@ -21,8 +21,9 @@ set -euo pipefail
 #
 # --remove (run from inside a worktree) reverses that: drops the test DB
 # (RAILS_ENV=test rails db:drop), removes the worktree via git, and kills its
-# tmux session, switching the client to the first remaining session. It refuses
-# on uncommitted changes unless --force is given.
+# tmux session, moving any client attached to that session to the first
+# remaining one (clients sitting elsewhere are left alone). It refuses on
+# uncommitted changes unless --force is given.
 #
 # If <suffix> is omitted it is derived from the trailing digits of the branch
 # name (e.g. aa/fix-scenario-042 -> 042), falling back to a sanitized branch
@@ -101,14 +102,20 @@ if [[ "$remove" -eq 1 ]]; then
   # tmux teardown LAST: kill-session terminates this script's own pane, so switch
   # the client away first and kill the session as the final action.
   if command -v tmux >/dev/null 2>&1 && tmux has-session -t "=$session_name" 2>/dev/null; then
-    # Only switch the client away if we are attached to the session being
-    # killed; otherwise leave the client where it is.
-    current_session=""
-    [[ -n "${TMUX:-}" ]] && current_session="$(tmux display-message -p '#{session_name}')"
-    if [[ "$current_session" == "$session_name" ]]; then
+    # Move only the clients actually attached to the doomed session; a client
+    # sitting on some other session must stay where it is. Asking tmux for the
+    # "current" session is wrong here: with TMUX_PANE set, tmux resolves the
+    # default target from the pane running this script, which always belongs to
+    # the session being killed, so it reports a match no matter where the client
+    # is. Ask the clients themselves instead.
+    clients="$(tmux list-clients -F '#{client_session} #{client_name}' 2>/dev/null \
+      | awk -v s="$session_name" '$1 == s { sub(/^[^ ]* /, ""); print }')"
+    if [[ -n "$clients" ]]; then
       target="$(tmux list-sessions -F '#{session_name}' | grep -vx "$session_name" | head -n1)"
       if [[ -n "$target" ]]; then
-        tmux switch-client -t "$target"
+        while IFS= read -r client; do
+          [[ -n "$client" ]] && tmux switch-client -c "$client" -t "$target"
+        done <<< "$clients"
       else
         echo "work-worktree: $session_name is the only session; killing it exits the tmux server" >&2
       fi
