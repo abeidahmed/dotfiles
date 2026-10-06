@@ -28,8 +28,17 @@ return {
         return empty(l:found) ? getcwd() : fnamemodify(l:found, ':p:h')
       endfunction
 
+      function! VimTestRailsPluginTransform(cmd) abort
+        if filereadable('bin/test') && !filereadable('bin/rails')
+          return substitute(a:cmd, '\v%(bundle exec )?rails test', './bin/test', '')
+        endif
+        return a:cmd
+      endfunction
+
       let test#strategy = "dispatch"
       let test#project_root = function('VimTestProjectRoot')
+      let test#custom_transformations = {'rails_plugin': function('VimTestRailsPluginTransform')}
+      let test#transformation = 'rails_plugin'
     ]])
 	end,
 }
