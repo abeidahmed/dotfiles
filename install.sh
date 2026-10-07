@@ -49,7 +49,8 @@ for pkg in "${packages[@]}"; do
 done
 
 # themes/current is runtime state written by `theme`, so a fresh clone does not
-# carry one -- and tmux, alacritty and vim all source through it. Seed a default.
+# carry one -- and tmux, alacritty, vim and neovim all source through it. Seed a
+# default.
 if [[ -d "$HOME/.config/themes" && ! -d "$HOME/.config/themes/current" ]]; then
   ./bin/.local/bin/theme "${THEME:-vague}"
 fi

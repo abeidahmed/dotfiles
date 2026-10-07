@@ -60,5 +60,14 @@ for server in $(vim --serverlist 2>/dev/null); do
   vim --servername "$server" \
     --remote-send "<Esc>:source \$HOME/.vim/theme.vim<CR>" 2>/dev/null || true
 done
- 
+
+# Neovim — every instance listens on a socket in its runtime dir. Evaluated
+# rather than sent as keys, so nothing gets typed into an insert or terminal
+# buffer, and backgrounded since an instance sitting at a prompt answers late.
+for socket in "${XDG_RUNTIME_DIR:-/nonexistent}"/nvim.*.0 "${TMPDIR:-/tmp}/nvim.$(id -un)"/*/nvim.*.0; do
+  [[ -S "$socket" ]] || continue
+  nvim --server "$socket" \
+    --remote-expr 'execute("source ~/.config/themes/current/nvim.lua")' &>/dev/null &
+done
+
 echo "theme: $THEME"
