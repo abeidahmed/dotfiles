@@ -31,4 +31,10 @@ return {
 			},
 		},
 	},
+
+	-- Loaded on demand by `:colorscheme paper`.
+	{
+		"yorickpeterse/vim-paper",
+		lazy = true,
+	},
 }
