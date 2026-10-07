@@ -42,6 +42,7 @@ call plug#begin()
 Plug 'rakr/vim-one'
 Plug 'morhetz/gruvbox'
 Plug 'yorickpeterse/vim-paper'
+Plug 'rose-pine/vim', { 'as': 'rose-pine' }
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'

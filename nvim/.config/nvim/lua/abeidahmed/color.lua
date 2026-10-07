@@ -37,4 +37,16 @@ return {
 		"yorickpeterse/vim-paper",
 		lazy = true,
 	},
+
+	-- Loaded on demand by `:colorscheme rose-pine`.
+	{
+		"rose-pine/neovim",
+		name = "rose-pine",
+		lazy = true,
+		opts = {
+			styles = {
+				italic = false,
+			},
+		},
+	},
 }
