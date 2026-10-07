@@ -6,3 +6,6 @@ vim.cmd.colorscheme("paper")
 for _, group in ipairs({ "Function", "Delimiter", "@variable" }) do
 	vim.api.nvim_set_hl(0, group, { link = "Identifier" })
 end
+
+-- Paper draws line numbers in the text color.
+vim.api.nvim_set_hl(0, "LineNr", { fg = "#aaaaaa" })
