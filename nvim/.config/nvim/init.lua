@@ -10,6 +10,15 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+-- Refuse to write files named like a mistyped command (:w:w, :w;w).
+-- The try turns the error into an exception, which makes the write fail.
+vim.api.nvim_create_autocmd("BufWriteCmd", {
+	desc = "Refuse to write files named like a mistyped command",
+	group = vim.api.nvim_create_augroup("abeidahmed-refuse-typo-write", { clear = true }),
+	pattern = "[:;]*",
+	command = [[try | echoerr 'Refusing to write "' . expand('<afile>') . '"' | endtry]],
+})
+
 -- Copy current buffer's path relative to the project directory.
 vim.api.nvim_create_user_command("CopyPath", function()
 	local path = vim.fn.expand("%p")

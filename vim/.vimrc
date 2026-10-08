@@ -157,6 +157,10 @@ endfunction
 
 autocmd BufWritePre * call TrimWhitespace()
 
+" Refuse to write files named like a mistyped command (:w:w, :w;w).
+" The try turns the error into an exception, which makes the write fail.
+autocmd BufWriteCmd [:;]* try | echoerr 'Refusing to write "' . expand('<afile>') . '"' | endtry
+
 " fzf
 nnoremap <leader>ff :Files<CR>
 nnoremap <leader>sg :Rg<CR>
