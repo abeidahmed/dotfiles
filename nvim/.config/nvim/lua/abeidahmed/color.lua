@@ -49,4 +49,14 @@ return {
 			},
 		},
 	},
+
+	-- Loaded on demand by `:colorscheme catppuccin-<flavour>`.
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		lazy = true,
+		opts = {
+			no_italic = true,
+		},
+	},
 }

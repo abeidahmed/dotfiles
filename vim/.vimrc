@@ -43,6 +43,7 @@ Plug 'rakr/vim-one'
 Plug 'morhetz/gruvbox'
 Plug 'yorickpeterse/vim-paper'
 Plug 'rose-pine/vim', { 'as': 'rose-pine' }
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
