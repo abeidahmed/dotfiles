@@ -25,6 +25,7 @@ return {
 			"svelte",
 			"yaml",
 			"go",
+			"rust",
 			"glimmer",
 		},
 		auto_install = true,

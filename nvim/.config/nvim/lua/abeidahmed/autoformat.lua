@@ -31,6 +31,7 @@ return {
 		formatters_by_ft = {
 			go = { "goimports", "gofmt" },
 			lua = { "stylua" },
+			rust = { "rustfmt" },
 			javascript = { "eslint_d" },
 			typescript = { "eslint_d" },
 			javascriptreact = { "prettierd", "eslint_d" },

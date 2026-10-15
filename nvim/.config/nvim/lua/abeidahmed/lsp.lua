@@ -107,13 +107,22 @@ return {
 			},
 		})
 
+		-- Run clippy instead of `cargo check` on save for richer lints.
+		vim.lsp.config("rust_analyzer", {
+			settings = {
+				["rust-analyzer"] = {
+					check = { command = "clippy" },
+				},
+			},
+		})
+
 		-- vue_ls, eslint, cssls and gopls run with nvim-lspconfig's defaults.
-		local servers = { "lua_ls", "vtsls", "vue_ls", "eslint", "cssls", "gopls", "ruby_lsp" }
+		local servers = { "lua_ls", "vtsls", "vue_ls", "eslint", "cssls", "gopls", "ruby_lsp", "rust_analyzer" }
 
 		-- mason installs the server binaries (vim.lsp.enable only launches what's on PATH).
 		-- ruby_lsp is excluded here because it resolves from rbenv, not mason.
 		require("mason-tool-installer").setup({
-			ensure_installed = { "lua_ls", "vtsls", "vue_ls", "eslint", "cssls", "gopls", "stylua" },
+			ensure_installed = { "lua_ls", "vtsls", "vue_ls", "eslint", "cssls", "gopls", "rust_analyzer", "stylua" },
 		})
 
 		-- mason-lspconfig stays only as the lspconfig->mason name-mapper used by
