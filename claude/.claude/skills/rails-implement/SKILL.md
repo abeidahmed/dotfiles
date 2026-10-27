@@ -16,5 +16,5 @@ Implement the work described by the user in the spec or tickets.
    - Build data with the project's factories or fixtures and real objects; stub only external boundaries (HTTP, SDKs, mail delivery).
    - Take expected values from the spec or a worked example, never recomputed the way the code computes them.
 4. Run the linter on the files you touched. Run the full suite once at the end when the project's instructions allow it; otherwise name the suites still to run.
-5. Call the Skill tool with "rails-review", using the branch's base as the fixed point. Fix the Standards, Spec and Layers findings on your code; hand the Opportunities list to the user.
+5. Call the Skill tool with "rails-review", using the branch's base as the fixed point. Fix the Standards, Spec, Correctness and Layers findings on your code, starting each Correctness fix with a failing test that reproduces it. Hand the Possible and Opportunities lists to the user.
 6. Commit your work to the current branch, creating a branch first if you are on the default one.
