@@ -16,8 +16,10 @@ cd "$(dirname "$(readlink -f "$0")")"
 # Every top-level directory that is a stow package. npm is deliberately left
 # out: `npm login` rewrites ~/.npmrc in place, which would write a live
 # registry token straight into this repo through the symlink.
+# claude holds only ~/.claude/skills: Claude Code rewrites settings.json and
+# projects/ in place, so they stay out for the same reason.
 PACKAGES=(
-  alacritty asdf bin gitconfig idea irb lib nvim ohmyzsh
+  alacritty asdf bin claude gitconfig idea irb lib nvim ohmyzsh
   ruby stripe themes tmux vim zsh
 )
 
