@@ -4,7 +4,7 @@ Bugs to hunt in a Rails diff. A finding names the input or state that triggers i
 
 ## Missing and empty data
 
-- `find` where the record may be gone (raises), or a `find_by`/`first` result used without a nil check.
+- `find` where the record may be gone, outside a controller's 404 path (it raises), or a `find_by`/`first` result used without a nil check.
 - `&.` chains that turn a missing record into a silently wrong answer.
 - Blank, missing or unexpected params; empty collections reaching `max`, `min`, averages or division.
 
@@ -24,9 +24,9 @@ Bugs to hunt in a Rails diff. A finding names the input or state that triggers i
 
 ## Transactions and side effects
 
-- Mail, HTTP calls, cache writes, or jobs on a queue outside the database, issued inside a transaction: they fire even when it rolls back, and hold locks while slow. Move them after commit.
+- Mail, HTTP calls, cache writes, or jobs on a queue outside the database, issued inside a transaction: they fire even when it rolls back, and hold locks while slow. Move them after commit, unless the app already defers job enqueues (Active Job's `enqueue_after_transaction_commit`).
 - A `rescue` inside a transaction block that swallows the error, so a partial write commits.
-- Callbacks with side effects that fire on every save, including bulk paths and retries.
+- Callbacks with side effects that fire on every save, including imports, loops and retries.
 
 ## Retries and concurrency
 
@@ -47,6 +47,6 @@ Bugs to hunt in a Rails diff. A finding names the input or state that triggers i
 
 ## Migrations
 
-- An index added without `algorithm: :concurrently`, or a backfill or `NOT NULL` change on a large table, inside one locking migration.
+- On PostgreSQL, an index added without `algorithm: :concurrently`; on any database, a backfill or `NOT NULL` change on a large table, inside one locking migration.
 - A column renamed or removed while the running code still reads it during the deploy.
 - Data changes mixed into a schema migration; a `change` method that cannot be reversed.

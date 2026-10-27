@@ -22,14 +22,14 @@ In order: a spec path passed in; a plan agreed in this conversation (a `/rails-g
 
 ### 3. Find the standards
 
-Collect the files that document how this repo writes code (`CLAUDE.md`, `.claude/rules/`, `CONTRIBUTING.md`, style guides under `docs/`), its domain glossary (`CONTEXT.md`, whose terms names should use) and its decision records (`docs/adr/`) and the linters it configures (`.rubocop.yml`, `.erb-lint.yml` and the like).
+Collect the files that document how this repo writes code: `CLAUDE.md`, `.claude/rules/`, `CONTRIBUTING.md` and style guides under `docs/`; its domain glossary, `CONTEXT.md`, whose terms names should use; its decision records in `docs/adr/`; and the linters it configures (`.rubocop.yml`, `.erb-lint.yml` and the like).
 
 ### 4. Spawn the reviewers
 
-Send one message with three general-purpose agents. Give each the diff command, the commit list and this shared rule: "Report only on lines this diff adds or changes, each with file:line. Put anything about unchanged code in a separate Opportunities list. Under 400 words."
+Send one message with three general-purpose agents. Give each the diff command, the commit list and a 400-word limit. Standards and Correctness also get this rule: "Report only on lines this diff adds or changes, each with file:line. Put anything about unchanged code in a separate Opportunities list."
 
 - **Standards:** the standards files, the linter list and the absolute path to standards.md. Brief: "Report where the diff breaks a documented rule (cite the file and the rule) and any smell from standards.md (name it, quote the hunk). Documented rules are hard findings; smells are judgement calls, and a documented rule overrides a smell. Skip what the linters enforce."
-- **Spec:** the spec. Brief: "Report requirements that are missing or partial, behaviour nobody asked for, and requirements that look implemented but wrong. Quote the spec line for each."
+- **Spec:** the spec's full text; paste a plan from this conversation in full, since subagents do not see the conversation. Brief: "Report requirements that are missing or partial, behaviour nobody asked for, and requirements that look implemented but wrong. Quote the spec line for each."
 - **Correctness:** the absolute path to correctness.md. Brief: "Hunt bugs with correctness.md. For each, give the input or state that triggers it and the wrong result, traced through the code. Mark what you cannot trace end to end as Possible."
 
 ### 5. Verify Correctness
