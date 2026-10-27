@@ -200,7 +200,10 @@ if [[ -z "$suffix" ]]; then
   if [[ "$branch" =~ ([0-9]+)$ ]]; then
     suffix="${BASH_REMATCH[1]}"
   else
-    suffix="$(basename "$branch" | tr -c 'A-Za-z0-9._-' '-')"
+    # Substitute in bash, not via `basename | tr`: tr would also see basename's
+    # trailing newline and turn it into a trailing "-".
+    suffix="$(basename "$branch")"
+    suffix="${suffix//[^A-Za-z0-9._-]/-}"
   fi
 fi
 
