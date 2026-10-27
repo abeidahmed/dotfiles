@@ -18,11 +18,11 @@ Take the fixed point the user gave; ask if there is none. Confirm `git rev-parse
 
 ### 2. Find the spec
 
-In order: a spec path passed in; a `/rails-grill` plan written in this conversation; issue references in the commit messages (fetch them with `gh issue view`); otherwise ask. If the user says there is none, skip the Spec axis.
+In order: a spec path passed in; a plan agreed in this conversation (a `/rails-grill` plan or a grilling session); issue references in the commit messages (fetch them with `gh issue view`); otherwise ask. If the user says there is none, skip the Spec axis.
 
 ### 3. Find the standards
 
-Collect the files that document how this repo writes code (`CLAUDE.md`, `.claude/rules/`, `CONTRIBUTING.md`, style guides under `docs/`) and the linters it configures (`.rubocop.yml`, `.erb-lint.yml` and the like).
+Collect the files that document how this repo writes code (`CLAUDE.md`, `.claude/rules/`, `CONTRIBUTING.md`, style guides under `docs/`), its domain glossary (`CONTEXT.md`, whose terms names should use) and its decision records (`docs/adr/`) and the linters it configures (`.rubocop.yml`, `.erb-lint.yml` and the like).
 
 ### 4. Spawn the reviewers
 
